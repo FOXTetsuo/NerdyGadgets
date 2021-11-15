@@ -10,7 +10,7 @@ include "cartfuncties.php";
     <title>Winkelwagen</title>
 </head>
 <body>
-<h1>Inhoud Winkelwagen</h1>
+<h1>Inhoud Winkelwagen1</h1>
 <?php if (isset($_POST["submit"]))
 {
     emptyCart();
