@@ -10,7 +10,7 @@ html {
 body {
     overflow-x:hidden;
     color: #FFF !important;
-    background-color: rgb(35, 35, 47) !important;
+    background-color: rgb(153, 255, 51) !important;
 }
 @font-face {
     font-family: MmrText;
@@ -288,7 +288,7 @@ ul#ul-class-price li {
     margin-left: 10%;
 }
 .HomePagePrice {
-    color: #b3b3b3;
+    color: #676EFF;
     font-family: vortice-concept, sans-serif;
     font-size: 50px;
     text-transform: uppercase;
