@@ -6,30 +6,27 @@ include "header.php";
     <input type="text" id="uname" name="uname"><br>
     <label for="pass">Wachtwoord</label><br>
     <input type="text" id="pass" name="pass">
-    <input type="submit" value="Inloggen">
+    <input type="submit" name="submit" value="Inloggen">
 </form>
 
 <?php
-if (isset($_SESSION['username']))
+if (isset($_POST["submit"]))
 {
     $_SESSION['username'] = $_POST["uname"];
     $_SESSION['wachtwoord'] = $_POST["pass"];
-}
-if (isset($_SESSION['loggedin']))
-{
-    if ( $_SESSION['username'] == "inkoper" &&
-    $_SESSION['wachtwoord'] == "spekkoper")
-        {
-        $_SESSION['loggedin']=True;
-        }
-}
-if (isset($_SESSION['loggedin']))
-{
-    if ($_SESSION['loggedin']==True)
+    if ($_SESSION['username'] == "inkoper" &&
+        $_SESSION['wachtwoord'] == "spekkoper")
     {
-        print("Je bent ingelogd als " . $_SESSION['username']);
+        ($_SESSION["loggedin"]=True);
+    }
+    else
+    {
+        $_SESSION["loggedin"]=False;
     }
 }
-
+if ($_SESSION['loggedin']==True)
+{
+    print("Je bent ingelogd als " . $_SESSION['username']);
+}
 ?>
 
