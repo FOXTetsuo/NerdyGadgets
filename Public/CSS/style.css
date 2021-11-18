@@ -267,11 +267,11 @@ ul#ul-class-price li {
     user-select: none;
 }
 .HrefDecoration {
-    color: #737373;
+    color: #ffffff;
 }
 
 .HrefDecoration i.search {
-    color: #737373;
+    color: #676EFF;
 }
 
 .HrefDecoration:hover, .HrefDecoration:active {
@@ -288,7 +288,7 @@ ul#ul-class-price li {
     margin-left: 10%;
 }
 .HomePagePrice {
-    color: #676EFF;
+    color: #b3b3b3;
     font-family: vortice-concept, sans-serif;
     font-size: 50px;
     text-transform: uppercase;
