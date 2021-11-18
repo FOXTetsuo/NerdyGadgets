@@ -267,11 +267,11 @@ ul#ul-class-price li {
     user-select: none;
 }
 .HrefDecoration {
-    color: #ffffff;
+    color: #737373;
 }
 
 .HrefDecoration i.search {
-    color: #676EFF;
+    color: #737373;
 }
 
 .HrefDecoration:hover, .HrefDecoration:active {
