@@ -52,9 +52,13 @@ $cart = getCart();
 <?php
 
 print nl2br( "\n De totale prijs = €$totaalprijs");?>
+<?php $_SESSION["totprijs"]=$totaalprijs?>
 
 <form method="post">
     <input type="submit" name="submit" value="Winkelwagen legen" class="winkelmandbutton">
+</form>
+<form method="post" action="iDeal.php">
+    <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
 </form>
 
 </body>

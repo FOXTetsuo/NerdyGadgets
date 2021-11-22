@@ -43,7 +43,7 @@ function getStockGroups($databaseConnection) {
                                     SELECT StockGroupID 
                                     FROM stockitemstockgroups
                                     ) AND ImagePath IS NOT NULL
-            ORDER BY StockGroupID ASC";
+            ORDER BY StockGroupID";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
     $Result = mysqli_stmt_get_result($Statement);
