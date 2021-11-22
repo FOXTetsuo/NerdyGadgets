@@ -43,7 +43,7 @@ function getStockGroups($databaseConnection) {
                                     SELECT StockGroupID 
                                     FROM stockitemstockgroups
                                     ) AND ImagePath IS NOT NULL
-            ORDER BY StockGroupID ASC";
+            ORDER BY StockGroupID";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
     $Result = mysqli_stmt_get_result($Statement);
@@ -94,4 +94,34 @@ function getStockItemImage($id, $databaseConnection) {
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
     return $R;
+
+}
+
+function getPersonID($id, $databaseConnection) {
+    $Query = "
+                SELECT FullName,HashedPassword
+                FROM people
+                WHERE LogonName = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $id);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    return $Result;
+}
+function blabla($databaseConnection) {
+    $Query = "
+                SELECT StockGroupID, StockGroupName, ImagePath
+                FROM stockgroups 
+                WHERE StockGroupID IN (
+                                        SELECT StockGroupID 
+                                        FROM stockitemstockgroups
+                                        ) AND ImagePath IS NOT NULL
+                ORDER BY StockGroupID ASC";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $HeaderStockGroups = mysqli_stmt_get_result($Statement);
+    return $HeaderStockGroups;
 }

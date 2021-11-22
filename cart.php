@@ -10,6 +10,11 @@ include "cartfuncties.php";
     <title>Winkelwagen</title>
 </head>
 <body>
+<?php if ($_SESSION["loggedin"] === True && isset($_SESSION["name"]))
+{
+    print("U bent ingelogd als " . $_SESSION["name"]);
+} ?>
+
 <h1>Inhoud Winkelwagen</h1>
 <?php if (isset($_POST["submit"]))
 {
@@ -52,9 +57,13 @@ $cart = getCart();
 <?php
 
 print nl2br( "\n De totale prijs = €$totaalprijs");?>
+<?php $_SESSION["totprijs"]=$totaalprijs?>
 
 <form method="post">
     <input type="submit" name="submit" value="Winkelwagen legen" class="winkelmandbutton">
+</form>
+<form method="post" action="iDeal.php">
+    <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
 </form>
 
 </body>
