@@ -10,6 +10,11 @@ include "cartfuncties.php";
     <title>Winkelwagen</title>
 </head>
 <body>
+<?php if ($_SESSION["loggedin"] = True)
+{
+    print("U bent ingelogd als " . $_SESSION["name"]);
+} ?>
+
 <h1>Inhoud Winkelwagen</h1>
 <?php if (isset($_POST["submit"]))
 {

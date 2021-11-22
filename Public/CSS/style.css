@@ -7,6 +7,11 @@ html {
     width:30%;
 }
 
+.dropDown2
+{
+    width:10%;
+}
+
 body {
     overflow-x:hidden;
     color: #FFF !important;

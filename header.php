@@ -1,6 +1,11 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
 session_start();
+if (empty($_SESSION["loggedin"]))
+{
+    $_SESSION["loggedin"]=False;
+}
+
 include "database.php";
 $databaseConnection = connectToDatabase();
 ?>
@@ -54,6 +59,9 @@ $databaseConnection = connectToDatabase();
         <ul id="ul-class-navigation">
             <li>
                 <a href="cart.php" class="HrefDecoration">Mand</a>
+            </li>
+            <li>
+                <a href="index_login.php" class="HrefDecoration">Inloggen</a>
             </li>
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
