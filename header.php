@@ -1,7 +1,7 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
 session_start();
-if (empty($_SESSION["loggedin"]))
+if (!isset($_SESSION["loggedin"]))
 {
     $_SESSION["loggedin"]=False;
 }

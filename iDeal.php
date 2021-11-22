@@ -4,7 +4,7 @@ include "header.php";
 
 
 <img src="Public\Img\iDeal-logo.png" alt="Italian Trulli" width="180" height="100"><br>
-<?php if ($_SESSION['loggedin']==True){
+<?php if ($_SESSION['loggedin']===True){
     print(nl2br("U bent ingelogd als " . $_SESSION["name"] . "\n"));}?>
 <br>
 Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
