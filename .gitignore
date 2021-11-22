@@ -7,3 +7,5 @@
 .idea/GitGadget.iml
 .idea/.name
 .idea/modules.xml
+.idea/sqldialects.xml
+.idea/dataSources.xml
