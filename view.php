@@ -2,13 +2,15 @@
 <?php
 include "header.php";
 include "cartfuncties.php";
-
-$StockItem = getStockItem($_GET['id'], $databaseConnection);
-$StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+if (!empty($_GET['id']))
+{
+    $StockItem = getStockItem($_GET['id'], $databaseConnection);
+    $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+}
 ?>
 <div id="CenteredContent">
     <?php
-    if ($StockItem != null) {
+    if (!empty($StockItem)) {
         ?>
         <?php
         if (isset($StockItem['Video'])) {
