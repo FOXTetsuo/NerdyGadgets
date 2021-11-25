@@ -97,7 +97,8 @@ function getStockItemImage($id, $databaseConnection) {
 
 }
 
-function getPersonID($id, $databaseConnection) {
+function getPersonID($id, $databaseConnection)
+{
     $Query = "
                 SELECT FullName,HashedPassword
                 FROM people
@@ -110,18 +111,4 @@ function getPersonID($id, $databaseConnection) {
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
     return $Result;
-}
-function blabla($databaseConnection) {
-    $Query = "
-                SELECT StockGroupID, StockGroupName, ImagePath
-                FROM stockgroups 
-                WHERE StockGroupID IN (
-                                        SELECT StockGroupID 
-                                        FROM stockitemstockgroups
-                                        ) AND ImagePath IS NOT NULL
-                ORDER BY StockGroupID ASC";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_execute($Statement);
-    $HeaderStockGroups = mysqli_stmt_get_result($Statement);
-    return $HeaderStockGroups;
 }

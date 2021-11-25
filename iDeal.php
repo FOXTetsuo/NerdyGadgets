@@ -21,6 +21,7 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
     <option value="SNS">SNS</option>
     <option value="ABN AMRO">ABN AMRO</option>
     <option value="ASN">ASN</option>
+    <option value="Rabobank">Rabobank</option>
 </select>
 
 <form method=post action="###">
