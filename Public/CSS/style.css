@@ -1,7 +1,16 @@
 html {
     background-color: rgb(35, 35, 47) !important;
-}
 
+
+
+}
+.center
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 .winkelmandbutton
 {
     width:30%;
