@@ -7,11 +7,13 @@ include "header.php";
 <?php if ($_SESSION['loggedin']===True){
     print(nl2br("U bent ingelogd als " . $_SESSION["name"] . "\n"));}?>
 <br>
+<h5>
 Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 {
     $_SESSION["totprijs"]=number_format($_SESSION["totprijs"], 2);
     print("€" . $_SESSION["totprijs"]);
 }?>
+</h5>
 <br>
 <label for="betaal">Met welke bank wilt u betalen?</label>
 <select name="betaal" id="betaal" class="winkelmandbutton">
@@ -19,6 +21,7 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
     <option value="SNS">SNS</option>
     <option value="ABN AMRO">ABN AMRO</option>
     <option value="ASN">ASN</option>
+    <option value="Rabobank">Rabobank</option>
 </select>
 
 <form method=post action="###">

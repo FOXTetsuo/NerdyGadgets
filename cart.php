@@ -28,6 +28,7 @@ $cart = getCart();
             <th>Naam</th>
             <th>Aantal</th>
             <th>Prijs</th>
+            <th>Subtotaal</th>
         </tr>
         <?php foreach($cart as $productID => $aantal) {
             $stockitem = getStockItem($productID, $databaseConnection);
@@ -40,7 +41,7 @@ $cart = getCart();
             <td><?php print($aantal); ?> </td>
             <td><?php print("€" . round($stockitem["SellPrice"], 2));
                 $totaalprijs+= ($aantal*(round($stockitem["SellPrice"] , 2)));?> </td>
-
+            <td><?php print("€" . round(($stockitem["SellPrice"]), 2)*$aantal); ?> </td>
         </tr>
                 <?php }
         } ?>
@@ -54,11 +55,13 @@ $cart = getCart();
 //etc.
 
 ?>
+<h5>
 <?php
 
-print nl2br( "\n De totale prijs = €$totaalprijs");?>
+print nl2br( "\n De totale prijs is €$totaalprijs");?>
 <?php $_SESSION["totprijs"]=$totaalprijs?>
-
+</h5>
+<br><br>
 <form method="post">
     <input type="submit" name="submit" value="Winkelwagen legen" class="winkelmandbutton">
 </form>

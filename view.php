@@ -2,13 +2,15 @@
 <?php
 include "header.php";
 include "cartfuncties.php";
-
-$StockItem = getStockItem($_GET['id'], $databaseConnection);
-$StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+if (!empty($_GET['id']))
+{
+    $StockItem = getStockItem($_GET['id'], $databaseConnection);
+    $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+}
 ?>
 <div id="CenteredContent">
     <?php
-    if ($StockItem != null) {
+    if (!empty($StockItem)) {
         ?>
         <?php
         if (isset($StockItem['Video'])) {
@@ -131,7 +133,8 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
         </div>
         <?php
     } else {
-        ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
+        ?><h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... misschien heeft hij het opgegeten?</h2>
+        <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center"> <?php
     } ?>
 
     <?php
@@ -143,11 +146,13 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
     }
     ?>
 
+    <?php if (!empty($_GET['id'])){ ?>
     <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
     <form method="post">
         <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
         <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
     </form>
+    <?php } ?>
 
     <?php
     if (isset($_POST["submit"])) {              // zelfafhandelend formulier
