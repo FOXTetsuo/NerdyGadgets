@@ -133,7 +133,7 @@ if (!empty($_GET['id']))
         </div>
         <?php
     } else {
-        ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
+        ?><h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... misschien heeft hij het opgegeten?</h2><?php
     } ?>
 
     <?php
