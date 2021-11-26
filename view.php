@@ -9,6 +9,16 @@ if (!empty($_GET['id']))
 }
 ?>
 <div id="CenteredContent">
+    <h3>
+    <?php
+    if (isset($_POST["submit"])) {              // zelfafhandelend formulier
+        $stockItemID = $_POST["stockItemID"];
+        addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+        print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>");
+        $_SESSION["stockItemID"] = $_POST["stockItemID"];
+    }
+    ?>
+    </h3>
     <?php
     if (!empty($StockItem)) {
         ?>
@@ -153,13 +163,4 @@ if (!empty($_GET['id']))
         <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
     </form>
     <?php } ?>
-
-    <?php
-    if (isset($_POST["submit"])) {              // zelfafhandelend formulier
-        $stockItemID = $_POST["stockItemID"];
-        addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-        print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>");
-        $_SESSION["stockItemID"] = $_POST["stockItemID"];
-    }
-    ?>
 </div>
