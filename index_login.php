@@ -15,8 +15,8 @@ if (isset($_POST["submit"]))
 {
     $_SESSION['username'] = $_POST["uname"];
     $_SESSION['wachtwoord'] = $_POST["pass"];
-    if((!empty((getPersonID($_SESSION['username'], $databaseConnection))[0]["HashedPassword"])) &&
-        $_SESSION['wachtwoord'] === (getPersonID($_SESSION['username'], $databaseConnection))[0]["HashedPassword"])
+    if((!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])) &&
+        $_SESSION['wachtwoord'] === (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])
         {
             ($_SESSION["loggedin"] = True);
         }
@@ -26,13 +26,14 @@ if (isset($_POST["submit"]))
             $_SESSION['name']="";
             $_SESSION['wachtwoord']="";
             print("Vul een juiste gebruikersnaam en wachtwoord in");
+            print_r(getPersonIDNew($_SESSION['username'], $databaseConnection));
         }
 }
 // Als Loggedin = true, wordt een bericht getoond
 if($_SESSION["loggedin"]===True){
-if(!empty((getPersonID($_SESSION['username'], $databaseConnection))[0]["HashedPassword"]))
+if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"]))
 {
-    $_SESSION["name"]=(getPersonID($_SESSION['username'], $databaseConnection))[0]["FullName"];
+    $_SESSION["name"]=((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
     print("Je bent ingelogd als " . $_SESSION['name']);
 }
 }
@@ -46,6 +47,10 @@ if(!empty((getPersonID($_SESSION['username'], $databaseConnection))[0]["HashedPa
         <label for="pass">Wachtwoord</label><br>
         <input type="text" id="pass" name="pass" class="winkelmandbutton"><br>
         <input type="submit" name="submit" value="Inloggen" class="winkelmandbutton">
+    </form>
+    <br><br><br><br><br><br><br><br><br>
+    <form method="post" action="create.php">
+        <input type="submit" name="createaccount" value="Nog geen account? Klik hier" class="winkelmandbutton">
     </form>
 <?php } else {?>
     <form method="post" action="index_login.php">

@@ -16,6 +16,12 @@ html {
     width:30%;
 }
 
+.moveright
+{
+    width:30%;
+    position:relative; left:60px; top:2px
+}
+
 .dropDown2
 {
     width:10%;
