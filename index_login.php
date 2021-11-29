@@ -49,7 +49,7 @@ if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wacht
         <label for="uname">Gebruikersnaam</label><br>
         <input type="text" id="uname" name="uname"><br>
         <label for="pass">Wachtwoord</label><br>
-        <input type="text" id="pass" name="pass"><br><br>
+        <input type="password" id="pass" name="pass"><br><br>
         <input type="submit" name="submit" value="Inloggen" class="horizontalcentered">
     </form>
     <form method="post" action="create.php" class="accountbutton">
