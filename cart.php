@@ -14,7 +14,30 @@ include "cartfuncties.php";
 <?php if ($_SESSION["loggedin"] === True && isset($_SESSION["name"]))
 {
     print("U bent ingelogd als " . $_SESSION["name"]);
-} ?>
+}
+$cart = getCart();
+// Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
+if (isset($_POST["betalen"]))
+{
+    ?>
+    <div class="alertpositive" >
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Bestelling geplaatst!
+    </div>
+    <?php
+
+    foreach ($cart as $item => $amount)
+    {
+        for ($i=0; $i < $amount; $i++)
+        {
+            lowerStock($item, $databaseConnection);
+        }
+        removeProductFromCart($item);
+    }
+    $cart = getCart();
+}
+// kopieren tot hier :)
+?>
 
 <h1>Inhoud Winkelwagen</h1>
 <!-- Als er op "empty cart" gedrukt wordt, word de cart geleegd. -->
@@ -23,7 +46,7 @@ include "cartfuncties.php";
     emptyCart();
 }
 // haalt cart op
-$cart = getCart();
+
 ?>
 <!--Tabel waarin de cart getoond wordt. -->
     <table>
@@ -33,6 +56,7 @@ $cart = getCart();
             <th>Aantal</th>
             <th>Prijs</th>
             <th>Subtotaal</th>
+            <th>Verwijderen</th>
         </tr>
         <?php foreach($cart as $productID => $aantal) {
             $stockitem = getStockItem($productID, $databaseConnection);
@@ -46,6 +70,8 @@ $cart = getCart();
             <td><?php print("€" . round($stockitem["SellPrice"], 2));
                 $totaalprijs+= ($aantal*(round($stockitem["SellPrice"] , 2)));?> </td>
             <td><?php print("€" . round(($stockitem["SellPrice"]), 2)*$aantal); ?> </td>
+            <td><form action="cart.php" method="post"><input type="submit" value="delete" name="delete"></form></td>
+
         </tr>
                 <?php }
         } ?>
@@ -57,12 +83,14 @@ print nl2br( "\n De totale prijs is €$totaalprijs");?>
 <?php $_SESSION["totprijs"]=$totaalprijs?>
 </h5>
 <br><br>
+<?php if (!empty($cart)) {?>
 <form method="post">
     <input type="submit" name="submit" value="Winkelwagen legen" class="winkelmandbutton">
 </form>
+
 <form method="post" action="iDeal.php">
     <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
 </form>
-
+<?php } ?>
 </body>
 </html>

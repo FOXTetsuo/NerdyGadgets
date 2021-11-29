@@ -18,7 +18,7 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 
 <!-- tabel met opties van bank -->
 <label for="betaal">Met welke bank wilt u betalen?</label>
-<select name="betaal" id="betaal" class="winkelmandbutton">
+<select name="betaal" id="betaal" class="winkelmandbutton" required>
     <option value="ING">ING</option>
     <option value="SNS">SNS</option>
     <option value="ABN AMRO">ABN AMRO</option>
@@ -26,20 +26,20 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
     <option value="Rabobank">Rabobank</option>
 </select>
 
-<form method=post action="###" class="tabel">
+<form method=post action="cart.php" class="tabel">
     <label for="voornaam">Voornaam:</label>
-    <input type="text" id="voornaam" name="Voornaam" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br><br>
+    <input type="text" id="voornaam" name="Voornaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br><br>
     <label for="straat">Achternaam:</label>
-    <input type="text" id="Achternaam" name="Achternaam" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"];} ?>"><br><br>
+    <input type="text" id="Achternaam" name="Achternaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"];} ?>"><br><br>
     <label for="straat">Straat:</label>
-    <input type="text" id="Straat" name="Straat" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Straat"];} ?>"><br><br>
+    <input type="text" id="Straat" name="Straat" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Straat"];} ?>"><br><br>
     <label for="straat">Huisnummer:</label>
-    <input type="text" id="Huisnummer" name="Huisnummer" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Huisnummer"];} ?>"><br><br>
+    <input type="text" id="Huisnummer" name="Huisnummer" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Huisnummer"];} ?>"><br><br>
     <label for="straat">Postcode:</label>
-    <input type="text" id="Postcode" name="Postcode" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Postcode"];} ?>"><br><br>
+    <input type="text" id="Postcode" name="Postcode" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Postcode"];} ?>"><br><br>
     <label for="straat">Plaats:</label>
-    <input type="text" id="Plaats" name="Plaats" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Plaats"];} ?>"><br><br>
+    <input type="text" id="Plaats" name="Plaats" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Plaats"];} ?>"><br><br>
     <label for="straat">Land (optioneel):</label>
     <input type="text" id="Land" name="Land" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Land"];} ?>"><br><br>
-    <input type="submit" value="Betalen" class="winkelmandbutton">
+    <input type="submit" value="Betalen" name="betalen" class="winkelmandbutton">
 </form>

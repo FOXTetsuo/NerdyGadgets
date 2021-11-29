@@ -155,3 +155,14 @@ function checkexistence($email, $databaseConnection)
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
     return $Result;
 }
+
+function lowerStock($item, $databaseConnection)
+{
+    $Query = "
+                UPDATE nerdygadgets.stockitemholdings
+                SET QuantityOnHand=(QuantityOnHand-1)
+                WHERE StockItemID = ?";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $item);
+    mysqli_stmt_execute($Statement);
+}
