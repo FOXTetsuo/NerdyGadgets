@@ -44,7 +44,7 @@ $cart = getCart();
             <td><a href="view.php?id=<?php print($productID)?>"><?php print($stockitem["StockItemName"]);?></a></td>
             <td><?php print($aantal); ?> </td>
             <td><?php print("€" . round($stockitem["SellPrice"], 2));
-                $totaalprijs+= ($aantal*(round($stockitem["SellPrice"] , 3)));?> </td>
+                $totaalprijs+= ($aantal*(round($stockitem["SellPrice"] , 2)));?> </td>
             <td><?php print("€" . round(($stockitem["SellPrice"]), 2)*$aantal); ?> </td>
         </tr>
                 <?php }
