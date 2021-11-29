@@ -2,11 +2,11 @@
 include "header.php";
 ?>
 <!--iDeal logo wordt getoond -->
-<img src="Public\Img\iDeal-logo.png" alt="Ideal Logo" width="180" height="100"><br>
+<img src="Public\Img\iDeal-logo.png" alt="Ideal Logo" width="180" height="100" ><br>
 <?php if ($_SESSION['loggedin']===True){
     print(nl2br("U bent ingelogd als " . $_SESSION["name"] . "\n"));}?>
 <br>
-<h5>
+<h5 {absolute}>
 Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 {
     //verandert totale prijs in juiste formaat met 2 decimalen
@@ -26,10 +26,20 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
     <option value="Rabobank">Rabobank</option>
 </select>
 
-<form method=post action="###">
-    <label for="voornaam">Volledige naam:</label>
-    <input type="text" id="voornaam" name="Volledige naam" value="<?php if (isset($_SESSION["name"])){print($_SESSION["name"]);} ?>"><br><br>
-    <label for="straat">Straatnaam</label>
-    <input type="text" id="straat" name="straat" value="<?php if (isset($_SESSION["Straat"])) { print($_SESSION["Straat"]); } else print("")?>"><br><br>
+<form method=post action="###" class="tabel">
+    <label for="voornaam">Voornaam:</label>
+    <input type="text" id="voornaam" name="Voornaam" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br><br>
+    <label for="straat">Achternaam:</label>
+    <input type="text" id="Achternaam" name="Achternaam" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"];} ?>"><br><br>
+    <label for="straat">Straat:</label>
+    <input type="text" id="Straat" name="Straat" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Straat"];} ?>"><br><br>
+    <label for="straat">Huisnummer:</label>
+    <input type="text" id="Huisnummer" name="Huisnummer" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Huisnummer"];} ?>"><br><br>
+    <label for="straat">Postcode:</label>
+    <input type="text" id="Postcode" name="Postcode" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Postcode"];} ?>"><br><br>
+    <label for="straat">Plaats:</label>
+    <input type="text" id="Plaats" name="Plaats" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Plaats"];} ?>"><br><br>
+    <label for="straat">Land (optioneel):</label>
+    <input type="text" id="Land" name="Land" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Land"];} ?>"><br><br>
     <input type="submit" value="Betalen" class="winkelmandbutton">
 </form>
