@@ -1,20 +1,22 @@
 <?php
 include "header.php";
 ?>
-
-
-<img src="Public\Img\iDeal-logo.png" alt="Italian Trulli" width="180" height="100"><br>
+<!--iDeal logo wordt getoond -->
+<img src="Public\Img\iDeal-logo.png" alt="Ideal Logo" width="180" height="100"><br>
 <?php if ($_SESSION['loggedin']===True){
     print(nl2br("U bent ingelogd als " . $_SESSION["name"] . "\n"));}?>
 <br>
 <h5>
 Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 {
+    //verandert totale prijs in juiste formaat met 2 decimalen
     $_SESSION["totprijs"]=number_format($_SESSION["totprijs"], 2);
     print("€" . $_SESSION["totprijs"]);
 }?>
 </h5>
 <br>
+
+<!-- tabel met opties van bank -->
 <label for="betaal">Met welke bank wilt u betalen?</label>
 <select name="betaal" id="betaal" class="winkelmandbutton">
     <option value="ING">ING</option>

@@ -1,6 +1,7 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
 session_start();
+// als de sessionwaarde "loggedin" nog niet bestaat, laad deze in als "false"
 if (!isset($_SESSION["loggedin"]))
 {
     $_SESSION["loggedin"]=False;
@@ -55,7 +56,7 @@ $databaseConnection = connectToDatabase();
 
             </ul>
         </div>
-<!-- code voor US3: zoeken -->
+        <!-- knoppen voor mand, inloggen en zoeken. -->
         <ul id="ul-class-navigation">
             <li>
                 <a href="cart.php" class="HrefDecoration">Mand</a>
