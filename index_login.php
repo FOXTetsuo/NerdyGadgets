@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 ?>
-
+<body>
 <!-- Checkt of de "uitloggen" knop is ingedrukt. Zo ja, haalt het wachtwoord en naam van de user weg (niet de user/inlognaam) -->
 <?php
 if (isset($_POST["logout"]))
@@ -38,7 +38,7 @@ if($_SESSION["loggedin"]===True){
 if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"]))
 {
     $_SESSION["name"]=((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
-    print("Je bent ingelogd als " . $_SESSION['name']);
+    ?> <br><br><h2 class="horizontalcentered"> <?php print("Je bent ingelogd als " . $_SESSION['name']);?> </h2> <?php
 }
 }
 
@@ -60,4 +60,4 @@ if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wacht
         <input type="submit" name="logout" value="Uitloggen">
     </form>
 <?php } ?>
-
+</body>
