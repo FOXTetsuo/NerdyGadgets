@@ -58,7 +58,7 @@ $databaseConnection = connectToDatabase();
 <!-- code voor US3: zoeken -->
         <ul id="ul-class-navigation">
             <li>
-                <a href="cart.php" class="HrefDecoration">Mand</a>
+                <a href="cart.php" class="HrefDecoration">Winkelwagen</a>
             </li>
             <li>
                 <a href="index_login.php" class="HrefDecoration">Inloggen</a>
