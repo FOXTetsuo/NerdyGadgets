@@ -112,3 +112,32 @@ function getPersonID($id, $databaseConnection)
 
     return $Result;
 }
+
+// Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
+function getPersonIDNew($id, $databaseConnection)
+{
+    $Query = "
+                SELECT Voornaam,Achternaam,Wachtwoord
+                FROM webshopgebruikers
+                WHERE Emailadres = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $id);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    return $Result;
+}
+
+// Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
+function createAccount($email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land, $databaseConnection)
+{
+    $Query = "
+                INSERT INTO webshopgebruikers (Emailadres, Wachtwoord, Voornaam, Achternaam, Straat, Huisnummer, Postcode, Plaats, Land) 
+                VALUES ($email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land)";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land);
+    mysqli_stmt_execute($Statement);
+}
