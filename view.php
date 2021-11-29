@@ -8,6 +8,7 @@ if (!empty($_GET['id']))
     $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 }
 ?>
+
 <div id="CenteredContent">
     <h3>
     <?php

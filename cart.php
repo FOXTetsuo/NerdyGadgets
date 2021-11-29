@@ -10,18 +10,22 @@ include "cartfuncties.php";
     <title>Winkelwagen</title>
 </head>
 <body>
+<!-- Toont bericht als iemand ingelogd is. -->
 <?php if ($_SESSION["loggedin"] === True && isset($_SESSION["name"]))
 {
     print("U bent ingelogd als " . $_SESSION["name"]);
 } ?>
 
 <h1>Inhoud Winkelwagen</h1>
+<!-- Als er op "empty cart" gedrukt wordt, word de cart geleegd. -->
 <?php if (isset($_POST["submit"]))
 {
     emptyCart();
 }
+// haalt cart op
 $cart = getCart();
 ?>
+<!--Tabel waarin de cart getoond wordt. -->
     <table>
         <tr>
             <th>Afbeelding</th>
@@ -45,16 +49,7 @@ $cart = getCart();
         </tr>
                 <?php }
         } ?>
-
     </table>
-
-<?php
-//gegevens per artikelen in $cart (naam, prijs, etc.) uit database halen
-//totaal prijs berekenen
-//mooi weergeven in html
-//etc.
-
-?>
 <h5>
 <?php
 

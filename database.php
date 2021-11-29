@@ -96,7 +96,7 @@ function getStockItemImage($id, $databaseConnection) {
     return $R;
 
 }
-
+// Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
 function getPersonID($id, $databaseConnection)
 {
     $Query = "
