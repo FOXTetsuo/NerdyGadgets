@@ -113,11 +113,11 @@ function getPersonID($id, $databaseConnection)
     return $Result;
 }
 
-// Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
+// Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen werkt.
 function getPersonIDNew($id, $databaseConnection)
 {
     $Query = "
-                SELECT Voornaam,Achternaam,Wachtwoord
+                SELECT *
                 FROM webshopgebruikers
                 WHERE Emailadres = ?";
 
@@ -135,9 +135,23 @@ function createAccount($email, $pass, $voornaam, $achternaam, $straat, $huisnumm
 {
     $Query = "
                 INSERT INTO webshopgebruikers (Emailadres, Wachtwoord, Voornaam, Achternaam, Straat, Huisnummer, Postcode, Plaats, Land) 
-                VALUES ($email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land)";
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "s", $email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land);
+    mysqli_stmt_bind_param($Statement, "sssssssss", $email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land);
     mysqli_stmt_execute($Statement);
+}
+
+function checkexistence($email, $databaseConnection)
+{
+    $Query = "
+                SELECT Emailadres FROM nerdygadgets.webshopgebruikers
+                WHERE Emailadres = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $email);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
 }

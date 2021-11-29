@@ -7,9 +7,9 @@ include "header.php";
     <input type="text" id="email" name="email" required><br>
     <label for="pass">Wachtwoord</label><br>
     <input type="text" id="pass" name="pass" required><br>
-    <label for="voornaam">Voornaam</label><br>
-    <input type="text" id="voornaam" name="voornaam" required><br>
-    <label for="achternaam">Achternaam</label><br>
+    <label for="voornaam">Voornaam</label>
+    <input type="text" id="voornaam" name="voornaam" required>
+    <label for="achternaam">Achternaam</label>
     <input type="text" id="achternaam" name="achternaam" required><br>
     <label for="straat">Straat</label><br>
     <input type="text" id="straat" name="straat" required><br>
@@ -26,6 +26,22 @@ include "header.php";
 
 <?php if(isset($_POST["submit"]))
 {
-    $account = createAccount($_POST["email"],$_POST["pass"],$_POST["voornaam"],$_POST["achternaam"],$_POST["straat"],$_POST["huisnummer"],$_POST["postcode"],$_POST["plaats"],$_POST["land"],$databaseConnection);
-    print_r($account);
+    if (!empty (((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"])))
+    {
+        if((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"] === $_POST["email"])
+        { ?>
+            <div class="alertcreation" >
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                Een account met dit emailadres bestaat al, log in met uw email in de inlogpagina of maak hier een nieuw account aan.
+            </div> <?php
+        }
+    }
+    else
+    {
+    createAccount($_POST["email"],$_POST["pass"],$_POST["voornaam"],$_POST["achternaam"],$_POST["straat"],$_POST["huisnummer"],$_POST["postcode"],$_POST["plaats"],$_POST["land"],$databaseConnection);
+    ?> <div class="alertpositive" >
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Account aangemaakt!
+    </div> <?php
+    }
 }
