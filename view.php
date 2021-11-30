@@ -2,6 +2,7 @@
 <?php
 include "header.php";
 include "cartfuncties.php";
+include "stockfuntions.php";
 if (!empty($_GET['id']))
 {
     $StockItem = getStockItem($_GET['id'], $databaseConnection);
@@ -94,7 +95,9 @@ if (!empty($_GET['id']))
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
+            <div class="QuantityText"><?php
+                $quantity = explode(" ",$StockItem['QuantityOnHand']);
+                print getVoorraadTekst($quantity[1]); ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
