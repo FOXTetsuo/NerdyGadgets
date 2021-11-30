@@ -166,3 +166,14 @@ function lowerStock($item, $databaseConnection)
     mysqli_stmt_bind_param($Statement, "i", $item);
     mysqli_stmt_execute($Statement);
 }
+
+function orderItems($customerID, $SalesPersonID, $PickedByPersonID, $ContactPersonID, $backorderOrderID, $orderdate, $expecteddelivery , $isundersupplybackordered, $comments, $deliveryinstructions, $internalcomments, $pickingcompletedwhen, $lasteditedby, $lasteditedwhen)
+{
+    $Query = "
+                INSERT INTO orders (Emailadres, Wachtwoord, Voornaam, Achternaam, Straat, Huisnummer, Postcode, Plaats, Land) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "sssssssss", $email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land);
+    mysqli_stmt_execute($Statement);
+}
