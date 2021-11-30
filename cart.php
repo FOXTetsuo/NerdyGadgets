@@ -15,6 +15,7 @@ include "cartfuncties.php";
 {
     print("U bent ingelogd als " . $_SESSION["name"]);
 }
+?>
 <h1>Inhoud Winkelwagen</h1>
 <?php if (isset($_post["submit"]))
 {
