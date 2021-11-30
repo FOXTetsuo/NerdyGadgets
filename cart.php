@@ -69,6 +69,7 @@ if (isset($_POST["betalen"]))
             <td><?php print($aantal); ?> </td>
             <td><?php print("€" . round($stockitem["SellPrice"], 2));
                 $totaalprijs+= ($aantal*(round($stockitem["SellPrice"] , 2)));?> </td>
+            fddsaffadsafdsf
             <td><?php print("€" . round(($stockitem["SellPrice"]), 2)*$aantal); ?> </td>
             <td><form action="cart.php" method="post"><input type="submit" value="delete" name="delete"></form></td>
 
