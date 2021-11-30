@@ -64,9 +64,11 @@ if (isset($_POST["betalen"]))
             <td><img src="Public/StockItemIMG/<?php print $image[0]['ImagePath']; ?>" width = "200" height="200"></td>
             <td><a href="view.php?id=<?php print($productID)?>"><?php print($stockitem["StockItemName"]);?></a></td>
             <td><?php print($aantal); ?> </td>
-            <td><?php print("€" . round($stockitem["SellPrice"], 2));
-                $totaalprijs+= ($aantal*(round($stockitem["SellPrice"] , 2)));?> </td>
-            <td><?php print("€" . round(($stockitem["SellPrice"]), 2)*$aantal); ?> </td>
+            <td><?php
+                $roundPrice = number_format(round($stockitem["SellPrice"],2),2);
+                print("€" . $roundPrice);
+                $totaalprijs+= $roundPrice * $aantal; ?> </td>
+            <td><?php print("€" . number_format($roundPrice * $aantal, 2)); ?> </td>
             <td><form action="cart.php" method="post"><input type="submit" value="delete" name="delete"></form></td>
 
         </tr>
@@ -76,7 +78,7 @@ if (isset($_POST["betalen"]))
 <h5>
 <?php
 
-print nl2br( "\n De totale prijs is €$totaalprijs");?>
+print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2)));?>
 <?php $_SESSION["totprijs"]=$totaalprijs?>
 </h5>
 <br><br>
