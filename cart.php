@@ -15,6 +15,11 @@ include "cartfuncties.php";
 {
     print("U bent ingelogd als " . $_SESSION["name"]);
 }
+// Als er op "empty cart" gedrukt wordt, word de cart geleegd.
+if (isset($_POST["submit"])) {
+    emptyCart();
+}
+// haalt cart op
 $cart = getCart();
 // Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
 if (isset($_POST["betalen"]))
@@ -40,14 +45,6 @@ if (isset($_POST["betalen"]))
 ?>
 
 <h1>Inhoud Winkelwagen</h1>
-<!-- Als er op "empty cart" gedrukt wordt, word de cart geleegd. -->
-<?php if (isset($_POST["submit"]))
-{
-    emptyCart();
-}
-// haalt cart op
-
-?>
 <!--Tabel waarin de cart getoond wordt. -->
     <table>
         <tr>
