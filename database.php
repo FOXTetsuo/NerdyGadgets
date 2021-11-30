@@ -96,7 +96,7 @@ function getStockItemImage($id, $databaseConnection) {
     return $R;
 
 }
-
+// Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
 function getPersonID($id, $databaseConnection)
 {
     $Query = "
@@ -111,4 +111,58 @@ function getPersonID($id, $databaseConnection)
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
     return $Result;
+}
+
+// Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen werkt.
+function getPersonIDNew($id, $databaseConnection)
+{
+    $Query = "
+                SELECT *
+                FROM webshopgebruikers
+                WHERE Emailadres = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $id);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    return $Result;
+}
+
+// Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
+function createAccount($email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land, $databaseConnection)
+{
+    $Query = "
+                INSERT INTO webshopgebruikers (Emailadres, Wachtwoord, Voornaam, Achternaam, Straat, Huisnummer, Postcode, Plaats, Land) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "sssssssss", $email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land);
+    mysqli_stmt_execute($Statement);
+}
+
+function checkexistence($email, $databaseConnection)
+{
+    $Query = "
+                SELECT Emailadres FROM nerdygadgets.webshopgebruikers
+                WHERE Emailadres = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $email);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
+}
+
+function lowerStock($item, $databaseConnection)
+{
+    $Query = "
+                UPDATE nerdygadgets.stockitemholdings
+                SET QuantityOnHand=(QuantityOnHand-1)
+                WHERE StockItemID = ?";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $item);
+    mysqli_stmt_execute($Statement);
 }
