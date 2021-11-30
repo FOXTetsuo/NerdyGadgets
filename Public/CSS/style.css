@@ -38,6 +38,13 @@ html {
     top: 50px;
 }
 
+.alertaddtocart {
+    padding: 20px;
+    background-color: #24c026;
+    color: white;
+    margin-bottom: 15px;
+}
+
 /* The close button */
 .closebtn {
     margin-left: 15px;
