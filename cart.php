@@ -22,6 +22,7 @@ include "cartfuncties.php";
     emptyCart();
 }
 $cart = getCart();
+?>
 // Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
 if (isset($_POST["betalen"]))
 {
