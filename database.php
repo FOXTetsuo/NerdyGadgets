@@ -129,6 +129,18 @@ function getPersonIDNew($id, $databaseConnection)
 
     return $Result;
 }
+// Verandert gegevens die al bestaan
+function setPersonID($voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land, $email, $databaseConnection)
+{
+    $Query = "
+                UPDATE webshopgebruikers
+                SET Voornaam=?, Achternaam=?, Straat=?, Huisnummer=?, Postcode=?, Plaats=?, Land=?
+                WHERE Emailadres = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "ssssssss",  $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land, $email);
+    mysqli_stmt_execute($Statement);
+}
 
 // Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
 function createAccount($email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land, $databaseConnection)
