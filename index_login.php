@@ -1,6 +1,7 @@
 <?php
 include "header.php";
 ?>
+<body>
 <!-- Checkt of de "uitloggen" knop is ingedrukt. Zo ja, haalt het wachtwoord en naam van de user weg (niet de user/inlognaam) -->
 <?php
 if (isset($_POST["logout"]))
@@ -25,8 +26,11 @@ if (isset($_POST["submit"]))
             $_SESSION['loggedin']=False;
             $_SESSION['name']="";
             $_SESSION['wachtwoord']="";
-            print("Vul een juiste gebruikersnaam en wachtwoord in");
-            print_r(getPersonIDNew($_SESSION['username'], $databaseConnection));
+            ?>
+            <div class="alert" >
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                Vul een juiste combinatie van gebruikersnaam en wachtwoord in.
+            </div> <?php
         }
 }
 // Als Loggedin = true, wordt een bericht getoond
@@ -34,27 +38,26 @@ if($_SESSION["loggedin"]===True){
 if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"]))
 {
     $_SESSION["name"]=((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
-    print("Je bent ingelogd als " . $_SESSION['name']);
+    ?> <br><br><h2 class="horizontalcentered"> <?php print("Je bent ingelogd als " . $_SESSION['name']);?> </h2> <?php
 }
 }
 
 ?>
 <!--Toont login scherm als gebruiker niet al ingelogd is-->
 <?php if ($_SESSION['loggedin']===False || !array_key_exists("loggedin", $_SESSION)){?>
-    <form method="post" action="index_login.php">
+    <form method="post" action="index_login.php" class="centered">
         <label for="uname">Gebruikersnaam</label><br>
-        <input type="text" id="uname" name="uname" class="winkelmandbutton"><br>
+        <input type="text" id="uname" name="uname"><br>
         <label for="pass">Wachtwoord</label><br>
-        <input type="text" id="pass" name="pass" class="winkelmandbutton"><br>
-        <input type="submit" name="submit" value="Inloggen" class="winkelmandbutton">
+        <input type="password" id="pass" name="pass"><br><br>
+        <input type="submit" name="submit" value="Inloggen" class="horizontalcentered">
     </form>
-    <br><br><br><br><br><br><br><br><br>
-    <form method="post" action="create.php">
-        <input type="submit" name="createaccount" value="Nog geen account? Klik hier" class="winkelmandbutton">
+    <form method="post" action="create.php" class="accountbutton">
+        <input type="submit" name="createaccount" value="Nog geen account? Klik hier!">
     </form>
 <?php } else {?>
-    <form method="post" action="index_login.php">
-        <input type="submit" name="logout" value="Uitloggen" class="winkelmandbutton">
+    <form method="post" action="index_login.php" class="centered">
+        <input type="submit" name="logout" value="Uitloggen">
     </form>
 <?php } ?>
-
+</body>
