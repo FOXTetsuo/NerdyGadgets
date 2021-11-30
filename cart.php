@@ -15,6 +15,11 @@ include "cartfuncties.php";
 {
     print("U bent ingelogd als " . $_SESSION["name"]);
 }
+<h1>Inhoud Winkelwagen</h1>
+<?php if (isset($_post["submit"]))
+{
+    emptyCart();
+}
 $cart = getCart();
 // Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
 if (isset($_POST["betalen"]))
