@@ -1,6 +1,7 @@
 <!-- dit bestand bevat alle code voor het productoverzicht -->
 <?php
 include __DIR__ . "/header.php";
+include "stockfuntions.php";
 
 $ReturnableResult = null;
 $Sort = "SellPrice";
@@ -184,13 +185,7 @@ if (isset($amount)) {
 }
 
 
-    function getVoorraadTekst($actueleVoorraad) {
-        if ($actueleVoorraad > 1000) {
-            return "Ruime voorraad beschikbaar.";
-        } else {
-            return "Voorraad: $actueleVoorraad";
-        }
-    }
+
     function berekenVerkoopPrijs($adviesPrijs, $btw) {
 		return $btw * $adviesPrijs / 100 + $adviesPrijs;
     }
