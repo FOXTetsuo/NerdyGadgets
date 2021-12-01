@@ -20,7 +20,11 @@ if (!empty($_GET['id']))
         {
             addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
         }
-        print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>");
+        ?>
+        <div class="alertaddtocart" >
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
+        <?php
         $_SESSION["stockItemID"] = $_POST["stockItemID"];
     }
     ?>
