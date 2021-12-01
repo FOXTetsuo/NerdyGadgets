@@ -63,7 +63,7 @@ if (isset($_POST["betalen"]))
         <tr>
             <td><img src="Public/StockItemIMG/<?php print $image[0]['ImagePath']; ?>" width = "200" height="200"></td>
             <td><a href="view.php?id=<?php print($productID)?>"><?php print($stockitem["StockItemName"]);?></a></td>
-            <td><?php print($aantal); ?> </td>
+            <td><input type="text" id="fname" name="fname" value=<?php print($aantal) ?> ></td>
             <td><?php
                 $roundPrice = number_format(round($stockitem["SellPrice"],2),2);
                 print("€" . $roundPrice);
