@@ -23,7 +23,7 @@ if (!empty($_GET['id']))
         ?>
         <div class="alertaddtocart" >
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?>
+            <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
         <?php
         $_SESSION["stockItemID"] = $_POST["stockItemID"];
     }

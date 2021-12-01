@@ -92,12 +92,22 @@ html {
     width:30%;
 }
 
+.smallbutton
+{
+    width:15%;
+}
+
 .accountbutton
 {
     position:fixed;
     left:50%;
     top:75%;
     transform: translate(-50%, -50%);
+}
+
+.shiftright
+{
+    position:relative; left:60px; top:2px
 }
 
 .moveright
