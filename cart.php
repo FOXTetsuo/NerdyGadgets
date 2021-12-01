@@ -26,6 +26,7 @@ $cart = getCart();
 // Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
 if (isset($_POST["betalen"]))
 {
+    orderItems(getPersonIDNew($_SESSION['username'], $databaseConnection)[0]["USERID"],1,"SYSTEM",$databaseConnection, 1);
     ?>
     <div class="alertpositive" >
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
