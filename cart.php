@@ -88,7 +88,6 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
     <form method="post" action="iDeal.php" id="CenteredContent">
         <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
     </form>
-<br><br>
     <form method="post" id="CenteredContent">
         <input type="submit" name="submit" value="Winkelwagen legen" class="smallbutton">
     </form>
