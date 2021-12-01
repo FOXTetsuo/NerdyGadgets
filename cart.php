@@ -9,12 +9,14 @@ include "cartfuncties.php";
     <meta charset="UTF-8">
     <title>Winkelwagen</title>
 </head>
-<body>
+<body >
 <!-- Toont bericht als iemand ingelogd is. -->
+<h6 id="CenteredContent">
 <?php if ($_SESSION["loggedin"] === True && isset($_SESSION["name"]))
 {
     print("U bent ingelogd als " . $_SESSION["name"]);
 }
+?> </h6> <?php
 // Als er op "empty cart" gedrukt wordt, word de cart geleegd.
 if (isset($_POST["submit"])) {
     emptyCart();
@@ -44,9 +46,9 @@ if (isset($_POST["betalen"]))
 // kopieren tot hier :)
 ?>
 
-<h1>Inhoud Winkelwagen</h1>
+<h1 id="CenteredContent">Inhoud Winkelwagen</h1>
 <!--Tabel waarin de cart getoond wordt. -->
-    <table>
+    <table id="CenteredContent">
         <tr>
             <th>Afbeelding</th>
             <th>Naam</th>
@@ -61,7 +63,7 @@ if (isset($_POST["betalen"]))
             if (isset($stockitem)) {
             ?>
         <tr>
-            <td><img src="Public/StockItemIMG/<?php print $image[0]['ImagePath']; ?>" width = "200" height="200"></td>
+            <td><img src="Public/StockItemIMG/<?php if (isset($image[0]['ImagePath'])) {print $image[0]['ImagePath'];} else print$image ?>" width = "200" height="200"></td>
             <td><a href="view.php?id=<?php print($productID)?>"><?php print($stockitem["StockItemName"]);?></a></td>
             <td><?php print($aantal); ?> </td>
             <td><?php
@@ -75,7 +77,7 @@ if (isset($_POST["betalen"]))
                 <?php }
         } ?>
     </table>
-<h5>
+<h5 id="CenteredContent">
 <?php
 
 print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2)));?>
@@ -83,13 +85,12 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
 </h5>
 <br><br>
 <?php if (!empty($cart)) {?>
-<form method="post">
-    <input type="submit" name="submit" value="Winkelwagen legen" class="winkelmandbutton">
-</form>
-
-<form method="post" action="iDeal.php">
-    <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
-</form>
+    <form method="post" action="iDeal.php" id="CenteredContent">
+        <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
+    </form>
+    <form method="post" id="CenteredContent">
+        <input type="submit" name="submit" value="Winkelwagen legen" class="smallbutton">
+    </form>
 <?php } ?>
 </body>
 </html>
