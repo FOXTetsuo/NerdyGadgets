@@ -34,12 +34,14 @@ foreach ($cart as $productID => $amount)
 if (empty($cart))
 {;?>
 <!--Tabel waarin de cart getoond wordt. -->
-    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center">
-    <h2 id="ProductNotFound">Uw winkelwagen is leeg, wilt u verder winkelen?</h2>
     <body>
-    <form method="POST"  action="http://localhost/gitgadget/categories.php">
-        <input type="submit" value="Begin met winkelen"/>
+    <div class="centered" style="margin-top: 80px">
+    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class=" ">
+    <h2 class="">Uw winkelwagen is leeg, wilt u verder winkelen?</h2>
+    <form method="POST"  action="http://localhost/gitgadget/categories.php" class=" ">
+        <button type="submit" class="btn-primary"> Begin met winkelen </button>
     </form>
+    </div>
     </body>
 <?php }
 else{
