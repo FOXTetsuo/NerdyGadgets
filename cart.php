@@ -100,10 +100,10 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
 <br><br>
 <?php if (!empty($cart)) {?>
     <form method="post" action="iDeal.php" id="CenteredContent">
-        <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
+        <div class="winkelmandbutton"><input class="btn btn-primary" type="submit" name="Betalen" value="Betalen met iDeal"></div>
     </form>
     <form method="post" id="CenteredContent">
-        <input type="submit" name="submit" value="Winkelwagen legen" class="smallbutton">
+        <div class="smallbutton"><input type="submit" name="submit" value="Winkelwagen legen" class="btn btn-primary"></div>
     </form>
 <?php } ?>
 </body>
