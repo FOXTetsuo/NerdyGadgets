@@ -526,6 +526,22 @@ ul#ul-class-price li {
     text-transform: uppercase;
     font-weight: bold;
 }
+
+.table-font-color
+{
+    color: white !important;
+}
+
+.navicon
+{
+    margin-right: 10px;
+}
+
+.button5
+{
+    width:5%
+}
+
 .StockItemComments {
     font-family: pt-sans, sans-serif;
     color: #fff;

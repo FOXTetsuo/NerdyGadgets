@@ -49,7 +49,8 @@ if (isset($_POST["betalen"]))
 
 <h1 id="CenteredContent">Inhoud Winkelwagen</h1>
 <!--Tabel waarin de cart getoond wordt. -->
-    <table id="CenteredContent">
+    <table id="CenteredContent" class="table table-font-color">
+        <thead>
         <tr>
             <th>Afbeelding</th>
             <th>Naam</th>
@@ -58,6 +59,8 @@ if (isset($_POST["betalen"]))
             <th>Subtotaal</th>
             <th>Verwijderen</th>
         </tr>
+        </thead>
+        <tbody>
         <?php foreach($cart as $productID => $aantal) {
             $stockitem = getStockItem($productID, $databaseConnection);
             $image = getStockItemImage($productID, $databaseConnection);
@@ -76,9 +79,15 @@ if (isset($_POST["betalen"]))
                 print("€" . $roundPrice);
                 $totaalprijs+= $roundPrice * $aantal; ?> </td>
             <td><?php print("€" . number_format($roundPrice * $aantal, 2)); ?> </td>
-            <td><form action="cart.php" method="post"><input type="submit" value="delete" name=<?php print("delete$productID") ?>></form></td>
-
+            <td>
+                <form action="cart.php" method="post">
+                    <button type="submit"  name=<?php print("delete$productID")?>>
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </td>
         </tr>
+        </tbody>
                 <?php }
         } ?>
     </table>
