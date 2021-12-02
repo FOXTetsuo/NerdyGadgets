@@ -585,6 +585,11 @@ ul#ul-class-price li {
     position: relative;
 
 }
+.padding0
+{
+    padding: 0; !important;
+}
+
 .IndexStyle {
     margin: 0 auto;
     width: 1400px;
