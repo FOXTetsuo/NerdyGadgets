@@ -89,6 +89,14 @@ if (isset($_POST["betalen"]))
         <?php foreach($cart as $productID => $aantal) {
             $stockitem = getStockItem($productID, $databaseConnection);
             $image = getStockItemImage($productID, $databaseConnection);
+            if($aantal > explode(" ",$stockitem['QuantityOnHand'])[1])
+                {
+                    $aantal = explode(" ",$stockitem['QuantityOnHand'])[1];
+                    ?> <div class="alert centeralert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    Van item <?php print ($stockitem["StockItemName"] . " zijn er niet genoeg items beschikbaar. Het aantal is aangepast.") ?>
+                    </div> <?php
+                }
             if (isset($stockitem)) {
             ?>
         <tr>
@@ -119,7 +127,7 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
 <?php $_SESSION["totprijs"]=$totaalprijs?>
 </h5>
 <br><br>
-<?php if (!empty($cart)) {?>
+<?php if (!empty($cart) ) {?>
     <form method="post" action="iDeal.php" id="CenteredContent">
         <div class="winkelmandbutton"><input class="btn btn-primary" type="submit" name="Betalen" value="Betalen met iDeal"></div>
     </form>

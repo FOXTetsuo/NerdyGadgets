@@ -585,6 +585,12 @@ ul#ul-class-price li {
     position: relative;
 
 }
+
+.centeralert
+{
+    margin-right: 250px;
+    margin-left: 250px;
+}
 .padding0
 {
     padding: 0; !important;

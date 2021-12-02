@@ -13,21 +13,30 @@ if (!empty($_GET['id']))
 <div id="CenteredContent">
     <h3>
     <?php
-    if (isset($_POST["submit"])) {              // zelfafhandelend formulier
-        $stockItemID = $_POST["stockItemID"];
-        $aantalInMand = $_POST["aantal"];
-        for ($i = 0; $i<$aantalInMand; $i++)
-        {
-            addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+    if (isset($_POST["submit"])){              // zelfafhandelend formulier
+            {
+                if ($_POST["aantal"] < explode(" ",$StockItem['QuantityOnHand'])[1]){
+                $stockItemID = $_POST["stockItemID"];
+                $aantalInMand = $_POST["aantal"];
+                for ($i = 0; $i<$aantalInMand; $i++)
+                    {
+                        addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+                    }?>
+                <div class="alertaddtocart" >
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
+                <?php
+                $_SESSION["stockItemID"] = $_POST["stockItemID"];}
+                else
+                {   ?>
+                    <div class="alert" >
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?php print("Er zijn niet genoeg artikelen beschikbaar. Verander het aantal gewenste artikelen."); ?> </div> <?php
+
+                }
+            }
         }
         ?>
-        <div class="alertaddtocart" >
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
-        <?php
-        $_SESSION["stockItemID"] = $_POST["stockItemID"];
-    }
-    ?>
     </h3>
     <?php
     if (!empty($StockItem)) {
