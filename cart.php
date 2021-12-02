@@ -38,7 +38,7 @@ if (empty($cart))
     <div class="centered" style="margin-top: 80px">
     <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class=" ">
     <h2 class="">Uw winkelwagen is leeg, wilt u verder winkelen?</h2>
-    <form method="POST"  action="http://localhost/gitgadget/categories.php" class=" ">
+    <form method="POST"  action="categories.php" class=" ">
         <button type="submit" class="btn-primary"> Begin met winkelen </button>
     </form>
     </div>
