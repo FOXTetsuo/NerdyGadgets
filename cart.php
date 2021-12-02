@@ -30,6 +30,8 @@ foreach ($cart as $productID => $amount)
         removeProductFromCart($productID);
     }
     $cart = getCart();
+    if (isset($_POST["changecart"]) && $_POST["itemamount"] > 0)
+        $cart[$productID] = $_POST["itemamount"];
 }
 if (empty($cart))
 {;?>
@@ -87,12 +89,20 @@ if (isset($_POST["betalen"]))
         <?php foreach($cart as $productID => $aantal) {
             $stockitem = getStockItem($productID, $databaseConnection);
             $image = getStockItemImage($productID, $databaseConnection);
+            if($aantal > explode(" ",$stockitem['QuantityOnHand'])[1])
+                {
+                    $aantal = explode(" ",$stockitem['QuantityOnHand'])[1];
+                    ?> <div class="alert centeralert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    Van item <?php print ($stockitem["StockItemName"] . " zijn er niet genoeg items beschikbaar. Het aantal is aangepast.") ?>
+                    </div> <?php
+                }
             if (isset($stockitem)) {
             ?>
         <tr>
             <td><img src="Public/StockItemIMG/<?php if (isset($image[0]['ImagePath'])) {print $image[0]['ImagePath'];} else print$image ?>" width = "200" height="200"></td>
             <td><a href="view.php?id=<?php print($productID)?>"><?php print($stockitem["StockItemName"]);?></a></td>
-            <td class="smallbutton"><input type="text" id="fname" name="fname" value=<?php print($aantal)?> ></td>
+            <td class="padding0"><form action="cart.php" method="post"> <input type="text" id="itemamount" name="itemamount" class="winkelmandbutton" value=<?php print($aantal)?>> <button class="btn-primary padding0" type="submit" name="changecart">Aanpassen</button></form></td>
             <td><?php
                 $roundPrice = number_format(round($stockitem["SellPrice"],2),2);
                 print("€" . $roundPrice);
@@ -117,7 +127,7 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
 <?php $_SESSION["totprijs"]=$totaalprijs?>
 </h5>
 <br><br>
-<?php if (!empty($cart)) {?>
+<?php if (!empty($cart) ) {?>
     <form method="post" action="iDeal.php" id="CenteredContent">
         <div class="winkelmandbutton"><input class="btn btn-primary" type="submit" name="Betalen" value="Betalen met iDeal"></div>
     </form>
