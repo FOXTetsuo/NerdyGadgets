@@ -50,6 +50,7 @@ if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wacht
     ?> <h2 class="tabel"> <?php print("Je bent ingelogd als " . $_SESSION['name']);?> </h2>
 
     <form method=post action="index_login.php" class="tabel">
+        <!--
     <label for="voornaam">Voornaam:</label>
     <input class="form-control" type="text" id="voornaam" name="Voornaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br>
     <label for="straat">Achternaam:</label>
@@ -65,6 +66,7 @@ if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wacht
     <label for="straat">Land (optioneel):</label>
     <input class="form-control" type="text" id="Land" name="Land" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Land"];} ?>"><br>
     <input type="submit" value="Gegevens aanpassen" name="edit" class="winkelmandbutton">
+    -->
     <input type="submit" name="logout" value="Uitloggen" class = "winkelmandbutton">
 
 </form>
