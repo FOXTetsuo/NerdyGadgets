@@ -49,7 +49,8 @@ if (isset($_POST["betalen"]))
 
 <h1 id="CenteredContent">Inhoud Winkelwagen</h1>
 <!--Tabel waarin de cart getoond wordt. -->
-    <table id="CenteredContent">
+    <table id="CenteredContent" class="table table-font-color">
+        <thead>
         <tr>
             <th>Afbeelding</th>
             <th>Naam</th>
@@ -58,23 +59,35 @@ if (isset($_POST["betalen"]))
             <th>Subtotaal</th>
             <th>Verwijderen</th>
         </tr>
+        </thead>
+        <tbody>
         <?php foreach($cart as $productID => $aantal) {
             $stockitem = getStockItem($productID, $databaseConnection);
             $image = getStockItemImage($productID, $databaseConnection);
+            if (isset($_POST["delete$productID"]))
+            {
+                removeProductFromCart($productID);
+            }
             if (isset($stockitem)) {
             ?>
         <tr>
             <td><img src="Public/StockItemIMG/<?php if (isset($image[0]['ImagePath'])) {print $image[0]['ImagePath'];} else print$image ?>" width = "200" height="200"></td>
             <td><a href="view.php?id=<?php print($productID)?>"><?php print($stockitem["StockItemName"]);?></a></td>
-            <td><?php print($aantal); ?> </td>
+            <td class="smallbutton"><input type="text" id="fname" name="fname" value=<?php print($aantal)?> ></td>
             <td><?php
                 $roundPrice = number_format(round($stockitem["SellPrice"],2),2);
                 print("€" . $roundPrice);
                 $totaalprijs+= $roundPrice * $aantal; ?> </td>
             <td><?php print("€" . number_format($roundPrice * $aantal, 2)); ?> </td>
-            <td><form action="cart.php" method="post"><input type="submit" value="delete" name="delete"></form></td>
-
+            <td>
+                <form action="cart.php" method="post">
+                    <button type="submit"  name=<?php print("delete$productID")?>>
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </td>
         </tr>
+        </tbody>
                 <?php }
         } ?>
     </table>
@@ -87,10 +100,10 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
 <br><br>
 <?php if (!empty($cart)) {?>
     <form method="post" action="iDeal.php" id="CenteredContent">
-        <input type="submit" name="Betalen" value="Betalen met iDeal" class="winkelmandbutton">
+        <div class="winkelmandbutton"><input class="btn btn-primary" type="submit" name="Betalen" value="Betalen met iDeal"></div>
     </form>
     <form method="post" id="CenteredContent">
-        <input type="submit" name="submit" value="Winkelwagen legen" class="smallbutton">
+        <div class="smallbutton"><input type="submit" name="submit" value="Winkelwagen legen" class="btn btn-primary"></div>
     </form>
 <?php } ?>
 </body>
