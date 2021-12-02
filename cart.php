@@ -23,6 +23,26 @@ if (isset($_POST["submit"])) {
 }
 // haalt cart op
 $cart = getCart();
+foreach ($cart as $productID => $amount)
+{
+    if (isset($_POST["delete$productID"]))
+    {
+        removeProductFromCart($productID);
+    }
+    $cart = getCart();
+}
+if (empty($cart))
+{;?>
+<!--Tabel waarin de cart getoond wordt. -->
+    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center">
+    <h2 id="ProductNotFound">Uw winkelwagen is leeg, wilt u verder winkelen?</h2>
+    <body>
+    <form method="POST"  action="http://localhost/gitgadget/categories.php">
+        <input type="submit" value="Begin met winkelen"/>
+    </form>
+    </body>
+<?php }
+else{
 // Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
 if (isset($_POST["betalen"]))
 {
@@ -44,6 +64,7 @@ if (isset($_POST["betalen"]))
     }
     $cart = getCart();
 }
+
 // kopieren tot hier :)
 ?>
 
@@ -64,10 +85,6 @@ if (isset($_POST["betalen"]))
         <?php foreach($cart as $productID => $aantal) {
             $stockitem = getStockItem($productID, $databaseConnection);
             $image = getStockItemImage($productID, $databaseConnection);
-            if (isset($_POST["delete$productID"]))
-            {
-                removeProductFromCart($productID);
-            }
             if (isset($stockitem)) {
             ?>
         <tr>
@@ -105,6 +122,7 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
     <form method="post" id="CenteredContent">
         <div class="smallbutton"><input type="submit" name="submit" value="Winkelwagen legen" class="btn btn-primary"></div>
     </form>
-<?php } ?>
+<?php }
+}?>
 </body>
 </html>
