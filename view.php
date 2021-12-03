@@ -185,8 +185,11 @@ if (!empty($_GET['id']))
         </div>
         <?php
     } else {
-        ?><h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... misschien heeft hij het opgegeten?</h2>
-        <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center"> <?php
+        ?>
+        <div class="centered" style="margin-top: 80px">
+            <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center">
+            <h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... Misschien heeft hij het opgegeten?</h2>
+        <?php
     } ?>
 
 
