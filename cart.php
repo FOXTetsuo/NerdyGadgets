@@ -50,7 +50,14 @@ else{
 // Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
 if (isset($_POST["betalen"]))
 {
+    if ($_SESSION["loggedin"] === true)
+    {
     orderItems(getPersonIDNew($_SESSION['username'], $databaseConnection)[0]["USERID"],1,"SYSTEM",$databaseConnection, 1);
+    }
+    else
+    {
+        orderItemsNoAccount(1,"SYSTEM",$databaseConnection,1,$_POST["Voornaam"],$_POST["Achternaam"],$_POST["Straat"],$_POST["Plaats"],$_POST["Postcode"],$_POST["Huisnummer"],$_POST["email"]);
+    }
     ?>
     <div class="alertpositive" >
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>

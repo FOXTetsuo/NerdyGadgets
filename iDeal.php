@@ -1,12 +1,18 @@
 <?php
 include "header.php";
 ?>
+<head>
+
+</head>
+<body>
+
 <!--iDeal logo wordt getoond -->
 <img src="Public\Img\iDeal-logo.png" alt="Ideal Logo" width="180" height="100" ><br>
+<div class="tabel">
 <?php if ($_SESSION['loggedin']===True){
     print(nl2br("U bent ingelogd als " . $_SESSION["name"] . "\n"));}?>
-<br>
-<h5 {absolute}>
+</div><br>
+<h5 {absolute} class="tabel">
 Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 {
     //verandert totale prijs in juiste formaat met 2 decimalen
@@ -17,8 +23,8 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 <br>
 
 <!-- tabel met opties van bank -->
-<label for="betaal">Met welke bank wilt u betalen?</label>
-<select name="betaal" id="betaal" class="winkelmandbutton" required>
+<label for="betaal" class="tabel button20">Met welke bank wilt u betalen?</label>
+<select name="betaal" id="betaal" class="smallbutton" required >
     <option value="ING">ING</option>
     <option value="SNS">SNS</option>
     <option value="ABN AMRO">ABN AMRO</option>
@@ -27,6 +33,8 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 </select>
 
 <form method=post action="cart.php" class="tabel">
+    <label for="voornaam">Emailadres:</label>
+    <input type="text" id="email" name="email" required> <br><br>
     <label for="voornaam">Voornaam:</label>
     <input type="text" id="voornaam" name="Voornaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br><br>
     <label for="straat">Achternaam:</label>
@@ -43,3 +51,4 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
     <input type="text" id="Land" name="Land" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Land"];} ?>"><br><br>
     <input type="submit" value="Betalen" name="betalen" class="winkelmandbutton">
 </form>
+</body>
