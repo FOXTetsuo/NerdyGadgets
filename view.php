@@ -15,7 +15,7 @@ if (!empty($_GET['id']))
     <?php
     if (isset($_POST["submit"])){              // zelfafhandelend formulier
             {
-                if ($_POST["aantal"] < explode(" ",$StockItem['QuantityOnHand'])[1]){
+                if ($_POST["aantal"] <= explode(" ",$StockItem['QuantityOnHand'])[1]){
                 $stockItemID = $_POST["stockItemID"];
                 $aantalInMand = $_POST["aantal"];
                 for ($i = 0; $i<$aantalInMand; $i++)
