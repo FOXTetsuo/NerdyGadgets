@@ -243,7 +243,7 @@ ul#ul-class-navigation li {
 .ImgFrame {
     width: 230px;
     height: 230px;
-    background-color: rgb(36, 41, 143);
+    background-color: rgb(36, 41, 143,0.0);
     float: left;
     margin-left: 10px;
     margin-top: 10px;
