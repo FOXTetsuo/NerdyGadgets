@@ -66,8 +66,10 @@ if (isset($_POST["betalen"]))
         }
         removeProductFromCart($item);
     }
-    $cart = getCart();
+    header("Location:betaald.php");
+    exit();
 }
+
 
 // kopieren tot hier :)
 ?>
@@ -134,7 +136,9 @@ print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))
     <form method="post" id="CenteredContent">
         <div class="smallbutton"><input type="submit" name="submit" value="Winkelwagen legen" class="btn btn-primary"></div>
     </form>
-<?php }
-}?>
+<?php
+}
+}
+?>
 </body>
 </html>
