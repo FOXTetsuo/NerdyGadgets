@@ -208,3 +208,30 @@ function orderItems($USERID, $deliverymethodID, $Lasteditedby, $databaseConnecti
                 mysqli_stmt_execute($Statement);
         }
 }
+function orderItemsNoAccount($deliverymethodID, $Lasteditedby, $databaseConnection, $packageTypeID, $voornaam, $achternaam, $street, $city, $zip, $housenumber, $email)
+{
+    $orderdate= date('Y-m-d H:i:s');
+    $IsOrderFinalized = False;
+    $LasteditedWhen = date('Y-m-d H:i:s');
+    $Query = "
+                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, Straatnaam, Plaats, Postcode, Huisnummer, Email, Voornaam, Achternaam) 
+                VALUES (NULL, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "ssssssssssss", $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen, $street , $city, $zip, $housenumber, $email, $voornaam, $achternaam);
+    mysqli_stmt_execute($Statement);
+    // Tweede deel van de functie, nu de orderlines aanmaken voor elk product.
+    // haalt cart op om per item een orderline te maken
+    $cart = getCart();
+    // zorgt ervoor dat de PRIMARY KEY van het vorige veld wordt ingevuld in het ORDERID veld van de volgende functie
+    // mysqli_insert_id is afhankelijk van connectie, dus dit zou nooit fout moeten kunnen gaan.
+    $ORDERID = mysqli_insert_id($databaseConnection);
+    foreach ($cart as $item => $amount)
+    {
+        $Query = "
+                            INSERT INTO webshoporderlines (ORDERID, packageTypeID, stockitemID, amount, IsOrderLineFinalized, LastEditedBy, LastEditedWhen) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "sssssss", $ORDERID, $packageTypeID, $item, $amount, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen);
+        mysqli_stmt_execute($Statement);
+    }
+}
