@@ -132,7 +132,7 @@ if (isset($_POST["betalen"]))
 <h5 id="CenteredContent">
 <?php
 
-print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2)));?>
+print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))." (inc. BTW)");?>
 <?php $_SESSION["totprijs"]=$totaalprijs?>
 </h5>
 <br><br>
