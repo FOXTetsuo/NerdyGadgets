@@ -132,7 +132,7 @@ if (!empty($_GET['id']))
                             <div class="QuantityText">
                                 <?php
                                 $quantity = explode(" ",$StockItem['QuantityOnHand']); ?>
-                                <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></br></p>
+                                <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></b></p>
                                 <div>
                                     <p style="color: white"><strong>✔</strong>
                                     <?php print " Gratis verzending boven de €25<br>"; ?><strong>✔</strong>
