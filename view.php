@@ -9,8 +9,10 @@ if (!empty($_GET['id']))
     $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 }
 ?>
-
 <div id="CenteredContent">
+    <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
+    <h2 class="StockItemNameViewSize StockItemName">
+        <?php print $StockItem['StockItemName']; ?>
     <h3>
     <?php
     if (isset($_POST["submit"])){              // zelfafhandelend formulier
@@ -58,7 +60,7 @@ if (!empty($_GET['id']))
                 if (count($StockItemImage) == 1) {
                     ?>
                     <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                         style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 400px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
                 } else if (count($StockItemImage) >= 2) { ?>
                     <!-- meerdere plaatjes laten zien -->
@@ -103,14 +105,7 @@ if (!empty($_GET['id']))
             }
             ?>
 
-
-            <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
-            <h2 class="StockItemNameViewSize StockItemName">
-                <?php print $StockItem['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php
-                $quantity = explode(" ",$StockItem['QuantityOnHand']);
-                print getVoorraadTekst($quantity[1]); ?></div>
             <!-- Nog plakken bovenaan-->
             <?php
             //?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
@@ -124,29 +119,41 @@ if (!empty($_GET['id']))
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
-
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
-                        <h6> Inclusief BTW </h6>
+                        <div>
                         <?php if (!empty($_GET['id'])){ ?>
                             <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
-                            <form method="post">
-                                <label for="aantal">Aantal:</label>
-                                <input type="number" id="aantal" name="aantal" value="1" class="winkelmandbutton">
+                            <form method="post" class="inwinkelwagenbtn">
+                                <?php print "<br><br><br>"; ?>
+                                <input type="number" id="aantal" name="aantal" value="1" class="aantalbutton">
                                 <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
-                                <button type="submit" name="submit">
-                                        <i class="fas fa-shopping-cart fa-lg"></i></button>
+                                <button type="submit" name="submit" class="btn btn-primary btn-lg">In winkelwagen</button>
                             </form>
+                            <div class="QuantityText">
+                                <?php
+                                $quantity = explode(" ",$StockItem['QuantityOnHand']); ?>
+                                <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></br></p>
+                                <div>
+                                    <p style="color: white"><strong>✔</strong>
+                                    <?php print " Gratis verzending boven de €25<br>"; ?><strong>✔</strong>
+                                    <?php print "30 dagen bedenktijd<br>"; ?><strong>✔</strong>
+                                    <?php print "24/7 klantenservice<br>"; ?><strong>✔</strong>
+                                    <?php print "Prijs is incl. BTW"; ?></p>
+                                </div>
+                        </div>
                         <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
-            <p><?php print $StockItem['SearchDetails']; ?></p>
+        <div id="StockItemDescription" style="float: left">
+
         </div>
         <div id="StockItemSpecifications">
+            <h3>Artikel beschrijving</h3>
+            <p><?php print $StockItem['SearchDetails']; ?></p>
             <h3>Artikel specificaties</h3>
             <?php
             $CustomFields = json_decode($StockItem['CustomFields'], true);

@@ -92,6 +92,11 @@ html {
     width:30%;
 }
 
+.aantalbutton
+{
+    width: 60px;
+}
+
 .smallbutton
 {
     width:15%;
@@ -287,20 +292,22 @@ ul#ul-class-navigation li {
 }
 #ArticleHeader {
     width: 100%;
-    height: 300px;
-    position: relative
+    height: 450px;
+    position: relative;
 }
 #ImageFrame {
-    width: 300px;
-    height: 300px;
-    background-color: rgb(36, 41, 143);
+    width: 500px;
+    height: 400px;
+    background-color: #676EFF;
     float: left;
     margin-right: 10px;
 }
 .QuantityText {
     position: absolute;
-    left: 310px;
-    bottom: 0;
+    text-align: left;
+    width: 350px;
+    left: 0px;
+    top: auto;
 }
 #StockItemHeaderLeft {
     float: right;
@@ -316,34 +323,24 @@ ul#ul-class-navigation li {
 }
 .CenterPriceLeft {
     position: absolute;
-    height: 100%;
+    height: 450px;
     right: 0;
-    width: 200px;
+    width: 500px;
 }
 .CenterPriceLeftChild {
     position: relative;
-    top: 40%;
+    top: 220px;
+    height: 450px;
+    float: right;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-#StockItemDescription {
-    background-color: rgba(35, 40, 47, 0.8);
-    width: 49%;
-    float: left;
-    padding: 10px;
-    margin-top:10px;
-    border: 1px solid;
-    font-family: pt-sans, sans-serif;
-    font-size: 20px;
-}
 #StockItemSpecifications {
-    background-color: rgba(35, 40, 47, 0.8);
     width: 49%;
     float: left;
     padding: 10px;
     margin-left: 1%;
-    margin-top:10px;
-    border: 1px solid;
+    margin-top: 60px;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
 }
@@ -511,12 +508,23 @@ ul#ul-class-price li {
     opacity: 0.9;
 }
 .StockItemPriceText {
+    position: absolute;
+    right: 0;
+    text-align: left;
     font-family: vortice-concept, sans-serif;
     color: #676EFF;
-    font-size: 22px;
+    font-size: 28px;
     text-transform: uppercase;
     font-weight: bold;
+    width: 250px;
     margin-top: 25px;
+}
+
+.inwinkelwagenbtn {
+    text-align: left;
+    left: 0;
+    width: 250px;
+
 }
 .StockItemPriceText:hover {
     text-decoration: none;
@@ -564,12 +572,12 @@ ul#ul-class-price li {
     padding-top: 10px;
 }
 .carousel-inner img {
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 400px;
 }
 #ImageCarousel {
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 400px;
 }
 .carousel-control-next-icon:hover,
 .carousel-control-prev-icon:hover {
