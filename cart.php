@@ -52,7 +52,7 @@ if (isset($_POST["betalen"]))
 {
     if ($_SESSION["loggedin"] === true)
     {
-    orderItems(getPersonIDNew($_SESSION['username'], $databaseConnection)[0]["USERID"],1,"SYSTEM",$databaseConnection, 1);
+    orderItems(getPersonIDNew($_SESSION['username'], $databaseConnection)[0]["USERID"],1,"SYSTEM",$databaseConnection, 1,$_POST["Voornaam"],$_POST["Achternaam"],$_POST["Straat"],$_POST["Plaats"],$_POST["Postcode"],$_POST["Huisnummer"],$_POST["email"]);
     }
     else
     {
