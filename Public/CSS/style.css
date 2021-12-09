@@ -84,7 +84,13 @@ html {
     left: 50%;
     transform: translate(-50%, 0%);
     width: 30%;
+}
 
+.horizontalCenteredRelative
+{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 .winkelmandbutton

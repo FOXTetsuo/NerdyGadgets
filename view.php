@@ -81,7 +81,7 @@ if (!empty($_GET['id']))
                                 <?php for ($i = 0; $i < count($StockItemImage); $i++) {
                                     ?>
                                     <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
-                                        <img src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
+                                        <img class="horizontalCenteredRelative" src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
                                     </div>
                                 <?php } ?>
                             </div>
