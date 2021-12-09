@@ -94,11 +94,13 @@ html {
 
 .aantalbutton
 {
+    border-radius: 7px;
     width: 60px;
 }
 
 .smallbutton
 {
+    top: 5px;
     width:15%;
 }
 
