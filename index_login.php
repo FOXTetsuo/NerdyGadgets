@@ -47,25 +47,39 @@ if($_SESSION["loggedin"]===True){
 if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"]))
 {
     $_SESSION["name"]=((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
-    ?> <h2 class="tabel"> <?php print("Je bent ingelogd als " . $_SESSION['name']);?> </h2>
+    ?> <h2 class="tabel horizontalCenteredRelative"> <?php print("Je bent ingelogd als " . $_SESSION['name']);?> </h2><br>
 
-    <form method=post action="index_login.php" class="tabel">
-    <label for="voornaam">Voornaam:</label>
-    <input class="form-control" type="text" id="voornaam" name="Voornaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br>
-    <label for="straat">Achternaam:</label>
-    <input class="form-control"  type="text" id="Achternaam" name="Achternaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"];} ?>"><br>
-    <label for="straat">Straat:</label>
-    <input class="form-control"  type="text" id="Straat" name="Straat" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Straat"];} ?>"><br>
-    <label for="straat">Huisnummer:</label>
-    <input class="form-control"  type="text" id="Huisnummer" name="Huisnummer" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Huisnummer"];} ?>"><br>
-    <label for="straat">Postcode:</label>
+    <form method=post action="index_login.php" class="tabel horizontalCenteredRelative">
+            <div class="row">
+                <div class="col">
+                    <label for="voornaam">Voornaam:</label>
+                    <input class="form-control" type="text" id="voornaam" name="Voornaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br>
+                </div>
+                <div class="col">
+                    <label for="Achternaam">Achternaam:</label>
+                    <input class="form-control"  type="text" id="Achternaam" name="Achternaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"];} ?>"><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="Straat">Straat:</label>
+                    <input class="form-control"  type="text" id="Straat" name="Straat" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Straat"];} ?>"><br>
+                </div>
+                <div class="col">
+                    <label for="Huisnummer">Huisnummer:</label>
+                    <input class="form-control col-md-4 center-block" style="text-align:center" maxlength="8" type="text" id="Huisnummer" name="Huisnummer" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Huisnummer"];} ?>"><br>
+                </div>
+            </div>
+    <label for="Postcode">Postcode:</label>
     <input class="form-control"  type="text" id="Postcode" name="Postcode" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Postcode"];} ?>"><br>
-    <label for="straat">Plaats:</label>
+    <label for="Plaats">Plaats:</label>
     <input class="form-control"  type="text" id="Plaats" name="Plaats" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Plaats"];} ?>"><br>
-    <label for="straat">Land (optioneel):</label>
+    <label for="Land">Land (optioneel):</label>
     <input class="form-control" type="text" id="Land" name="Land" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Land"];} ?>"><br>
-    <input type="submit" value="Gegevens aanpassen" name="edit" class="winkelmandbutton">
-    <input type="submit" name="logout" value="Uitloggen" class = "winkelmandbutton">
+    <div class="horizontalCentered">
+        <input type="submit" name="logout" value="Uitloggen" class = "winkelmandbutton btn btn-primary btn-lg">
+    <input type="submit" value="Gegevens aanpassen" name="edit" class="winkelmandbutton btn btn-danger" >
+    </div>
 
 </form>
     <?php
@@ -76,13 +90,13 @@ if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wacht
 <?php if ($_SESSION['loggedin']===False || !array_key_exists("loggedin", $_SESSION)){?>
     <form method="post" action="index_login.php" class="centered">
         <label for="uname">Gebruikersnaam</label><br>
-        <input type="text" id="uname" name="uname"><br>
+        <input class="form-control" type="text" id="uname" name="uname"><br>
         <label for="pass">Wachtwoord</label><br>
-        <input type="password" id="pass" name="pass"><br><br>
-        <input type="submit" name="submit" value="Inloggen" class="horizontalcentered">
+        <input class="form-control" type="password" id="pass" name="pass"><br>
+        <input type="submit" name="submit" value="Inloggen" class="horizontalcentered btn btn-primary">
     </form>
-    <form method="post" action="create.php" class="accountbutton">
-        <input type="submit" name="createaccount" value="Nog geen account? Klik hier!">
+    <form method="post" action="create.php" class="accountbutton" >
+        <button type="submit" name="createaccount" class="btn btn-primary btn-lg" style="border-radius 0.3rem"> Nog geen account? Klik hier! </button>
     </form>
 <?php } ?>
 </body>
