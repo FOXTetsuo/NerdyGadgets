@@ -96,22 +96,6 @@ function getStockItemImage($id, $databaseConnection) {
     return $R;
 
 }
-// Deze functie haalt een persoon zijn ID en wachtwoord op, die je kan gebruiken om te zien of het inloggen werkt.
-function getPersonID($id, $databaseConnection)
-{
-    $Query = "
-                SELECT FullName,HashedPassword
-                FROM people
-                WHERE LogonName = ?";
-
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "s", $id);
-    mysqli_stmt_execute($Statement);
-    $Result = mysqli_stmt_get_result($Statement);
-    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
-
-    return $Result;
-}
 
 // Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen werkt.
 function getPersonIDNew($id, $databaseConnection)
@@ -179,19 +163,18 @@ function lowerStock($item, $databaseConnection)
     mysqli_stmt_execute($Statement);
 }
 
-function orderItems($USERID, $deliverymethodID, $Lasteditedby, $databaseConnection, $packageTypeID)
+function orderItems($USERID, $deliverymethodID, $Lasteditedby, $databaseConnection, $packageTypeID, $voornaam, $achternaam, $street, $city, $zip, $housenumber, $email)
 {
     $orderdate= date('Y-m-d H:i:s');
     $IsOrderFinalized = False;
     $LasteditedWhen = date('Y-m-d H:i:s');
     $Query = "
-                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen) 
-                VALUES (?, ?, ?, ?, ?, ?)";
-
-
+                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, Straatnaam, Plaats, Postcode, Huisnummer, Email, Voornaam, Achternaam) 
+                VALUES (?, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "ssssss", $USERID, $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen);
+    mysqli_stmt_bind_param($Statement, "sssssssssssss", $USERID, $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen, $street , $city, $zip, $housenumber, $email, $voornaam, $achternaam);
     mysqli_stmt_execute($Statement);
+
     // Tweede deel van de functie, nu de orderlines aanmaken voor elk product.
     // haalt cart op om per item een orderline te maken
     $cart = getCart();

@@ -81,7 +81,7 @@ if (!empty($_GET['id']))
                                 <?php for ($i = 0; $i < count($StockItemImage); $i++) {
                                     ?>
                                     <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
-                                        <img src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
+                                        <img class="horizontalCenteredRelative" src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
                                     </div>
                                 <?php } ?>
                             </div>
@@ -132,7 +132,7 @@ if (!empty($_GET['id']))
                             <div class="QuantityText">
                                 <?php
                                 $quantity = explode(" ",$StockItem['QuantityOnHand']); ?>
-                                <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></br></p>
+                                <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></b></p>
                                 <div>
                                     <p style="color: white"><strong>✔</strong>
                                     <?php print " Gratis verzending boven de €25<br>"; ?><strong>✔</strong>
