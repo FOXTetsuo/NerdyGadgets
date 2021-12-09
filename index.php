@@ -1,6 +1,6 @@
 <!-- dit is het bestand dat wordt geladen zodra je naar de website gaat -->
 <?php
-include __DIR__ . "/header.php";
+include __DIR__ . "/header2.php";
 ?>
 <div class="IndexStyle">
     <div class="col-11">

@@ -1,6 +1,6 @@
 <?php
 $totaalprijs =0;
-include "header.php";
+include "header2.php";
 include "cartfuncties.php";
 ?>
 <!DOCTYPE html>

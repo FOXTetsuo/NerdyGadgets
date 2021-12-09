@@ -1,6 +1,6 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
-include "header.php";
+include "header2.php";
 include "cartfuncties.php";
 include "stockfuntions.php";
 if (!empty($_GET['id']))

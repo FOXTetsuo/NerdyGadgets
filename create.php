@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include "header2.php";
 ?>
 <!-- form waarmee je NAW gegevens invult-->
 <form method="post" action="create.php" class="moveright">

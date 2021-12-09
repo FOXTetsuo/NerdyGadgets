@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include "header2.php";
 ?>
 <body>
 <!-- Checkt of de "uitloggen" knop is ingedrukt. Zo ja, haalt het wachtwoord en naam van de user weg (niet de user/inlognaam) -->

@@ -1,6 +1,9 @@
 <!-- dit bestand bevat alle code voor het productoverzicht -->
+
+
+
 <?php
-include __DIR__ . "/header.php";
+include __DIR__ . "/header2.php";
 include "stockfuntions.php";
 
 $ReturnableResult = null;
@@ -332,8 +335,3 @@ if (isset($amount)) {
 <?php
 include __DIR__ . "/footer.php";
 ?>
-
-<?php
-Print(berekenVerkoopPrijs(
-    10.5,21))
-;
