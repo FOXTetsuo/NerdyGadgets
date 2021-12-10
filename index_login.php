@@ -4,35 +4,8 @@ include "header2.php";
 <body>
 <!-- Checkt of de "uitloggen" knop is ingedrukt. Zo ja, haalt het wachtwoord en naam van de user weg (niet de user/inlognaam) -->
 <?php
-if (isset($_POST["logout"]))
-{
-    $_SESSION['loggedin']=False;
-    $_SESSION['name']="";
-    $_SESSION['wachtwoord']="";
-}
 // Checkt of de "inloggen" knop ingedrukt is & slaat username en wachtwoord op in de session.
 // Als de username niet leeg is en het wachtwoord het wachtwoord uit de database matcht ("HashedPassword"), word loggedin True
-if (isset($_POST["submit"]))
-{
-    $_SESSION['username'] = $_POST["uname"];
-    $_SESSION['wachtwoord'] = $_POST["pass"];
-    if((!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])) &&
-        $_SESSION['wachtwoord'] === (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])
-        {
-            ($_SESSION["loggedin"] = True);
-        }
-    else
-        {
-            $_SESSION['loggedin']=False;
-            $_SESSION['name']="";
-            $_SESSION['wachtwoord']="";
-            ?>
-            <div class="alert" >
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                Vul een juiste combinatie van gebruikersnaam en wachtwoord in.
-            </div> <?php
-        }
-}
 
 if (isset($_POST["edit"]))
 {
@@ -53,7 +26,7 @@ if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wacht
             <div class="row">
                 <div class="col">
                     <label for="voornaam">Voornaam:</label>
-                    <input class="form-control" type="text" id="voornaam" name="Voornaam" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br>
+                    <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];} ?>"><br>
                 </div>
                 <div class="col">
                     <label for="Achternaam">Achternaam:</label>
@@ -93,7 +66,7 @@ if(!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wacht
         <input class="form-control" type="text" id="uname" name="uname"><br>
         <label for="pass">Wachtwoord</label><br>
         <input class="form-control" type="password" id="pass" name="pass"><br>
-        <input type="submit" name="submit" value="Inloggen" class="horizontalcentered btn btn-primary">
+        <input type="submit" name="submitLogin" value="Inloggen" class="horizontalcentered btn btn-primary">
     </form>
     <form method="post" action="create.php" class="accountbutton" >
         <button type="submit" name="createaccount" class="btn btn-primary btn-lg" style="border-radius 0.3rem"> Nog geen account? Klik hier! </button>
