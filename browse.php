@@ -2,6 +2,7 @@
 <?php
 include __DIR__ . "/header.php";
 include "stockfuntions.php";
+include "cartfuncties.php";
 
 $ReturnableResult = null;
 $Sort = "SellPrice";
@@ -10,6 +11,18 @@ $Sort = "SellPrice";
 $AmountOfPages = 0;
 $queryBuildResult = "";
 
+if (isset($_POST["submit"])) {              // Code voor het toevoegen van producten aan het winkelmandje in browse.php
+    {
+        $stockItemID = $_POST['StockItemValue'];
+        $aantalInMand = 1;
+        addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+        ?>
+        <div class="alertaddtocart">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
+        <?php
+    }
+}
 
 if (isset($_GET['category_id'])) {
     $CategoryID = $_GET['category_id'];
@@ -264,16 +277,21 @@ if (isset($amount)) {
                     <?php } else if (isset($row['BackupImagePath'])) { ?>
                         <div class="ImgFrame"
                              style="background-image: url('<?php print "Public/StockGroupIMG/" . $row['BackupImagePath'] ?>'); background-size: cover;"></div>
-                    <?php }
-                    ?>
-
+                    <?php } ?>
                     <div id="StockItemFrameRight">
                         <div class="browseverkoop"
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print "€". sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></h1>
                             <form method="post" class="inwinkelwagenbtn">
-                            <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
-                            <button type="submit" name="submit" class="inwinkelwagen2">In winkelwagen</button>
+                                <label>
+                                    <input type="number" name="StockItemValue" value="<?php print $row['StockItemID'] ?>" hidden>
+                                </label>
+                                <button type="submit" name="submit" class="inwinkelwagen2 btn btn-primary"
+                                    <?php if ($row["QuantityOnHand"] < 1)
+                                    {
+                                        print "disabled";
+                                    }
+                                    ?> >In winkelwagen</button>
                             </form>
                         </div>
                     </div>
