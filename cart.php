@@ -122,8 +122,8 @@ if (isset($_POST["betalen"]))
             <td><?php print("€" . number_format($roundPrice * $aantal, 2)); ?> </td>
             <td>
                 <form action="cart.php" method="post">
-                    <button type="submit" name=<?php print("delete$productID") ?>>
-                        <i class="fas fa-trash-alt"></i>
+                    <button type="submit" class="btn btn-primary " name=<?php print("delete$productID") ?>>
+                        <i class="fas fa-trash-alt fa-lg"></i>
                     </button>
                 </form>
             </td>
