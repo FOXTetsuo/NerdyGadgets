@@ -11,7 +11,7 @@ if (isset($_POST["submitLogin"]))
     $_SESSION['username'] = $_POST["uname"];
     $_SESSION['wachtwoord'] = $_POST["pass"];
     if((!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])) &&
-        $_SESSION['wachtwoord'] === (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])
+        md5($_SESSION['wachtwoord']) === (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])
     {
         ($_SESSION["loggedin"] = True);
     }

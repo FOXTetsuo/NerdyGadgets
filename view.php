@@ -7,7 +7,7 @@ if (!empty($_GET['id']))
 {
     $StockItem = getStockItem($_GET['id'], $databaseConnection);
     $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
-}
+
 ?>
 <div id="CenteredContent">
     <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
@@ -38,6 +38,7 @@ if (!empty($_GET['id']))
                 }
             }
         }
+    }
         ?>
     </h3>
     <?php
