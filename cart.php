@@ -69,7 +69,7 @@ if (isset($_POST["betalen"]))
         }
         removeProductFromCart($item);
     }
-    header("Location:betaald.php");
+    echo '<script>window.location.href = "betaald.php";</script>';
     exit();
 }
 

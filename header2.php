@@ -73,7 +73,7 @@ include "inlogfunctie.php";
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post" action="index_login.php ">
-            <button class="btn btn-outline-primary my-2 my-sm-0 navicon" type="submit">
+            <button class="btn btn-primary my-2 my-sm-0 navicon" type="submit">
                 <i class="fas fa-user-circle fa-lg navicon"></i>
                 <?php if ($_SESSION["loggedin"]===True)
                     {
@@ -83,13 +83,13 @@ include "inlogfunctie.php";
             </button>
         </form>
         <form class="form-inline my-2 my-lg-0" method="post" action="cart.php">
-        <button class="btn btn-outline-primary my-2 my-sm-0 navicon" type="submit">
+        <button class="btn btn-primary my-2 my-sm-0 navicon" type="submit">
             <i class="fas fa-shopping-cart fa-lg"></i>
         </button>
         </form>
         <form class="form-inline my-2 my-lg-0" method="get" action="browse.php ">
             <input class="form-control mr-sm-2" type="text" placeholder="Zoeken" aria-label="Search" id="search_string" name="search_string">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Zoeken</button>
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Zoeken</button>
         </form>
 
     </div>
