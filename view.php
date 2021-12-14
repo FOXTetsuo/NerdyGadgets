@@ -151,24 +151,22 @@ if (!empty($_GET['id']))
                 </div>
             </div>
         </div>
-
-        <div id="StockItemDescription" style="float: left">
-
-        </div>
-        <div id="StockItemSpecifications">
+        <div id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
-            <h3>Artikel specificaties</h3>
-            <?php
-            $CustomFields = json_decode($StockItem['CustomFields'], true);
-            if (is_array($CustomFields)) { ?>
-                <table>
-                <thead>
-                <th>Naam</th>
-                <th>Data</th>
-                </thead>
+        </div>
+                <div id="StockItemSpecifications">
+                <h3>Artikel specificaties</h3>
                 <?php
-                foreach ($CustomFields as $SpecName => $SpecText) { ?>
+                $CustomFields = json_decode($StockItem['CustomFields'], true);
+                if (is_array($CustomFields)) { ?>
+                    <table>
+                    <thead>
+                    <th>Naam</th>
+                    <th>Data</th>
+                    </thead>
+                <?php
+                    foreach ($CustomFields as $SpecName => $SpecText) { ?>
                     <tr>
                         <td>
                             <?php print $SpecName; ?>
