@@ -246,6 +246,7 @@ if (isset($amount)) {
 <!-- einde code deel 3 van User story: Zoeken producten  -->
 
 <div id="ResultsArea" class="Browse">
+    <div class="BrowseChild"
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
         foreach ($ReturnableResult as $row) {
@@ -267,8 +268,13 @@ if (isset($amount)) {
                     ?>
 
                     <div id="StockItemFrameRight">
+                        <div class="browseverkoop"
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print "€". sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></h1>
+                            <form method="post" class="inwinkelwagenbtn">
+                            <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
+                            <button type="submit" name="submit" class="inwinkelwagen2">In winkelwagen</button>
+                            </form>
                         </div>
                     </div>
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>

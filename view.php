@@ -127,7 +127,7 @@ if (!empty($_GET['id']))
                                 <?php print "<br><br><br>"; ?>
                                 <input type="number" id="aantal" name="aantal" value="1" class="aantalbutton">
                                 <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
-                                <button type="submit" name="submit" class="btn btn-primary btn-lg">In winkelwagen</button>
+                                <button type="submit" name="submit" class="inwinkelwagen">In winkelwagen</button>
                             </form>
                             <div class="QuantityText">
                                 <?php
