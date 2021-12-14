@@ -18,8 +18,8 @@ $databaseConnection = connectToDatabase();
     <!-- Javascript -->
     <script src="Public/JS/fontawesome.js"></script>
     <script src="Public/JS/jquery.min.js"></script>
-    <script src="Public/JS/bootstrap.min.js"></script>
     <script src="Public/JS/popper.min.js"></script>
+    <script src="Public/JS/bootstrap.min.js"></script>
     <script src="Public/JS/resizer.js"></script>
 
     <!-- Style sheets-->
@@ -31,9 +31,6 @@ $databaseConnection = connectToDatabase();
 <div class="Background">
     <div class="row" id="Header">
         <div class="col-2"><a href="./" id="LogoA">
-                <?php
-
-                ?>
                 <div id="LogoImage"></div>
             </a></div>
         <div class="col-8" id="CategoriesBar">
@@ -67,7 +64,6 @@ $databaseConnection = connectToDatabase();
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
             </li>
-
         </ul>
 
 

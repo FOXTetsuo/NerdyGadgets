@@ -1,6 +1,6 @@
 <?php
 $totaalprijs =0;
-include "header.php";
+include "header2.php";
 include "cartfuncties.php";
 ?>
 <!DOCTYPE html>
@@ -12,11 +12,7 @@ include "cartfuncties.php";
 <body >
 <!-- Toont bericht als iemand ingelogd is. -->
 <h6 id="CenteredContent">
-<?php if ($_SESSION["loggedin"] === True && isset($_SESSION["name"]))
-{
-    print("U bent ingelogd als " . $_SESSION["name"]);
-}
-?> </h6> <?php
+</h6> <?php
 // Als er op "empty cart" gedrukt wordt, word de cart geleegd.
 if (isset($_POST["submit"])) {
     emptyCart();
@@ -37,11 +33,11 @@ if (empty($cart))
 {;?>
 <!--Tabel waarin de cart getoond wordt. -->
     <body>
-    <div class="centered" style="margin-top: 80px">
-    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class=" ">
-    <h2 class="">Hmmm, de winkelgekko kon geen producten vinden in de winkelwagen</h2>
+    <div style="margin-top: 80px">
+    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="horizontalCenteredRelative">
+    <h2 class="col-lg-6 col-lg-offset-6 horizontalCenteredRelative text-center">Hmmm, de winkelgekko kon geen producten vinden in de winkelwagen</h2>
     <form method="POST"  action="categories.php" class=" ">
-        <button type="submit" class="btn-primary"> Begin met winkelen </button>
+        <button type="submit" class="btn btn-primary my-2 my-sm-0 horizontalCenteredRelative"> Begin met winkelen </button>
     </form>
     </div>
     </body>
@@ -73,7 +69,7 @@ if (isset($_POST["betalen"]))
         }
         removeProductFromCart($item);
     }
-    header("Location:betaald.php");
+    echo '<script>window.location.href = "betaald.php";</script>';
     exit();
 }
 
@@ -109,17 +105,24 @@ if (isset($_POST["betalen"]))
             if (isset($stockitem)) {
             ?>
         <tr>
-            <td><img src="Public/StockItemIMG/<?php if (isset($image[0]['ImagePath'])) {print $image[0]['ImagePath'];} else print$image ?>" width = "200" height="200"></td>
-            <td><a href="view.php?id=<?php print($productID)?>"><?php print($stockitem["StockItemName"]);?></a></td>
-            <td class="padding0"><form action="cart.php" method="post"> <input type="text" id="itemamount" name="itemamount" class="winkelmandbutton" value=<?php print($aantal)?>> <button class="btn-primary padding0" type="submit" name="changecart">Aanpassen</button></form></td>
+            <td><img src="Public/StockItemIMG/<?php if (isset($image[0]['ImagePath'])) {
+                    print $image[0]['ImagePath'];
+                } else print$image ?>" width="200" height="200"></td>
+            <td><a href="view.php?id=<?php print($productID) ?>"><?php print($stockitem["StockItemName"]); ?></a></td>
+            <td class="padding0">
+                <form action="cart.php" method="post"><input type="text" id="itemamount" name="itemamount" class="form-control col-sm-4"
+                                                             class="winkelmandbutton" value=<?php print($aantal) ?>>
+                    <button class="invisible" type="submit" name="changecart"></button>
+                </form>
+            </td>
             <td><?php
-                $roundPrice = number_format(round($stockitem["SellPrice"],2),2);
+                $roundPrice = number_format(round($stockitem["SellPrice"], 2), 2);
                 print("€" . $roundPrice);
-                $totaalprijs+= $roundPrice * $aantal; ?> </td>
+                $totaalprijs += $roundPrice * $aantal; ?> </td>
             <td><?php print("€" . number_format($roundPrice * $aantal, 2)); ?> </td>
             <td>
                 <form action="cart.php" method="post">
-                    <button type="submit"  name=<?php print("delete$productID")?>>
+                    <button type="submit" name=<?php print("delete$productID") ?>>
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </form>

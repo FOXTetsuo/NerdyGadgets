@@ -1,8 +1,20 @@
 html {
-    background-color: rgb(35, 35, 47) !important;
+    background-color: #3c2b24 !important;
+}
 
+.bg-gecko {background-color:#6d5a41!important}
 
-
+.Kleurcodes /* van de geckoafbeelding */
+{
+--tobacco-brown: #6d5a41;
+--sapling: #e0cea6;
+--rangitoto: #2c2a1f;
+--donkey-brown: #a79781;
+--barley-corn: #a88b5e;
+--nomad: #b9b6a3;
+--cloudy: #b2aaa6;
+--english-walnut: #3c2b24;
+--tussock: #c48c3c;
 }
 
 .tabel
@@ -77,6 +89,14 @@ html {
     transform: translate(-50%, -50%);
     width: 40%;
 
+}
+
+.centeredRelative {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
 }
 
 .horizontalcentered {
@@ -168,7 +188,7 @@ html {
 body {
     overflow-x:hidden;
     color: #FFF !important;
-    background-color: rgb(35, 35, 47) !important;
+    background-color: #3c2b24 !important;
 }
 @font-face {
     font-family: MmrText;
@@ -244,7 +264,7 @@ ul#ul-class-navigation li {
     width: 100%;
     height: 200px;
     z-index: 1;
-    border-bottom: 1px solid rgb(36, 41, 143);
+    border-bottom: 1px solid #3c2b24;
 }
 #Content {
     margin-top: 200px;
@@ -252,7 +272,7 @@ ul#ul-class-navigation li {
 #FilterFrame {
     position: fixed;
     width: 19%;
-    background-color: rgba(35, 40, 47, 0.8);
+    background-color: #b2aaa6;
     float: left;
     top:216px;
     border: 1px solid #fff;
@@ -284,7 +304,7 @@ ul#ul-class-navigation li {
 .ImgFrame {
     width: 230px;
     height: 230px;
-    background-color: #676EFF;
+    background-color: #b2aaa6;
     float: left;
     margin-left: 10px;
     margin-top: 10px;
@@ -336,7 +356,7 @@ ul#ul-class-navigation li {
 #ImageFrame {
     width: 500px;
     height: 400px;
-    background-color: #676EFF;
+    background-color: #b2aaa6;
     float: left;
     margin-right: 10px;
 }
@@ -389,7 +409,7 @@ ul#ul-class-navigation li {
     margin-right: 5px;
 }
 .Background {
-    background-color: #23232F;
+    background-color: #3c2b24;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -437,6 +457,22 @@ ul#ul-class-price li {
     text-decoration: none;
     color: #ccc;
 }
+
+.dropdown-itemcustom
+{
+    display:block;
+    width:100%;
+    padding:.25rem 1.5rem;
+    clear:both;
+    font-weight:400;
+    color:#212529;
+    text-align:inherit;
+    white-space:nowrap;
+    background-color:
+            transparent;
+    border:0
+}
+
 .TextMain {
     color: #fff;
     font-family: vortice-concept, sans-serif;
