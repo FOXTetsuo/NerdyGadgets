@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {              // Code voor het toevoegen van produ
         $aantalInMand = 1;
         addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
         ?>
-        <div class="alertaddtocart">
+        <div class="alertaddtocart" style="margin-left: 21%">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
         <?php
