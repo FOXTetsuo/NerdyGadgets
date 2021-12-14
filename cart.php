@@ -27,7 +27,10 @@ foreach ($cart as $productID => $amount)
     }
     $cart = getCart();
     if (isset($_POST["changecart"]) && $_POST["itemamount"] > 0)
-        $cart[$productID] = $_POST["itemamount"];
+    {
+        $cart[$_POST["itemid"]] = $_POST["itemamount"];
+        $_SESSION['cart']=$cart;
+    }
 }
 if (empty($cart))
 {;?>
@@ -110,8 +113,9 @@ if (isset($_POST["betalen"]))
                 } else print$image ?>" width="200" height="200"></td>
             <td><a href="view.php?id=<?php print($productID) ?>"><?php print($stockitem["StockItemName"]); ?></a></td>
             <td class="padding0">
-                <form action="cart.php" method="post"><input type="text" id="itemamount" name="itemamount" class="form-control col-sm-4"
-                                                             class="winkelmandbutton" value=<?php print($aantal) ?>>
+                <form action="cart.php" method="post">
+                    <input type="text" id="itemamount" name="itemamount" class="form-control col-sm-4" class="winkelmandbutton" value=<?php print($aantal) ?>>
+                    <input type="text" id="itemid" name="itemid" class="invisible" value=<?php print($productID)?> >
                     <button class="invisible" type="submit" name="changecart"></button>
                 </form>
             </td>

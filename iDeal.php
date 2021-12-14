@@ -50,6 +50,6 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
     <input type="text" class="form-control" id="Plaats" name="Plaats" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Plaats"];} ?>"><br>
     <label for="straat">Land (optioneel):</label>
     <input type="text" class="form-control" id="Land" name="Land" value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Land"];} ?>"><br>
-    <input type="submit" value="Betalen" name="betalen" class="winkelmandbutton">
+    <input type="submit" value="Betalen" name="betalen" class="btn btn-primary winkelmandbutton">
 </form>
 </body>
