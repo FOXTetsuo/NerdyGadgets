@@ -116,6 +116,27 @@ html {
     width: 60px;
 }
 
+.inwinkelwagen
+{
+    border-radius: 7px;
+    width: 180px;
+    background-color: #0073ff;
+    color: white;
+    height: 50px;
+    font-size: large;
+}
+
+.inwinkelwagen2 {
+    position: relative;
+    margin-top: 70px;
+    float: left;
+    border-radius: 7px;
+    width: 180px;
+    background-color: #0073ff;
+    color: white;
+    height: 50px;
+    font-size: large;
+}
 .smallbutton
 {
     top: 5px;
@@ -251,11 +272,18 @@ ul#ul-class-navigation li {
     margin-top: 10px;
     padding: 20px;
 }
-#ResultsArea.Browse  {
+#ResultsArea.Browse {
     width: 78%;
     margin-left: 21%;
     float: left;
     position: sticky;
+}
+
+.BrowseChild2 {
+    position: sticky;
+    float: right;
+    width: 400px;
+    border-style: solid;
 }
 #ProductFrame {
     width: 100%;
@@ -545,6 +573,15 @@ ul#ul-class-price li {
     color: #ccc;
     opacity: 0.9;
 }
+
+.browseverkoop {
+    position: absolute;
+    right: 0;
+    width: 250px;
+    height: 200px;
+    margin-top: 25px;
+}
+
 .StockItemPriceText {
     position: absolute;
     right: 0;
