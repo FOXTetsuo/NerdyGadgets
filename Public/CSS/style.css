@@ -185,6 +185,7 @@ html {
 }
 
 body {
+    padding-top: 115px;
     overflow-x:hidden;
     color: #FFF !important;
     background-image: url(../Img/background.jpg);
