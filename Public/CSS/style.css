@@ -114,6 +114,19 @@ html {
     transform: translate(-50%, 0%);
 }
 
+.horizontalCenteredRelativeImage
+{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 300px;
+}
+
+.imagegekko {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
 .winkelmandbutton
 {
     width:30%;
