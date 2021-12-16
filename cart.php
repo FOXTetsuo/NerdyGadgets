@@ -144,10 +144,10 @@ if (isset($_POST["betalen"]))
 print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))." (inc. BTW)");?>
 <?php $_SESSION["totprijs"]=$totaalprijs?>
 </h5>
-<br><br>
+<br>
 <?php if (!empty($cart) ) {?>
     <form method="post" action="iDeal.php" id="CenteredContent">
-        <div class="winkelmandbutton"><input class="btn btn-primary" type="submit" name="Betalen" value="Betalen met iDeal"></div>
+        <div class="winkelmandbutton"><input class="btn-alt btn-primary-orange" type="submit" name="Betalen" value="Betalen met iDeal"></div>
     </form>
     <form method="post" id="CenteredContent">
         <div class="smallbutton"><input type="submit" name="submit" value="Winkelwagen legen" class="btn btn-primary"></div>

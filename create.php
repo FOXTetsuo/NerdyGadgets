@@ -27,17 +27,17 @@ include "header2.php";
 
 <?php if(isset($_POST["submit"]))
 {
-    if (!empty (((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"])))
-    // zorgt dat de code hieronder geen foutmeldingen geeft:
+        if (!empty (((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"])))
+        // zorgt dat de code hieronder geen foutmeldingen geeft:
     {
         // kijkt of het emailadres niet al bestaat in de database
         if((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"] === $_POST["email"])
-        { // print een mooie alert als het emailadres al bestaat?>
-
-            <div class="alertcreation" >
+        { ?>
+            <div class="alertcreation">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                Een account met dit emailadres bestaat al, log in met uw email in de inlogpagina of maak hier een nieuw account aan.
-            </div> <?php
+                <?php print ("Een account met dit emailadres bestaat al, log in met uw email in de inlogpagina of maak hier een nieuw account aan."); ?>
+            </div>
+            <?php
         }
     }
     else
