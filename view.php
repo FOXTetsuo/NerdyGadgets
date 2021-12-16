@@ -128,7 +128,7 @@ if (!empty($_GET['id']))
                                 <?php print "<br><br><br>"; ?>
                                 <input type="number" id="aantal" name="aantal" value="1" class="aantalbutton">
                                 <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
-                                <button type="submit" name="submit" class="inwinkelwagen btn btn-primary"
+                                <button type="submit" name="submit" class="inwinkelwagen btn-alt btn-primary-orange"
                                 <?php if (explode(" ",$StockItem['QuantityOnHand'])[1] < 1)
                                     {
                                         print "disabled";
