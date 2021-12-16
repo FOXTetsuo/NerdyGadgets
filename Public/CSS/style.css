@@ -192,6 +192,7 @@ html {
 }
 
 body {
+    padding-top: 115px;
     overflow-x:hidden;
     color: #FFF !important;
     background-image: url(../Img/background.jpg);
@@ -283,7 +284,7 @@ ul#ul-class-navigation li {
     width: 19%;
     background-color: #1e2230;
     float: left;
-    top:216px;
+    top:130px;
     border: 2px solid #11141c;
     margin-left: 5px;
     margin-top: 10px;
