@@ -15,11 +15,6 @@ if (isset($_POST["edit"])) {
     <?php print("Accountgegevens aangepast!"); ?> </div><?php
 }
 
-if (isset($_POST["createaccount"]) && checkexistence()) {
-
-    print("Account aangemaakt!"); ?><?php
-}
-
 // Als Loggedin = true, wordt een bericht getoond
 if ($_SESSION["loggedin"] === True) {
     if (!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])) {
