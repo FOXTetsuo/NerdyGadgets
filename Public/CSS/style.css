@@ -157,10 +157,9 @@ html {
     position: relative;
     margin-top: 70px;
     float: left;
+    color: white;
     border-radius: 7px;
     width: 180px;
-    background-color: #0073ff;
-    color: white;
     height: 50px;
     font-size: large;
 }

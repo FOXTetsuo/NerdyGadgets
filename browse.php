@@ -289,7 +289,7 @@ if (isset($amount)) {
                                 <label>
                                     <input type="number" name="StockItemValue" value="<?php print $row['StockItemID'] ?>" hidden>
                                 </label>
-                                <button type="submit" name="submit" class="inwinkelwagen2 btn btn-primary"
+                                <button type="submit" name="submit" class="inwinkelwagen2 btn-alt btn-primary-orange "
                                     <?php if ($row["QuantityOnHand"] < 1)
                                     {
                                         print "disabled";
