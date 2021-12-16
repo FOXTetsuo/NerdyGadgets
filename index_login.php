@@ -20,10 +20,9 @@ if ($_SESSION["loggedin"] === True) {
     if (!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])) {
         $_SESSION["name"] = ((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
         ?>
-        <h2 class="tabel horizontalCenteredRelative"> <?php print("Je bent ingelogd als " . $_SESSION['name']); ?> </h2>
         <br>
 
-        <form method=post action="index_login.php" class="tabel horizontalCenteredRelative">
+        <form method=post action="index_login.php" class="tabel centered">
             <div class="row">
                 <div class="col">
                     <label for="voornaam">Voornaam:</label>
