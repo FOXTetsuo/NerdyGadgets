@@ -21,7 +21,6 @@ if ($_SESSION["loggedin"] === True) {
         $_SESSION["name"] = ((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
         ?>
         <br>
-
         <form method=post action="index_login.php" class="tabel centered">
             <div class="row">
                 <div class="col">

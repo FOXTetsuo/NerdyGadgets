@@ -127,6 +127,13 @@ html {
     width: 100%;
     padding: 10px;
 }
+
+.aanmelden {
+    position: relative;
+    margin-left: 40%;
+    padding: 50px;
+    width: 100%;
+}
 .winkelmandbutton
 {
     width:30%;
