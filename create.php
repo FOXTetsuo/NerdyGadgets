@@ -1,6 +1,7 @@
 <?php
 include "header2.php";
 ?>
+<div class="aanmelden"
 <!-- form waarmee je NAW gegevens invult-->
 <form method="post" action="create.php" class="moveright">
     <label for="email">Emailadres</label><br>
@@ -46,6 +47,8 @@ include "header2.php";
     ?> <div class="alertpositive" >
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         Account aangemaakt!
-    </div> <?php
+    </div>
+        </div>
+        <?php
     }
 }
