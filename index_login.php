@@ -25,7 +25,7 @@ if ($_SESSION["loggedin"] === True) {
             <div class="row">
                 <div class="col">
                     <label for="voornaam">Voornaam:</label>
-                    <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required
+                        <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required
                            value="<?php if ($_SESSION['loggedin'] === True) {
                                print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];
                            } ?>"><br>
