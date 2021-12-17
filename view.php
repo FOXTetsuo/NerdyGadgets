@@ -121,13 +121,13 @@ if (!empty($_GET['id']))
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
-                        <div>
                         <?php if (!empty($_GET['id'])){ ?>
                             <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
-                            <form method="post" class="inwinkelwagenbtn">
-                                <?php print "<br><br><br>"; ?>
+                            <form method="post" class="form-inline">
+                                <div class="form-group mx-sm-1">
                                 <input type="number" id="aantal" name="aantal" value="1" class="aantalbutton">
                                 <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
+                                </div>
                                 <button type="submit" name="submit" class="inwinkelwagen btn-alt btn-primary-orange"
                                 <?php if (explode(" ",$StockItem['QuantityOnHand'])[1] < 1)
                                     {

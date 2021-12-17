@@ -34,12 +34,14 @@ html {
 
 }
 .alertcreation {
+    position: relative;
     padding: 20px;
     background-color: #f44336;
     color: white;
     margin-bottom: 15px;
-    position: absolute;
-    top: 130px;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .alertpositive {
@@ -48,7 +50,8 @@ html {
     color: white;
     margin-bottom: 15px;
     position: absolute;
-    top: 130px;
+    top: 0px;
+    z-index: 1000;
 }
 
 .alertaddtocart {
@@ -130,7 +133,7 @@ html {
 
 .aanmelden {
     position: relative;
-    margin-left: 40%;
+    margin-left: 30%;
     padding: 50px;
     width: 100%;
 }
@@ -143,6 +146,7 @@ html {
 {
     border-radius: 7px;
     width: 60px;
+    border-width: 0;
 }
 
 .btn-alt{display:inline-block;font-weight:400;color:#212529;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}
@@ -390,11 +394,10 @@ ul#ul-class-navigation li {
     margin-right: 10px;
 }
 .QuantityText {
-    position: absolute;
+    position: relative;
     text-align: left;
     width: 350px;
-    left: 0px;
-    top: auto;
+    left: 0;
 }
 #StockItemHeaderLeft {
     float: right;
@@ -427,6 +430,7 @@ ul#ul-class-navigation li {
     width: 50%;
     float: left;
     padding-bottom: 10px;
+    padding-left: 215px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
@@ -436,9 +440,15 @@ ul#ul-class-navigation li {
     width: 50%;
     float: left;
     padding-bottom: 10px;
+    padding-left: 215px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
+}
+
+.addtocart {
+    position: relative;
+    height: 50px;
 }
 .Labels {
     margin-bottom: 0;
@@ -629,8 +639,7 @@ ul#ul-class-price li {
 }
 
 .StockItemPriceText {
-    position: absolute;
-    right: 0;
+    position: relative;
     text-align: left;
     font-family: vortice-concept, sans-serif;
     color: #676EFF;
@@ -644,7 +653,8 @@ ul#ul-class-price li {
 .inwinkelwagenbtn {
     text-align: left;
     left: 0;
-    width: 250px;
+    height: 50px;
+    padding: 0;
 
 }
 .StockItemPriceText:hover {
