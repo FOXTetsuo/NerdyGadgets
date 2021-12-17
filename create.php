@@ -1,6 +1,29 @@
 <?php
 include "header2.php";
-?>
+
+if(isset($_POST["submit"]))
+{
+        if (!empty (((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"])))
+        // zorgt dat de code hieronder geen foutmeldingen geeft:
+    {
+        // kijkt of het emailadres niet al bestaat in de database
+        if((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"] === $_POST["email"])
+        { ?>
+            <div class="alertcreation">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <?php print ("Een account met dit emailadres bestaat al, log in met uw email in de inlogpagina of maak hier een nieuw account aan."); ?>
+            </div>
+            <?php
+        }
+    }
+    else
+    {
+        // geeft een groene waarschuwing als het account succesvol aangemaakt is
+    createAccount($_POST["email"],$_POST["pass"],$_POST["voornaam"],$_POST["achternaam"],$_POST["straat"],$_POST["huisnummer"],$_POST["postcode"],$_POST["plaats"],$_POST["land"],$databaseConnection);
+    ?> <div class="alertpositive" >
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Account aangemaakt!
+
 <div class="aanmelden"
 <!-- form waarmee je NAW gegevens invult-->
 <form method="post" action="create.php" class="moveright">
@@ -25,30 +48,6 @@ include "header2.php";
     <input type="submit" name="submit" value="Account aanmaken">
 </form>
 
-<?php if(isset($_POST["submit"]))
-{
-        if (!empty (((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"])))
-        // zorgt dat de code hieronder geen foutmeldingen geeft:
-    {
-        // kijkt of het emailadres niet al bestaat in de database
-        if((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"] === $_POST["email"])
-        { ?>
-            <div class="alertcreation">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?php print ("Een account met dit emailadres bestaat al, log in met uw email in de inlogpagina of maak hier een nieuw account aan."); ?>
-            </div>
-            <?php
-        }
-    }
-    else
-    {
-        // geeft een groene waarschuwing als het account succesvol aangemaakt is
-    createAccount($_POST["email"],$_POST["pass"],$_POST["voornaam"],$_POST["achternaam"],$_POST["straat"],$_POST["huisnummer"],$_POST["postcode"],$_POST["plaats"],$_POST["land"],$databaseConnection);
-    ?> <div class="alertpositive" >
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        Account aangemaakt!
-    </div>
-        </div>
-        <?php
+<?php
     }
 }
