@@ -15,11 +15,6 @@ if (isset($_POST["edit"])) {
     <?php print("Accountgegevens aangepast!"); ?> </div><?php
 }
 
-if (isset($_POST["createaccount"]) && checkexistence()) {
-
-    print("Account aangemaakt!"); ?><?php
-}
-
 // Als Loggedin = true, wordt een bericht getoond
 if ($_SESSION["loggedin"] === True) {
     if (!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])) {
@@ -30,7 +25,7 @@ if ($_SESSION["loggedin"] === True) {
             <div class="row">
                 <div class="col">
                     <label for="voornaam">Voornaam:</label>
-                    <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required
+                        <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required
                            value="<?php if ($_SESSION['loggedin'] === True) {
                                print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];
                            } ?>"><br>

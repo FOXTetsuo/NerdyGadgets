@@ -27,25 +27,25 @@ if(isset($_POST["submit"]))
 <div class="aanmelden"
 <!-- form waarmee je NAW gegevens invult-->
 <form method="post" action="create.php" class="moveright">
-    <label for="email">Emailadres</label><br>
-    <input type="text" id="email" name="email" required><br>
-    <label for="pass">Wachtwoord</label><br>
-    <input type="password" id="pass" name="pass" required><br>
+    <label for="email">Emailadres</label>
+    <input type="text" id="email" name="email" class="form-control" required>
+    <label for="pass">Wachtwoord</label>
+    <input type="password" id="pass" name="pass" class="form-control" required>
     <label for="voornaam">Voornaam</label>
-    <input type="text" id="voornaam" name="voornaam" required>
+    <input type="text" id="voornaam" name="voornaam" class="form-control" required>
     <label for="achternaam">Achternaam</label>
-    <input type="text" id="achternaam" name="achternaam" required><br>
-    <label for="straat">Straat</label><br>
-    <input type="text" id="straat" name="straat" required><br>
-    <label for="huisnummer">Huisnummer</label><br>
-    <input type="text" id="huisnummer" name="huisnummer" required><br>
-    <label for="postcode">Postcode</label><br>
-    <input type="text" id="postcode" name="postcode" required><br>
-    <label for="plaats">Plaats</label><br>
-    <input type="text" id="plaats" name="plaats" required><br>
-    <label for="land">Land (optioneel) </label><br>
-    <input type="text" id="land" name="land"><br><br>
-    <input type="submit" name="submit" value="Account aanmaken">
+    <input type="text" id="achternaam" name="achternaam" class="form-control" required>
+    <label for="straat">Straat</label>
+    <input type="text" id="straat" name="straat" class="form-control" required>
+    <label for="huisnummer">Huisnummer</label>
+    <input type="text" id="huisnummer" name="huisnummer" class="form-control" required>
+    <label for="postcode">Postcode</label>
+    <input type="text" id="postcode" name="postcode" class="form-control" required>
+    <label for="plaats">Plaats</label>
+    <input type="text" id="plaats" name="plaats" class="form-control" required>
+    <label for="land">Land (optioneel) </label>
+    <input type="text" id="land" name="land" class="form-control"> <br>
+    <input type="submit" name="submit" class="btn btn-primary"value="Account aanmaken">
 </form>
 
 <?php
