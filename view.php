@@ -41,19 +41,6 @@ if (!empty($_GET['id']))
     }
         ?>
     </h3>
-    <?php
-    if (!empty($StockItem)) {
-        ?>
-        <?php
-        if (isset($StockItem['Video'])) {
-            ?>
-            <div id="VideoFrame">
-                <?php print $StockItem['Video']; ?>
-            </div>
-        <?php }
-        ?>
-
-
         <div id="ArticleHeader">
             <?php
             if (isset($StockItemImage)) {
@@ -157,6 +144,17 @@ if (!empty($_GET['id']))
                     </div>
                 </div>
             </div>
+<?php
+if (!empty($StockItem)) {
+    ?>
+    <?php
+    if (isset($StockItem['Video'])) {
+        ?>
+        <div id="VideoFrame">
+            <?php print $StockItem['Video']; ?>
+        </div>
+    <?php }
+    ?>
     <div id="StockItemDescription">
     <h3>Artikel beschrijving</h3>
     <p><?php print $StockItem['SearchDetails']; ?></p>

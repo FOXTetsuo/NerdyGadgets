@@ -374,8 +374,7 @@ ul#ul-class-navigation li {
     font-size: 15px;
 }
 #VideoFrame {
-    position: absolute;
-    top: 500px;
+    position: relative;
     width: 500px;
     height: 400px;
     background-color: #d6d6d6;
