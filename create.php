@@ -29,22 +29,22 @@ if(isset($_POST["submit"]))
 <div class="aanmelden"
 <!-- form waarmee je NAW gegevens invult-->
 
-    <form method=post action="create.php" class="tabel centered" style="top: 400px">
+    <form method=post action="create.php" class="tabel centered" style="top: 55%">
         <div class="row">
             <div class="col">
                 <label for="email">Emailadres:</label>
-                <input class="form-control" type="text" id="email" name="email" maxlength="15" required ><br>
+                <input class="form-control" type="text" id="email" name="email" required ><br>
             </div>
             <div class="col">
                 <label for="pass">Wachtwoord:</label>
-                <input class="form-control" type="password" id="pass" name="pass" maxlength="15" required><br>
+                <input class="form-control" type="password" id="pass" name="pass" required><br>
             </div>
         </div>
         <div class="row">
 
             <div class="col">
                 <label for="voornaam">Voornaam:</label>
-                <input class="form-control" type="text" id="voornaam" name="voornaam" maxlength="15" required><br>
+                <input class="form-control" type="text" id="voornaam" name="voornaam" required><br>
             </div>
             <div class="col">
                 <label for="Achternaam">Achternaam:</label>
