@@ -67,7 +67,7 @@ include "inlogfunctie.php";
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="browse.php?category_id=4">T-shirts</a>
-                    <a class="dropdown-item" href="browse.php?category_id=9">Dierensokken</a>
+                    <a class="dropdown-item" href="browse.php?category_id=8">Dierensokken</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="browse.php?category_id=2">Alle kleding</a>
                 </div>
