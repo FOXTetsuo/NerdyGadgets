@@ -151,48 +151,49 @@ if (!empty($_GET['id']))
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
-            <p><?php print $StockItem['SearchDetails']; ?></p>
-        </div>
-                <div id="StockItemSpecifications">
-                <h3>Artikel specificaties</h3>
-                <?php
-                $CustomFields = json_decode($StockItem['CustomFields'], true);
-                if (is_array($CustomFields)) { ?>
-                    <table>
-                    <thead>
-                    <th>Naam</th>
-                    <th>Data</th>
-                    </thead>
-                <?php
-                    foreach ($CustomFields as $SpecName => $SpecText) { ?>
-                    <tr>
-                        <td>
-                            <?php print $SpecName; ?>
-                        </td>
-                        <td>
-                            <?php
-                            if (is_array($SpecText)) {
-                                foreach ($SpecText as $SubText) {
-                                    print $SubText . " ";
-                                }
-                            } else {
-                                print $SpecText;
+    <div id="StockItemDescription">
+    <h3>Artikel beschrijving</h3>
+    <p><?php print $StockItem['SearchDetails']; ?></p>
+</div>
+    <div id="StockItemSpecifications">
+        <h3>Artikel specificaties</h3>
+        <?php
+        $CustomFields = json_decode($StockItem['CustomFields'], true);
+        if (is_array($CustomFields)) { ?>
+            <table>
+            <thead>
+            <th>Naam</th>
+            <th>Data</th>
+            </thead>
+            <?php
+            foreach ($CustomFields as $SpecName => $SpecText) { ?>
+                <tr>
+                    <td>
+                        <?php print $SpecName; ?>
+                    </td>
+                    <td>
+                        <?php
+                        if (is_array($SpecText)) {
+                            foreach ($SpecText as $SubText) {
+                                print $SubText . " ";
                             }
-                            ?>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </table><?php
-            } else { ?>
+                        } else {
+                            print $SpecText;
+                        }
+                        ?>
+                    </td>
+                </tr>
+            <?php } ?>
+            </table><?php
+        } else { ?>
 
-                <p><?php print $StockItem['CustomFields']; ?>.</p>
-                <?php
-            }
-            ?>
+            <p><?php print $StockItem['CustomFields']; ?>.</p>
+            <?php
+        }
+        ?>
+    </div>
         </div>
+
         <?php
     } else {
         ?>
