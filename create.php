@@ -23,7 +23,9 @@ if(isset($_POST["submit"]))
     ?> <div class="alertpositive" >
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         Account aangemaakt!
-
+        <?php
+    }
+} ?>
 <div class="aanmelden"
 <!-- form waarmee je NAW gegevens invult-->
 
@@ -107,4 +109,4 @@ if(isset($_POST["submit"]))
         Incorrecte adresgegevens. Kijk de postcode na.
     </div>
 
-    <?php }  ?>
+    <?php } ?>
