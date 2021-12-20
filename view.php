@@ -137,7 +137,13 @@ if (!empty($_GET['id']))
                             <div class="QuantityText">
                                 <?php
                                 $quantity = explode(" ",$StockItem['QuantityOnHand']); ?>
-                                <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></b></p>
+                                <?php
+                                if ($quantity[1] < 11) { ?>
+                                <p style="color: red"><b><?php print"<br>".getVoorraadTekst($quantity[1]); ?></b></p>
+                                <?php
+                                } else { ?>
+                                    <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></b></p>
+                                <?php } ?>
                                 <div>
                                     <p style="color: white"><strong>✔</strong>
                                     <?php print " Gratis verzending boven de €25<br>"; ?><strong>✔</strong>
