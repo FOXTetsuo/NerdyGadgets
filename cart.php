@@ -36,11 +36,13 @@ if (empty($cart))
 {;?>
 <!--Tabel waarin de cart getoond wordt. -->
     <body>
-    <div style="margin-top: 80px">
-    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="horizontalCenteredRelative">
-    <h2 class="col-lg-6 col-lg-offset-6 horizontalCenteredRelative text-center">Hmmm, de winkelgekko kon geen producten vinden in de winkelwagen</h2>
+    <div class="imagegekko">
+    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="horizontalCenteredRelativeImage">
+    </div>
+    <h2 class="col-lg-5 col-lg-offset-5 horizontalCenteredRelative text-center">Hmmm, de winkelgekko kon geen producten vinden in de winkelwagen</h2>
+    <br>
     <form method="POST"  action="categories.php" class=" ">
-        <button type="submit" class="btn btn-primary my-2 my-sm-0 horizontalCenteredRelative"> Begin met winkelen </button>
+        <button type="submit" class="btn btn-primary btn-lg my-2 my-sm-0 horizontalCenteredRelative"> Begin met winkelen </button>
     </form>
     </div>
     </body>
@@ -142,10 +144,10 @@ if (isset($_POST["betalen"]))
 print("<br> De totale prijs is €". (number_format(round(($totaalprijs), 2),2))." (inc. BTW)");?>
 <?php $_SESSION["totprijs"]=$totaalprijs?>
 </h5>
-<br><br>
+<br>
 <?php if (!empty($cart) ) {?>
     <form method="post" action="iDeal.php" id="CenteredContent">
-        <div class="winkelmandbutton"><input class="btn btn-primary" type="submit" name="Betalen" value="Betalen met iDeal"></div>
+        <div class="winkelmandbutton"><input class="btn-alt btn-primary-orange" type="submit" name="Betalen" value="Betalen met iDeal"></div>
     </form>
     <form method="post" id="CenteredContent">
         <div class="smallbutton"><input type="submit" name="submit" value="Winkelwagen legen" class="btn btn-primary"></div>

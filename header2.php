@@ -13,6 +13,7 @@ include "inlogfunctie.php";
 
 <!DOCTYPE html>
 <html lang="en">
+<div class="fixed-top">
 <head>
     <title>NerdyGadgets</title>
 
@@ -91,8 +92,7 @@ include "inlogfunctie.php";
             <input class="form-control mr-sm-2" type="text" placeholder="Zoeken" aria-label="Search" id="search_string" name="search_string">
             <button class="btn btn-primary my-2 my-sm-0" type="submit">Zoeken</button>
         </form>
-
     </div>
 </nav>
-
+</div>
 </body>

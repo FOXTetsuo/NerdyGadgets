@@ -1,6 +1,8 @@
 html {
 }
 
+.btn-primary-orange{!important; color:#fff;background-color:#FFA500;border-color:#FFA500}
+
 .bg-gecko {background-color:#11141c!important}
 
 .Kleurcodes /* van de geckoafbeelding */
@@ -32,12 +34,14 @@ html {
 
 }
 .alertcreation {
+    position: relative;
     padding: 20px;
     background-color: #f44336;
     color: white;
     margin-bottom: 15px;
-    position: absolute;
-    top: 50px;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .alertpositive {
@@ -46,7 +50,8 @@ html {
     color: white;
     margin-bottom: 15px;
     position: absolute;
-    top: 50px;
+    top: 0px;
+    z-index: 1000;
 }
 
 .alertaddtocart {
@@ -112,6 +117,26 @@ html {
     transform: translate(-50%, 0%);
 }
 
+.horizontalCenteredRelativeImage
+{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 300px;
+}
+
+.imagegekko {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
+
+.aanmelden {
+    position: relative;
+    margin-left: 30%;
+    padding: 50px;
+    width: 100%;
+}
 .winkelmandbutton
 {
     width:30%;
@@ -121,13 +146,19 @@ html {
 {
     border-radius: 7px;
     width: 60px;
+    border-width: 0;
 }
+
+.btn-alt{display:inline-block;font-weight:400;color:#212529;text-align:center;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}
+@media (prefers-reduced-motion:reduce){.btn-alt{transition:none}}.btn-alt:hover{color:#212529;text-decoration:none}.btn-alt.focus,.btn-alt:focus{outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.25)}.btn-alt.disabled,.btn-alt:disabled{opacity:.65}
+
+
+
 
 .inwinkelwagen
 {
     border-radius: 7px;
     width: 180px;
-    background-color: #0073ff;
     color: white;
     height: 50px;
     font-size: large;
@@ -137,10 +168,9 @@ html {
     position: relative;
     margin-top: 70px;
     float: left;
+    color: white;
     border-radius: 7px;
     width: 180px;
-    background-color: #0073ff;
-    color: white;
     height: 50px;
     font-size: large;
 }
@@ -185,6 +215,7 @@ html {
 }
 
 body {
+    padding-top: 115px;
     overflow-x:hidden;
     color: #FFF !important;
     background-image: url(../Img/background.jpg);
@@ -276,7 +307,7 @@ ul#ul-class-navigation li {
     width: 19%;
     background-color: #1e2230;
     float: left;
-    top:216px;
+    top:130px;
     border: 2px solid #11141c;
     margin-left: 5px;
     margin-top: 10px;
@@ -363,11 +394,10 @@ ul#ul-class-navigation li {
     margin-right: 10px;
 }
 .QuantityText {
-    position: absolute;
+    position: relative;
     text-align: left;
     width: 350px;
-    left: 0px;
-    top: auto;
+    left: 0;
 }
 #StockItemHeaderLeft {
     float: right;
@@ -400,6 +430,7 @@ ul#ul-class-navigation li {
     width: 50%;
     float: left;
     padding-bottom: 10px;
+    padding-left: 215px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
@@ -409,9 +440,15 @@ ul#ul-class-navigation li {
     width: 50%;
     float: left;
     padding-bottom: 10px;
+    padding-left: 215px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
+}
+
+.addtocart {
+    position: relative;
+    height: 50px;
 }
 .Labels {
     margin-bottom: 0;
@@ -602,8 +639,7 @@ ul#ul-class-price li {
 }
 
 .StockItemPriceText {
-    position: absolute;
-    right: 0;
+    position: relative;
     text-align: left;
     font-family: vortice-concept, sans-serif;
     color: #676EFF;
@@ -617,7 +653,8 @@ ul#ul-class-price li {
 .inwinkelwagenbtn {
     text-align: left;
     left: 0;
-    width: 250px;
+    height: 50px;
+    padding: 0;
 
 }
 .StockItemPriceText:hover {

@@ -20,14 +20,12 @@ if ($_SESSION["loggedin"] === True) {
     if (!empty((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Wachtwoord"])) {
         $_SESSION["name"] = ((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
         ?>
-        <h2 class="tabel horizontalCenteredRelative"> <?php print("Je bent ingelogd als " . $_SESSION['name']); ?> </h2>
         <br>
-
-        <form method=post action="index_login.php" class="tabel horizontalCenteredRelative">
+        <form method=post action="index_login.php" class="tabel centered" style="top: 400px">
             <div class="row">
                 <div class="col">
                     <label for="voornaam">Voornaam:</label>
-                    <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required
+                        <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required
                            value="<?php if ($_SESSION['loggedin'] === True) {
                                print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"];
                            } ?>"><br>
@@ -48,20 +46,22 @@ if ($_SESSION["loggedin"] === True) {
                                print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Straat"];
                            } ?>"><br>
                 </div>
-                <div class="col">
+                <div class="col-md-3">
                     <label for="Huisnummer">Huisnummer:</label>
-                    <input class="form-control col-md-4 center-block" style="text-align:center" maxlength="8"
+                    <input class="form-control center-block" style="text-align:center" maxlength="10"
                            type="text"
                            id="Huisnummer" name="Huisnummer" required value="<?php if ($_SESSION['loggedin'] === True) {
                         print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Huisnummer"];
                     } ?>"><br>
                 </div>
+                <div class="col-md-3">
+                    <label for="Postcode">Postcode:</label>
+                    <input class="form-control" type="text" style="text-align: center" id="Postcode" name="Postcode" maxlength="6" required
+                           value="<?php if ($_SESSION['loggedin'] === True) {
+                               print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Postcode"];
+                           } ?>"><br>
+                </div>
             </div>
-            <label for="Postcode">Postcode:</label>
-            <input class="form-control" type="text" id="Postcode" name="Postcode" required
-                   value="<?php if ($_SESSION['loggedin'] === True) {
-                       print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Postcode"];
-                   } ?>"><br>
             <label for="Plaats">Plaats:</label>
             <input class="form-control" type="text" id="Plaats" name="Plaats" required
                    value="<?php if ($_SESSION['loggedin'] === True) {
@@ -73,10 +73,9 @@ if ($_SESSION["loggedin"] === True) {
                        print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Land"];
                    } ?>"><br>
             <div class="horizontalCentered">
-                <input type="submit" name="logout" value="Uitloggen" class="winkelmandbutton btn btn-primary btn-lg">
+                <input type="submit" name="logout" value="Uitloggen" class="winkelmandbutton btn btn-primary" style="margin-right: 230px">
                 <input type="submit" value="Gegevens aanpassen" name="edit" class="winkelmandbutton btn btn-danger">
             </div>
-
         </form>
         <?php
     }
