@@ -453,15 +453,38 @@ ul#ul-class-navigation li {
     height: 450px;
     position: relative;
 }
-
+.InfoHeader {
+    width: 100%;
+    position: relative;
+}
+.recommendations {
+    width: 500px;
+    position: relative;
+    right: 0;
+    float: left;
+}
 #ImageFrame {
     width: 500px;
     height: 400px;
     background-color: #1e2230;
-    float: left;
+    float: right;
     margin-right: 10px;
 }
-
+.title {
+    position: relative;
+    width: 47.5%;
+    float: right;
+}
+.headerleft {
+    position: relative;
+    width: 47.5%;
+    float: left;
+}
+.headerright {
+    position: relative;
+    width: 47.5%;
+    float: right;
+}
 .QuantityText {
     position: relative;
     text-align: left;
@@ -479,7 +502,9 @@ ul#ul-class-navigation li {
 }
 
 .StockItemNameViewSize {
+    position: relative;
     font-size: 35px !important;
+    margin-top: 35px;
 }
 
 .CenterPriceLeft {
@@ -500,8 +525,8 @@ ul#ul-class-navigation li {
 
 #StockItemDescription {
     position: relative;
-    width: 50%;
-    float: left;
+    width: 500px;
+    float: right;
     padding-bottom: 10px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
@@ -510,12 +535,26 @@ ul#ul-class-navigation li {
 
 #StockItemSpecifications {
     position: relative;
-    width: 50%;
-    float: left;
+    width: 500px;
+    float: right;
     padding-bottom: 10px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+    height: 500px;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 
 .addtocart {
@@ -764,6 +803,7 @@ ul#ul-class-price li {
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 15px;
+    float: left;
 }
 
 .StockItemName {

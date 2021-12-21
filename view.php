@@ -15,13 +15,15 @@ if (isset($_GET["id"])) {
     $stockItemID = 0;
 }
 ?>
-    <!--Artikelnummer en artikelbeschrijving-->
+<!--Artikelnummer en artikelbeschrijving-->
 <div id="CenteredContent">
+    <div class="title">
     <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
     <h2 class="StockItemNameViewSize StockItemName">
         <?php print $StockItem['StockItemName']; ?>
+    </div>
         <h3>
-            <!--1 artikel toevoegen aan winkelwagen-->
+<!--1 artikel toevoegen aan winkelwagen-->
             <?php
             if (isset($_POST["submit"]))    // zelfafhandelend formulier
             {
@@ -34,11 +36,11 @@ if (isset($_GET["id"])) {
                         {
                             addProductToCart($stockItemID);     // maak gebruik van geïmporteerde functie uit cartfuncties.php
                         }?>
-                        <!--melding: "toegevoegd aan winkelwagen"-->
+<!--melding: "toegevoegd aan winkelwagen"-->
                         <div
-                                class="alertaddtocart" >
+                            class="alertaddtocart" >
                             <span
-                                    class="closebtn" onclick="this.parentElement.style.display='none';">&times;
+                                class="closebtn" onclick="this.parentElement.style.display='none';">&times;
                             </span>
                             <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?>
                         </div>
@@ -60,9 +62,10 @@ if (isset($_GET["id"])) {
                     }
                 }
             }
-            }
+}
             ?>
-            <!--video-->
+<!--video-->
+
         </h3>
         <?php
         if (!empty($StockItem))
@@ -75,7 +78,8 @@ if (isset($_GET["id"])) {
             </div>
         <?php } ?>
         <div id="ArticleHeader">
-            <!--afbeelding-->
+            <div class="headerleft">
+<!--afbeelding-->
             <?php
             if (isset($StockItemImage))
             {
@@ -84,24 +88,24 @@ if (isset($_GET["id"])) {
                     ?>
                     <div id="ImageFrame"
                          style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>');
-                                 background-size: 400px;
-                                 background-repeat: no-repeat;
-                                 background-position: center;">
+                             background-size: 400px;
+                             background-repeat: no-repeat;
+                             background-position: center;">
                     </div>
                     <?php
                 } else if (count($StockItemImage) >= 2) { ?>
-                    <!-- meerdere plaatjes laten zien -->
+<!-- meerdere plaatjes laten zien -->
                     <div id="ImageFrame">
                         <div id="ImageCarousel" class="carousel slide" data-interval="false">
-                            <!-- Indicators -->
+<!-- Indicators -->
                             <ul class="carousel-indicators">
                                 <?php for ($i = 0; $i < count($StockItemImage); $i++) { ?>
                                     <li data-target="#ImageCarousel"
                                         data-slide-to="<?php print $i ?>"<?php print (($i == 0) ? 'class="active"' : ''); ?>>
                                     </li>
-                                <?php } ?>
+                                    <?php } ?>
                             </ul>
-                            <!-- slideshow -->
+<!-- slideshow -->
                             <div class="carousel-inner">
                                 <?php for ($i = 0; $i < count($StockItemImage); $i++) {
                                     ?>
@@ -111,7 +115,7 @@ if (isset($_GET["id"])) {
                                 <?php } ?>
                             </div>
 
-                            <!-- knoppen 'vorige' en 'volgende' -->
+<!-- knoppen 'vorige' en 'volgende' -->
                             <a class="carousel-control-prev" href="#ImageCarousel" data-slide="prev">
                                 <span class="carousel-control-prev-icon"></span>
                             </a>
@@ -124,35 +128,35 @@ if (isset($_GET["id"])) {
                 }
             } else {
                 ?>
-                <!--Backup afbeelding-->
+<!--Backup afbeelding-->
                 <div id="ImageFrame"
                      style="background-image: url('Public/StockGroupIMG/<?php print $StockItem['BackupImagePath']; ?>');
-                             background-size: cover;">
+                         background-size: cover;">
                 </div>
                 <?php
             }
             ?>
     </h2>
-    <div id="StockItemHeaderLeft">
-        <div class="CenterPriceLeft">
-            <div class="CenterPriceLeftChild">
-                <!--Artikelprijs-->
+</div>
+<div class="headerright">
+    <div class="recommendations">
+<!--Artikelprijs-->
                 <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
                 <?php if (!empty($_GET['id'])){ ?>      <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
-                    <!--aantal artikelen in winkelwagen toevoegen-->
+<!--aantal artikelen in winkelwagen toevoegen-->
                     <form method="post" class="form-inline">
                         <div class="form-group mx-sm-1">
                             <input type="number" id="aantal" name="aantal" value="1" class="aantalbutton">
                             <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
                         </div>
-                        <!--in inwinkelwagenknop-->
+<!--in inwinkelwagenknop-->
                         <button type="submit" name="submit" class="inwinkelwagen btn-alt btn-primary-orange"
                             <?php if (explode(" ",$StockItem['QuantityOnHand'])[1] < 1)
                             {
                                 print "disabled";
                             } ?> >In winkelwagen</button>
                     </form>
-                    <!--voorraadtekst-->
+<!--voorraadtekst-->
                     <div class="QuantityText">
                         <?php
                         $quantity = explode(" ",$StockItem['QuantityOnHand']); ?>
@@ -166,17 +170,34 @@ if (isset($_GET["id"])) {
                         </div>
                     </div>
                 <?php } ?>
-            </div>
-        </div>
     </div>
 </div>
-    </div>
+</div>
 <!--artikelbeschrijving-->
+<div class="headerleft">
     <div id="StockItemDescription">
         <h3>Artikel beschrijving</h3>
         <p><?php print $StockItem['SearchDetails']; ?></p>
     </div>
+    </div>
+<!--aanbevelingen-->
+<div class="headerright">
+<div class="recommendations">
+<?php
+$recommendations = getRecommendationValue($stockItemID, $databaseConnection);
+$recommenditems = recommendations($recommendations[0]["ColorID"], $databaseConnection);
+shuffle($recommenditems);
+?>
+    <div class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+    </div>
+</div>
+</div>
 <!--artikelspecificaties-->
+<div class="headerleft">
     <div id="StockItemSpecifications">
         <h3>Artikel specificaties</h3>
         <?php
@@ -214,17 +235,14 @@ if (isset($_GET["id"])) {
         }
         ?>
     </div>
-<!--aanbevelingen-->
-<?php
-$recommendations = getRecommendationValue($stockItemID, $databaseConnection);
-$recommenditems = recommendations($recommendations[0]["ColorID"], $databaseConnection);
-shuffle($recommenditems);
-print_r($recommenditems);
-?>
+</div>
 <!--onbekend product-->
 <?php
 } else {
 ?>
+
+    </div>
+
 <div class="centered" style="margin-top: 80px">
     <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center">
     <h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... Misschien heeft hij het opgegeten?</h2>
