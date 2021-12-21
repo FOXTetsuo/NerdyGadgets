@@ -27,6 +27,7 @@ function recommendations($Color, $databaseConnection)
                 SELECT StockItemID
                 FROM stockitems
                 WHERE (ColorID = ?)
+                LIMIT 4
     ";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "i", $Color);
