@@ -441,8 +441,7 @@ ul#ul-class-navigation li {
 }
 
 #VideoFrame {
-    position: absolute;
-    top: 500px;
+    position: relative;
     width: 500px;
     height: 400px;
     background-color: #d6d6d6;
@@ -504,7 +503,6 @@ ul#ul-class-navigation li {
     width: 50%;
     float: left;
     padding-bottom: 10px;
-    padding-left: 215px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
@@ -515,7 +513,6 @@ ul#ul-class-navigation li {
     width: 50%;
     float: left;
     padding-bottom: 10px;
-    padding-left: 215px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;

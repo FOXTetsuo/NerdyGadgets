@@ -148,6 +148,14 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                     </div>
                 <?php } ?>
             </div>
+<?php
+if (!empty($StockItem)) {
+    ?>
+    <?php
+    if (isset($StockItem['Video'])) {
+        ?>
+        <div id="VideoFrame">
+            <?php print $StockItem['Video']; ?>
         </div>
     </div>
 </div>
