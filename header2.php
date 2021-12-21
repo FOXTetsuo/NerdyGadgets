@@ -12,6 +12,7 @@ include "inlogfunctie.php";
 
 <!DOCTYPE html>
 <html lang="en">
+</html>
 <div class="fixed-top">
     <head>
         <title>NerdyGadgets</title>
