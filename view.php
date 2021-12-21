@@ -5,44 +5,43 @@ include "cartfuncties.php";
 include "stockfuntions.php";
 if (!empty($_GET['id']))
 {
-    $StockItem = getStockItem($_GET['id'], $databaseConnection);
-    $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+$StockItem = getStockItem($_GET['id'], $databaseConnection);
+$StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 
 ?>
 <div id="CenteredContent">
     <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
     <h2 class="StockItemNameViewSize StockItemName">
         <?php print $StockItem['StockItemName']; ?>
-    <h3>
-    <?php
-    if (isset($_POST["submit"])){              // zelfafhandelend formulier
-            {
-                if ($_POST["aantal"] <= explode(" ",$StockItem['QuantityOnHand'])[1]){
-                $stockItemID = $_POST["stockItemID"];
-                $aantalInMand = $_POST["aantal"];
-                for ($i = 0; $i<$aantalInMand; $i++)
-                    {
-                        addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-                    }?>
-                <div class="alertaddtocart" >
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
-                <?php
-                $_SESSION["stockItemID"] = $_POST["stockItemID"];}
-                else
-                {   ?>
-                    <div class="alert" >
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?php print("Er zijn niet genoeg artikelen beschikbaar. Verander het aantal gewenste artikelen."); ?> </div> <?php
+        <h3>
+            <?php
+            if (isset($_POST["submit"])) {              // zelfafhandelend formulier
+                {
+                    if ($_POST["aantal"] <= explode(" ", $StockItem['QuantityOnHand'])[1]) {
+                        $stockItemID = $_POST["stockItemID"];
+                        $aantalInMand = $_POST["aantal"];
+                        for ($i = 0; $i < $aantalInMand; $i++) {
+                            addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+                        } ?>
+                        <div class="alertaddtocart">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <?php print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>"); ?> </div>
+                        <?php
+                        $_SESSION["stockItemID"] = $_POST["stockItemID"];
+                    } else { ?>
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <?php print("Er zijn niet genoeg artikelen beschikbaar. Verander het aantal gewenste artikelen."); ?>
+                        </div> <?php
 
+                    }
                 }
             }
-        }
-    }
-        ?>
-    </h3>
-    <?php
-    if (!empty($StockItem)) {
+            }
+            ?>
+        </h3>
+        <?php
+        if (!empty($StockItem)) {
         ?>
         <?php
         if (isset($StockItem['Video'])) {
@@ -82,7 +81,8 @@ if (!empty($_GET['id']))
                                 <?php for ($i = 0; $i < count($StockItemImage); $i++) {
                                     ?>
                                     <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
-                                        <img class="horizontalCenteredRelative" src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
+                                        <img class="horizontalCenteredRelative"
+                                             src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
                                     </div>
                                 <?php } ?>
                             </div>
@@ -106,100 +106,101 @@ if (!empty($_GET['id']))
             }
             ?>
 
-            </h2>
-            <!-- Nog plakken bovenaan-->
-            <?php
-            //?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
-            if (isset($_GET["id"])) {
-                $stockItemID = $_GET["id"];
-            } else {
-                $stockItemID = 0;
-            }
-            ?>
+    </h2>
+    <!-- Nog plakken bovenaan-->
+    <?php
+    //?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
+    if (isset($_GET["id"])) {
+        $stockItemID = $_GET["id"];
+    } else {
+        $stockItemID = 0;
+    }
+    ?>
 
-            <div id="StockItemHeaderLeft">
-                <div class="CenterPriceLeft">
-                    <div class="CenterPriceLeftChild">
-                        <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
-                        <?php if (!empty($_GET['id'])){ ?>
-                            <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
-                            <form method="post" class="form-inline">
-                                <div class="form-group mx-sm-1">
-                                <input type="number" id="aantal" name="aantal" value="1" class="aantalbutton">
-                                <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
-                                </div>
-                                <button type="submit" name="submit" class="inwinkelwagen btn-alt btn-primary-orange"
-                                <?php if (explode(" ",$StockItem['QuantityOnHand'])[1] < 1)
-                                    {
-                                        print "disabled";
-                                    } ?> >In winkelwagen</button>
-                            </form>
-                            <div class="QuantityText">
-                                <?php
-                                $quantity = explode(" ",$StockItem['QuantityOnHand']); ?>
-                                <p style="color: #676EFF"><b><?php print "<br>".getVoorraadTekst($quantity[1]); ?></b></p>
-                                <div>
-                                    <p style="color: white"><strong>✔</strong>
-                                    <?php print " Gratis verzending boven de €25<br>"; ?><strong>✔</strong>
-                                    <?php print "30 dagen bedenktijd<br>"; ?><strong>✔</strong>
-                                    <?php print "24/7 klantenservice<br>"; ?><strong>✔</strong>
-                                    <?php print "Prijs is incl. BTW"; ?></p>
-                                </div>
+    <div id="StockItemHeaderLeft">
+        <div class="CenterPriceLeft">
+            <div class="CenterPriceLeftChild">
+                <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
+                <?php if (!empty($_GET['id'])) { ?>
+                    <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
+                    <form method="post" class="form-inline">
+                        <div class="form-group mx-sm-1">
+                            <input type="number" id="aantal" name="aantal" value="1" class="aantalbutton">
+                            <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
                         </div>
-                        <?php } ?>
+                        <button type="submit" name="submit" class="inwinkelwagen btn-alt btn-primary-orange"
+                            <?php if (explode(" ", $StockItem['QuantityOnHand'])[1] < 1) {
+                                print "disabled";
+                            } ?> >In winkelwagen
+                        </button>
+                    </form>
+                    <div class="QuantityText">
+                        <?php
+                        $quantity = explode(" ", $StockItem['QuantityOnHand']); ?>
+                        <p style="color: #676EFF"><b><?php print "<br>" . getVoorraadTekst($quantity[1]); ?></b></p>
+                        <div>
+                            <p style="color: white"><strong>✔</strong>
+                                <?php print " Gratis verzending boven de €25<br>"; ?><strong>✔</strong>
+                                <?php print "30 dagen bedenktijd<br>"; ?><strong>✔</strong>
+                                <?php print "24/7 klantenservice<br>"; ?><strong>✔</strong>
+                                <?php print "Prijs is incl. BTW"; ?></p>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
-        <div id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
-            <p><?php print $StockItem['SearchDetails']; ?></p>
-        </div>
-                <div id="StockItemSpecifications">
-                <h3>Artikel specificaties</h3>
-                <?php
-                $CustomFields = json_decode($StockItem['CustomFields'], true);
-                if (is_array($CustomFields)) { ?>
-                    <table>
-                    <thead>
-                    <th>Naam</th>
-                    <th>Data</th>
-                    </thead>
-                <?php
-                    foreach ($CustomFields as $SpecName => $SpecText) { ?>
-                    <tr>
-                        <td>
-                            <?php print $SpecName; ?>
-                        </td>
-                        <td>
-                            <?php
-                            if (is_array($SpecText)) {
-                                foreach ($SpecText as $SubText) {
-                                    print $SubText . " ";
-                                }
-                            } else {
-                                print $SpecText;
+    </div>
+</div>
+    </div>
+    <div id="StockItemDescription">
+        <h3>Artikel beschrijving</h3>
+        <p><?php print $StockItem['SearchDetails']; ?></p>
+    </div>
+    <div id="StockItemSpecifications">
+        <h3>Artikel specificaties</h3>
+        <?php
+        $CustomFields = json_decode($StockItem['CustomFields'], true);
+        if (is_array($CustomFields)) { ?>
+            <table>
+            <thead>
+            <th>Naam</th>
+            <th>Data</th>
+            </thead>
+            <?php
+            foreach ($CustomFields as $SpecName => $SpecText) { ?>
+                <tr>
+                    <td>
+                        <?php print $SpecName; ?>
+                    </td>
+                    <td>
+                        <?php
+                        if (is_array($SpecText)) {
+                            foreach ($SpecText as $SubText) {
+                                print $SubText . " ";
                             }
-                            ?>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </table><?php
-            } else { ?>
+                        } else {
+                            print $SpecText;
+                        }
+                        ?>
+                    </td>
+                </tr>
+            <?php } ?>
+            </table><?php
+        } else { ?>
 
-                <p><?php print $StockItem['CustomFields']; ?>.</p>
-                <?php
-            }
-            ?>
-        </div>
-        <?php
-    } else {
+            <p><?php print $StockItem['CustomFields']; ?>.</p>
+            <?php
+        }
         ?>
-        <div class="centered" style="margin-top: 80px">
-            <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center">
-            <h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... Misschien heeft hij het opgegeten?</h2>
-        <?php
+    </div>
+<?php
+} else {
+?>
+<div class="centered" style="margin-top: 80px">
+    <img src="Public\Img\gecko-eet.png" alt="Gecko eating" class="center">
+    <h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... Misschien heeft hij het
+        opgegeten?</h2>
+    <?php
     } ?>
 
 

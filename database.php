@@ -7,7 +7,7 @@ function connectToDatabase()
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Set MySQLi to throw exceptions
     try {
-        $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+        $Connection = mysqli_connect("localhost", "Webshopgebruiker", "UnsafePassword", "nerdygadgets");
         mysqli_set_charset($Connection, 'latin1');
         $DatabaseAvailable = true;
     } catch (mysqli_sql_exception $e) {
@@ -141,7 +141,14 @@ function createAccount($email, $pass, $voornaam, $achternaam, $straat, $huisnumm
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "sssssssss", $email, $pass, $voornaam, $achternaam, $straat, $huisnummer, $postcode, $plaats, $land);
-    mysqli_stmt_execute($Statement);
+    try {
+        mysqli_stmt_execute($Statement);
+    } catch (mysqli_sql_exception $exception) {
+        print $exception;
+        print ($exception->getMessage());
+        return false;
+    }
+    return true;
 }
 
 function checkexistence($email, $databaseConnection)
@@ -192,7 +199,7 @@ function orderItems($USERID, $deliverymethodID, $Lasteditedby, $databaseConnecti
                             INSERT INTO webshoporderlines (ORDERID, packageTypeID, stockitemID, amount, IsOrderLineFinalized, LastEditedBy, LastEditedWhen) 
                             VALUES (?, ?, ?, ?, ?, ?, ?)";
         $Statement = mysqli_prepare($databaseConnection, $Query);
-            mysqli_stmt_bind_param($Statement, "sssssss", $ORDERID, $packageTypeID, $item, $amount, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen);
+        mysqli_stmt_bind_param($Statement, "sssssss", $ORDERID, $packageTypeID, $item, $amount, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen);
         mysqli_stmt_execute($Statement);
     }
 }
