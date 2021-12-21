@@ -192,6 +192,10 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
         ?>
     </div>
 <?php
+$recommendations = getRecommendationValue($stockItemID, $databaseConnection);
+print_r($recommendations);
+?>
+<?php
 } else {
 ?>
 <div class="centered" style="margin-top: 80px">

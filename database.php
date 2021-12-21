@@ -21,6 +21,20 @@ function connectToDatabase()
     return $Connection;
 }
 
+function recommendations($Color, $databaseConnection)
+{
+    $Query = "
+                SELECT StockItemID
+                FROM stockitems
+                WHERE (ColorID = ?)
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $Color);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    return $Result;
+}
+
 function getHeaderStockGroups($databaseConnection)
 {
     $Query = "
@@ -103,6 +117,21 @@ function getStockItemImage($id, $databaseConnection)
 }
 
 // Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen werkt.
+function getRecommendationValue($id, $databaseConnection)
+{
+    $Query = "
+                SELECT ColorID
+                FROM stockitems
+                WHERE StockItemID = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $id);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    return $Result;
+}
 function getPersonIDNew($id, $databaseConnection)
 {
     $Query = "
