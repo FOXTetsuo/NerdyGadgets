@@ -7,7 +7,7 @@ function connectToDatabase()
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Set MySQLi to throw exceptions
     try {
-        $Connection = mysqli_connect("localhost", "localhost", "root", "nerdygadgets");
+        $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
         mysqli_set_charset($Connection, 'latin1');
         $DatabaseAvailable = true;
     } catch (mysqli_sql_exception $e) {
@@ -32,6 +32,7 @@ function recommendations($Color, $databaseConnection)
     mysqli_stmt_bind_param($Statement, "i", $Color);
     mysqli_stmt_execute($Statement);
     $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
     return $Result;
 }
 

@@ -193,7 +193,9 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
     </div>
 <?php
 $recommendations = getRecommendationValue($stockItemID, $databaseConnection);
-print_r($recommendations);
+$recommenditems = recommendations($recommendations[0]["ColorID"], $databaseConnection);
+shuffle($recommenditems);
+print_r($recommenditems);
 ?>
 <?php
 } else {
@@ -203,6 +205,4 @@ print_r($recommendations);
     <h2 id="ProductNotFound">De winkelgekko kon helaas dit product niet vinden... Misschien heeft hij het opgegeten?</h2>
     <?php
     } ?>
-
-
 </div>
