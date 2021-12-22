@@ -109,7 +109,7 @@ if (empty($cart)) {
             <td><img src="Public/StockItemIMG/<?php if (isset($image[0]['ImagePath'])) {
                     print $image[0]['ImagePath'];
                 } else print$image ?>" width="200" height="200"></td>
-            <td><a href="view2.php?id=<?php print($productID) ?>"><?php print($stockitem["StockItemName"]); ?></a></td>
+            <td><a href="view.php?id=<?php print($productID) ?>"><?php print($stockitem["StockItemName"]); ?></a></td>
             <td class="padding0">
                 <form action="cart.php" method="post">
                     <input type="text" id="itemamount" name="itemamount" class="form-control col-sm-4"

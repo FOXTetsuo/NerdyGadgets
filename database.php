@@ -24,8 +24,9 @@ function connectToDatabase()
 function recommendations($Color, $databaseConnection)
 {
     $Query = "
-                SELECT StockItemID
-                FROM stockitems
+                SELECT items.StockItemID, images.ImagePath
+                FROM stockitems AS items
+                JOIN stockitemimages AS images ON items.StockItemID = images.StockItemID
                 WHERE (ColorID = ?)
     ";
     $Statement = mysqli_prepare($databaseConnection, $Query);
