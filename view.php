@@ -17,12 +17,6 @@ if (isset($_GET["id"])) {
 ?>
 <!--Artikelnummer en artikelbeschrijving-->
 <div id="CenteredContent">
-    <div class="title">
-    <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
-    <h2 class="StockItemNameViewSize StockItemName">
-        <?php print $StockItem['StockItemName']; ?>
-    </div>
-        <h3>
 <!--1 artikel toevoegen aan winkelwagen-->
             <?php
             if (isset($_POST["submit"]))    // zelfafhandelend formulier
@@ -38,7 +32,7 @@ if (isset($_GET["id"])) {
                         }?>
 <!--melding: "toegevoegd aan winkelwagen"-->
                         <div
-                            class="alertaddtocart" >
+                            class="alertaddtocart" ><h3>
                             <span
                                 class="closebtn" onclick="this.parentElement.style.display='none';">&times;
                             </span>
@@ -64,6 +58,12 @@ if (isset($_GET["id"])) {
             }
 }
             ?>
+<!--artikelnummer en titel-->
+    <div class="title">
+        <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
+        <h2 class="StockItemNameViewSize StockItemName">
+            <?php print $StockItem['StockItemName']; ?>
+    </div>
 <!--video-->
 
         </h3>
@@ -192,6 +192,7 @@ foreach ($recommendations as $productID => $color) {
     $image = getStockItemImage($productID, $databaseConnection);
     }
     ?>
+<!--titel-->
     <div class="titlerecommendations"><h3 style="text-align: left">Bekijk deze ook eens:</h3></div>
     <div class="grid-container">
         <div class="grid-item">
