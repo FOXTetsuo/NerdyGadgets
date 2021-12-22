@@ -21,9 +21,11 @@ if ($_SESSION["loggedin"] === True) {
         $_SESSION["name"] = ((getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Voornaam"] . " " . (getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Achternaam"]);
         ?>
         <br>
+        <h6 class="horizontalCenteredRelative aligntxt">Welkom in het klantenscherm, hier kunt u uw factuuradres en persoonlijke gegevens aanpassen </h6>
         <form method=post action="index_login.php" class="tabel centered" style="top: 400px">
             <div class="row">
                 <div class="col">
+
                     <label for="voornaam">Voornaam:</label>
                         <input class="form-control" type="text" id="voornaam" name="Voornaam" maxlength="15" required
                            value="<?php if ($_SESSION['loggedin'] === True) {

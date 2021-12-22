@@ -1,8 +1,7 @@
 <?php include "header2.php"; ?>
     <div class="aanmelden"
     <!-- form waarmee je NAW gegevens invult-->
-
-    <form method=post action="create.php" class="tabel centered" style="top: 55%">
+        <form method=post action="create.php" class="tabel centered" style="top: 55%">
         <div class="row">
             <div class="col">
                 <label for="email">Emailadres:</label>
@@ -14,6 +13,7 @@
             </div>
         </div>
         <div class="row">
+            <h6 class="horizontalCenteredRelative aligntxt">Vul hieronder uw factuurgegevens in. Als u een product besteld, worden deze automatisch ingevuld bij de verzendgegevens.</h6><br>
 
             <div class="col">
                 <label for="voornaam">Voornaam:</label>
