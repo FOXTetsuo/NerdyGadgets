@@ -48,7 +48,9 @@ html {
     color: white;
     margin-bottom: 15px;
     position: inherit;
-    left: 50px;
+    left: -30px;
+    width: 40%;
+    text-align: center;
 }
 
 .alertcreation {
