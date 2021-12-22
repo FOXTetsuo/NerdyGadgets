@@ -187,13 +187,18 @@ if (isset($_GET["id"])) {
 $recommendations = getRecommendationValue($stockItemID, $databaseConnection);
 $recommenditems = recommendations($recommendations[0]["ColorID"], $databaseConnection);
 shuffle($recommenditems);
-?>
+foreach ($recommendations as $productID => $color) {
+    $stockitem = getStockItem($productID, $databaseConnection);
+    $image = getStockItemImage($productID, $databaseConnection);
+    }
+    ?>
     <div class="grid-container">
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
+        <div class="grid-item"><?php print getStockItem(($recommenditems[0]["StockItemID"]),$databaseConnection)['StockItemName'];?></div>
+        <div class="grid-item"><?php print getStockItem(($recommenditems[1]["StockItemID"]),$databaseConnection)['StockItemName']; ?></div>
+        <div class="grid-item"><?php print getStockItem(($recommenditems[2]["StockItemID"]),$databaseConnection)['StockItemName']; ?></div>
+        <div class="grid-item"><?php print getStockItem(($recommenditems[3]["StockItemID"]),$databaseConnection)['StockItemName']; ?></div>
     </div>
+
 </div>
 </div>
 <!--artikelspecificaties-->
