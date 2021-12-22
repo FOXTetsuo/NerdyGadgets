@@ -53,6 +53,11 @@ html {
     text-align: center;
 }
 
+.aligntxt
+{
+    text-align: center;
+}
+
 .alertcreation {
     position: inherit;
     padding: 20px;
