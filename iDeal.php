@@ -7,30 +7,37 @@ include "header2.php";
 <body>
 
 <!--iDeal logo wordt getoond -->
-<img src="Public\Img\iDeal-logo.png" alt="Ideal Logo" width="180" height="100" ><br>
+<div class="CenteredContent2">
+<div class="headerleft">
+<img src="Public\Img\iDeal-logo.png" alt="Ideal Logo" width="180" height="100" >
+</div>
 <div class="tabel">
-<?php if ($_SESSION['loggedin']===True){
-    print(nl2br("U bent ingelogd als " . $_SESSION["name"] . "\n"));}?>
 </div><br>
-<h5 {absolute} class="tabel">
-Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
+<div class="headerright" style="float: right">
+<h3 {absolute} class="tabel">
+Totaalbedrag <?php if (isset ($_SESSION["totprijs"]))
 {
     //verandert totale prijs in juiste formaat met 2 decimalen
     $_SESSION["totprijs"]=number_format($_SESSION["totprijs"], 2);
     print("€" . $_SESSION["totprijs"]);
 }?>
-</h5>
+</h3>
+</div>
+</div>
 <br>
 
 <!-- tabel met opties van bank -->
-<label for="betaal" class="tabel button20 horizontalCenteredRelative">Met welke bank wilt u betalen?</label>
-<select name="betaal" id="betaal" class="smallbutton horizontalCenteredRelative" required >
+<div class="headerleft">
+<label for="betaal" class=" button20">Met welke bank wilt u betalen?</label>
+<select name="betaal" id="betaal" class="smallbutton " required >
     <option value="ING">ING</option>
     <option value="SNS">SNS</option>
     <option value="ABN AMRO">ABN AMRO</option>
     <option value="ASN">ASN</option>
     <option value="Rabobank">Rabobank</option>
 </select>
+</div>
+
 
 <form method=post action="cart.php" class="tabel horizontalCenteredRelative">
     <h2>Vul hier uw verzendgegevens in. </h2> <br>
