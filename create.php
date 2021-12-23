@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row">
-            <h6 class="horizontalCenteredRelative aligntxt">Vul hieronder uw factuurgegevens in. Als u een product besteld, worden deze automatisch ingevuld bij de verzendgegevens.</h6><br>
+            <h6 class="horizontalCenteredRelative aligntxt">Vul hieronder uw factuurgegevens in. Als u een product bestelt, worden deze automatisch ingevuld bij de verzendgegevens.</h6><br>
 
             <div class="col">
                 <label for="voornaam">Voornaam:</label>
