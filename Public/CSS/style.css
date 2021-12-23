@@ -86,6 +86,7 @@ html {
     background-color: #24c026;
     color: white;
     margin-bottom: 15px;
+    top: 0;
 }
 
 /* The close button */
@@ -118,8 +119,13 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40%;
-
 }
+.verticalcentered {
+    position: fixed;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
 
 .centeredRelative {
     position: relative;
@@ -460,15 +466,56 @@ ul#ul-class-navigation li {
     height: 450px;
     position: relative;
 }
-
+.InfoHeader {
+    width: 100%;
+    position: relative;
+}
+.recommendations {
+    width: 500px;
+    position: relative;
+    right: 0;
+    float: left;
+}
 #ImageFrame {
     width: 500px;
     height: 400px;
     background-color: #1e2230;
-    float: left;
+    float: right;
     margin-right: 10px;
 }
+#ImageFrameSmall {
+    width: 100%;
+    height: 150px;
+    background-color: #1e2230;
+    float: right;
+    position: relative;
+    marin-top: 0px;
+}
 
+#ImageFrameHome {
+    width: 100%;
+    height: 100%;
+    background-color: #1e2230;
+    float: right;
+    position: relative;
+    marin-top: 0px;
+}
+
+.title {
+    position: relative;
+    width: 47.5%;
+    float: right;
+}
+.headerleft {
+    position: relative;
+    width: 47.5%;
+    float: left;
+}
+.headerright {
+    position: relative;
+    width: 47.5%;
+    float: right;
+}
 .QuantityText {
     position: relative;
     text-align: left;
@@ -486,7 +533,9 @@ ul#ul-class-navigation li {
 }
 
 .StockItemNameViewSize {
+    position: relative;
     font-size: 35px !important;
+    margin-top: 35px;
 }
 
 .CenterPriceLeft {
@@ -507,8 +556,8 @@ ul#ul-class-navigation li {
 
 #StockItemDescription {
     position: relative;
-    width: 50%;
-    float: left;
+    width: 500px;
+    float: right;
     padding-bottom: 10px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
@@ -517,12 +566,62 @@ ul#ul-class-navigation li {
 
 #StockItemSpecifications {
     position: relative;
-    width: 50%;
-    float: left;
+    width: 500px;
+    float: right;
     padding-bottom: 10px;
     margin-left: 1%;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
+}
+.titlerecommendations {
+    position: relative;
+    width: 97.5%;
+    float: right;
+}
+
+.titlerecommendationshome {
+    position: relative;
+    width: 97.5%;
+    float: right;
+    color: #676EFF;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding: 10px;
+    float: left;
+}
+
+.grid-container-large {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 300px 300px 300px 300px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding: 10px;
+    float: left;
+}
+
+.grid-item {
+    background-color: #1e2230;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    width: 200px;
+    length: 300px;
+}
+
+.grid-item-large {
+    background-color: #1e2230;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
 }
 
 .addtocart {
@@ -571,7 +670,6 @@ ul#ul-class-price li {
 }
 
 .TextPrice {
-    margin-top: 16%;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -616,6 +714,12 @@ ul#ul-class-price li {
     margin-left: 10%;
 }
 
+.homepageimage
+{
+    width: 400px;
+    height: 400px;
+}
+
 .HomePagePrice {
     color: #676EFF;
     font-family: vortice-concept, sans-serif;
@@ -626,12 +730,11 @@ ul#ul-class-price li {
 }
 
 .HomePageStockItemPicture {
-    background-image: url("../ProductIMGHighRes/580b57fbd9996e24bc43bf55.png");
     background-size: 100% 100%;
-    width: 477px;
-    height: 477px;
+    width: 400px;
+    height: 400px;
     background-repeat: no-repeat;
-    margin-left: 55%;
+    margin-left: 65%;
     margin-top: -30%;
 }
 
@@ -771,6 +874,7 @@ ul#ul-class-price li {
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 15px;
+    float: left;
 }
 
 .StockItemName {
@@ -779,6 +883,7 @@ ul#ul-class-price li {
     font-size: 20px;
     text-transform: uppercase;
     font-weight: bold;
+    margin-top: 35px;
 }
 
 .table-font-color {

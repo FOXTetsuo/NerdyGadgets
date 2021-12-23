@@ -7,7 +7,7 @@ function connectToDatabase()
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Set MySQLi to throw exceptions
     try {
-        $Connection = mysqli_connect("localhost", "Webshopgebruiker", "UnsafePassword", "nerdygadgets");
+        $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
         mysqli_set_charset($Connection, 'latin1');
         $DatabaseAvailable = true;
     } catch (mysqli_sql_exception $e) {
@@ -19,6 +19,55 @@ function connectToDatabase()
     }
 
     return $Connection;
+}
+
+function getRecommendationValue($id, $databaseConnection)
+{
+    $Query = "
+                SELECT ColorID, StockGroupID
+                FROM stockitems JOIN stockitemstockgroups s on stockitems.StockItemID = s.StockItemID
+                WHERE stockitems.StockItemID = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $id);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    return $Result;
+}
+
+function recommendations($Color, $stockgroupiD, $databaseConnection)
+{
+    $Query = "
+                SELECT items.StockItemID, images.ImagePath
+                FROM stockitems AS items
+                JOIN stockitemimages AS images ON items.StockItemID = images.StockItemID
+                JOIN stockitemstockgroups s on items.StockItemID = s.StockItemID
+                WHERE (ColorID = ?) OR (s.StockGroupID = ?)
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "ii", $Color, $stockgroupiD);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
+}
+
+function topseller($databaseConnection)
+{
+    $Query = "
+        SELECT StockItemID, SUM(amount) AS Aantalverkocht
+        FROM webshoporderlines
+        GROUP BY StockItemID
+        ORDER BY Aantalverkocht DESC
+        LIMIT 4;
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
 }
 
 function getHeaderStockGroups($databaseConnection)
@@ -52,6 +101,21 @@ function getStockGroups($databaseConnection)
     $Result = mysqli_stmt_get_result($Statement);
     $StockGroups = mysqli_fetch_all($Result, MYSQLI_ASSOC);
     return $StockGroups;
+}
+
+function temperature($databaseConnection)
+{
+    $Query = "
+        SELECT Temperature
+        FROM coldroomtemperatures
+        WHERE ColdRoomTemperatureID in (SELECT MAX(ColdRoomTemperatureID)
+                                        FROM coldroomtemperatures);
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
 }
 
 function getStockItem($id, $databaseConnection)
@@ -102,7 +166,7 @@ function getStockItemImage($id, $databaseConnection)
 
 }
 
-// Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen werkt.
+// Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen wwerkt.
 function getPersonIDNew($id, $databaseConnection)
 {
     $Query = "
