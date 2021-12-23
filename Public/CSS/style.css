@@ -530,6 +530,18 @@ ul#ul-class-navigation li {
     width: 47.5%;
     float: right;
 }
+.idealheaderleft {
+    position: relative;
+    width: 30%;
+    float: left;
+}
+.idealheaderright {
+    position: relative;
+    width: 70%;
+    float: right;
+    padding-top: 7.5px;
+    padding-right: 6%;
+}
 .indexheaderleft {
     position: relative;
     width: 60%;
@@ -539,6 +551,13 @@ ul#ul-class-navigation li {
     position: relative;
     width: 40%;
     float: right;
+}
+.kiesbank {
+    position: relative;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    padding-left: 30%;
 }
 .QuantityText {
     position: relative;

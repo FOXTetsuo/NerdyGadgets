@@ -8,14 +8,14 @@ include "header2.php";
 
 <!--iDeal logo wordt getoond -->
 <div class="CenteredContent2">
-<div class="headerleft">
+<div class="idealheaderleft">
 <img src="Public\Img\iDeal-logo.png" alt="Ideal Logo" width="180" height="100" >
 </div>
 <div class="tabel">
 </div><br>
-<div class="headerright" style="float: right">
-<h3 {absolute} class="tabel">
-Totaalbedrag <?php if (isset ($_SESSION["totprijs"]))
+<div class="idealheaderright" style="text-align: right">
+<h3>
+Totaalbedrag: <?php if (isset ($_SESSION["totprijs"]))
 {
     //verandert totale prijs in juiste formaat met 2 decimalen
     $_SESSION["totprijs"]=number_format($_SESSION["totprijs"], 2);
@@ -27,8 +27,8 @@ Totaalbedrag <?php if (isset ($_SESSION["totprijs"]))
 <br>
 
 <!-- tabel met opties van bank -->
-<div class="headerleft">
-<label for="betaal" class=" button20">Met welke bank wilt u betalen?</label>
+<div class="kiesbank">
+<label for="betaal"><h4>Met welke bank wilt u betalen?</h4></label>
 <select name="betaal" id="betaal" class="smallbutton " required >
     <option value="ING">ING</option>
     <option value="SNS">SNS</option>
