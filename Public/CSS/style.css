@@ -112,8 +112,13 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40%;
-
 }
+.verticalcentered {
+    position: fixed;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
 
 .centeredRelative {
     position: relative;
@@ -619,7 +624,6 @@ ul#ul-class-price li {
 }
 
 .TextPrice {
-    margin-top: 16%;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -664,6 +668,16 @@ ul#ul-class-price li {
     margin-left: 10%;
 }
 
+.homepageimage
+{
+    background-size: 100% 100%;
+    width: 400px;
+    height: 400px;
+    background-repeat: no-repeat;
+    margin-left: 65%;
+    margin-top: 100%;
+}
+
 .HomePagePrice {
     color: #676EFF;
     font-family: vortice-concept, sans-serif;
@@ -675,10 +689,10 @@ ul#ul-class-price li {
 
 .HomePageStockItemPicture {
     background-size: 100% 100%;
-    width: 477px;
-    height: 477px;
+    width: 400px;
+    height: 400px;
     background-repeat: no-repeat;
-    margin-left: 55%;
+    margin-left: 65%;
     margin-top: -30%;
 }
 
