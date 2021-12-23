@@ -188,6 +188,7 @@ if (isset($_GET["id"])) {
 <div class="headerleft">
     <div id="StockItemDescription">
         <h3>Artikel beschrijving</h3>
+        <p style="color: #007bff">LIVE! Temperatuur product in opslag: <?php print temperature($databaseConnection)[0]["Temperature"];?> °C</p>
         <p><?php print $StockItem['SearchDetails']; ?></p>
     </div>
     </div>

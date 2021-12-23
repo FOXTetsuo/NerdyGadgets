@@ -103,6 +103,21 @@ function getStockGroups($databaseConnection)
     return $StockGroups;
 }
 
+function temperature($databaseConnection)
+{
+    $Query = "
+        SELECT Temperature
+        FROM coldroomtemperatures
+        WHERE ColdRoomTemperatureID in (SELECT MAX(ColdRoomTemperatureID)
+                                        FROM coldroomtemperatures);
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
+}
+
 function getStockItem($id, $databaseConnection)
 {
     $Result = null;
