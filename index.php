@@ -8,8 +8,6 @@ foreach ($topsolditems as $item => $itemnumber)
     $FrontPageImage = getStockItemImage($topsolditems[$item]["StockItemID"], $databaseConnection);
 }
 ?>
-
-
 <div class="IndexStyle">
     <div class="col-11">
         <div class="TextPrice">
