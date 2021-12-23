@@ -198,11 +198,12 @@ foreach ($recommendations as $productID => $color) {
         <div class="grid-item">
             <a class="ListItem" href='view.php?id=<?php print $recommenditems[0]['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[0]['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
             </div>
+
             <div style="font-size: 20px;">
             <?php print getStockItem(($recommenditems[0]["StockItemID"]),$databaseConnection)['StockItemName']; ?>
                 </div>
@@ -211,7 +212,7 @@ foreach ($recommendations as $productID => $color) {
         <div class="grid-item">
             <a class="ListItem" href='view.php?id=<?php print $recommenditems[1]['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[1]['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
@@ -224,7 +225,7 @@ foreach ($recommendations as $productID => $color) {
         <div class="grid-item">
             <a class="ListItem" href='view.php?id=<?php print $recommenditems[2]['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[2]['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
@@ -237,7 +238,7 @@ foreach ($recommendations as $productID => $color) {
         <div class="grid-item">
             <a class="ListItem" href='view.php?id=<?php print $recommenditems[3]['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[3]['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
@@ -250,7 +251,7 @@ foreach ($recommendations as $productID => $color) {
         <div class="grid-item">
             <a class="ListItem" href='view.php?id=<?php print $recommenditems[4]['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[4]['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
@@ -263,7 +264,7 @@ foreach ($recommendations as $productID => $color) {
         <div class="grid-item">
             <a class="ListItem" href='view.php?id=<?php print $recommenditems[5]['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[5]['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
