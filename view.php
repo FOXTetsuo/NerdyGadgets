@@ -139,7 +139,7 @@ if (isset($_GET["id"])) {
             }
         }
             ?>
-                
+
     </h2>
 </div>
 <div class="headerright">
@@ -206,85 +206,25 @@ foreach ($recommendations as $productID => $color) {
 <!--titel-->
     <div class="titlerecommendations"><h3 style="text-align: left">Bekijk deze ook eens:</h3></div>
     <div class="grid-container">
+
+        <?php $i = 0; foreach ($recommenditems as $item => $arraynum){ ?>
         <div class="grid-item">
-            <a class="ListItem" href='view.php?id=<?php print $recommenditems[0]['StockItemID']; ?>'>
+            <a class="ListItem" href='view.php?id=<?php print $arraynum['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[0]['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $arraynum['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
             </div>
 
             <div style="font-size: 20px;">
-            <?php print getStockItem(($recommenditems[0]["StockItemID"]),$databaseConnection)['StockItemName']; ?>
+            <?php print getStockItem(($arraynum["StockItemID"]),$databaseConnection)['StockItemName']; ?>
                 </div>
             </a>
         </div>
-        <div class="grid-item">
-            <a class="ListItem" href='view.php?id=<?php print $recommenditems[1]['StockItemID']; ?>'>
-            <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[1]['ImagePath']; ?>');
-                         background-size: 100%;
-                         background-repeat: no-repeat;
-                         background-position: center;">
-            </div>
-            <div style="font-size: 20px;">
-                    <?php print getStockItem(($recommenditems[1]["StockItemID"]),$databaseConnection)['StockItemName']; ?>
-                </div>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a class="ListItem" href='view.php?id=<?php print $recommenditems[2]['StockItemID']; ?>'>
-            <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[2]['ImagePath']; ?>');
-                         background-size: 100%;
-                         background-repeat: no-repeat;
-                         background-position: center;">
-            </div>
-            <div style="font-size: 20px;">
-                    <?php print getStockItem(($recommenditems[2]["StockItemID"]),$databaseConnection)['StockItemName']; ?>
-                </div>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a class="ListItem" href='view.php?id=<?php print $recommenditems[3]['StockItemID']; ?>'>
-            <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[3]['ImagePath']; ?>');
-                         background-size: 100%;
-                         background-repeat: no-repeat;
-                         background-position: center;">
-            </div>
-            <div style="font-size: 20px;">
-                    <?php print getStockItem(($recommenditems[3]["StockItemID"]),$databaseConnection)['StockItemName']; ?>
-                </div>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a class="ListItem" href='view.php?id=<?php print $recommenditems[4]['StockItemID']; ?>'>
-            <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[4]['ImagePath']; ?>');
-                         background-size: 100%;
-                         background-repeat: no-repeat;
-                         background-position: center;">
-            </div>
-            <div style="font-size: 20px;">
-                <?php print getStockItem(($recommenditems[4]["StockItemID"]),$databaseConnection)['StockItemName']; ?>
-            </div>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a class="ListItem" href='view.php?id=<?php print $recommenditems[5]['StockItemID']; ?>'>
-            <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $recommenditems[5]['ImagePath']; ?>');
-                         background-size: 100%;
-                         background-repeat: no-repeat;
-                         background-position: center;">
-            </div>
-            <div style="font-size: 20px;">
-                <?php print getStockItem(($recommenditems[5]["StockItemID"]),$databaseConnection)['StockItemName']; ?>
-            </div>
-            </a>
-        </div>
+        <?php
+            if (++$i == 6) break;
+        } ?>
     </div>
 
 </div>

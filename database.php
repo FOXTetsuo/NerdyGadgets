@@ -37,6 +37,21 @@ function recommendations($Color, $databaseConnection)
     return $Result;
 }
 
+function topseller($databaseConnection)
+{
+    $Query = "
+        SELECT StockItemID, SUM(amount) AS Aantalverkocht
+        FROM webshoporderlines
+        GROUP BY StockItemID
+        ORDER BY Aantalverkocht DESC;
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
+}
+
 function getHeaderStockGroups($databaseConnection)
 {
     $Query = "
@@ -213,7 +228,7 @@ function orderItems($USERID, $deliverymethodID, $Lasteditedby, $databaseConnecti
     $IsOrderFinalized = False;
     $LasteditedWhen = date('Y-m-d H:i:s');
     $Query = "
-                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, Straatnaam, Plaats, Postcode, Huisnummer, Email, Voornaam, Achternaam) 
+                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, VzAdresStraatnaam, VzAdresPlaats, VzAdresPostcode, VzAdresHuisnummer, VzAdresEmail, VzAdresVoornaam, VzAdresAchternaam) 
                 VALUES (?, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "sssssssssssss", $USERID, $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen, $street, $city, $zip, $housenumber, $email, $voornaam, $achternaam);
@@ -241,7 +256,7 @@ function orderItemsNoAccount($deliverymethodID, $Lasteditedby, $databaseConnecti
     $IsOrderFinalized = False;
     $LasteditedWhen = date('Y-m-d H:i:s');
     $Query = "
-                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, Straatnaam, Plaats, Postcode, Huisnummer, Email, Voornaam, Achternaam) 
+                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, VzAdresStraatnaam, VzAdresPlaats, VzAdresPostcode, VzAdresHuisnummer, VzAdresEmail, VzAdresVoornaam, VzAdresAchternaam) 
                 VALUES (NULL, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "ssssssssssss", $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen, $street, $city, $zip, $housenumber, $email, $voornaam, $achternaam);
