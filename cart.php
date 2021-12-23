@@ -10,6 +10,7 @@ include "cartfuncties.php";
     <title>Winkelwagen</title>
 </head>
 <body>
+<div class="CenteredContent">
 <!-- Toont bericht als iemand ingelogd is. -->
 <h6 id="CenteredContent">
 </h6> <?php
@@ -155,5 +156,6 @@ if (empty($cart)) {
     }
 }
 ?>
+</div>
 </body>
 </html>
