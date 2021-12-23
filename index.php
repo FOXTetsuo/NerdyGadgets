@@ -6,6 +6,7 @@ shuffle($topsolditems);
 $FrontPageImage = getStockItemImage($topsolditems[0]["StockItemID"], $databaseConnection);
 $FrontpageItem = getStockItem($topsolditems[0]["StockItemID"],$databaseConnection);
 ?>
+<div class="titlerecommendationshome"><h3 style="text-align: center; margin-top: 20px">Welkom bij Nerdygadgets. Bekijk hieronder een van onze meest populaire items!</h3></div>
 <div class="verticalcentered" style="margin-top: 5%; margin-right: 5%">
     <div class="col-11">
         <div class="TextPrice">

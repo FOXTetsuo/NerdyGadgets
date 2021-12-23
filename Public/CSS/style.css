@@ -571,6 +571,14 @@ ul#ul-class-navigation li {
     width: 97.5%;
     float: right;
 }
+
+.titlerecommendationshome {
+    position: relative;
+    width: 97.5%;
+    float: right;
+    color: #676EFF;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 200px 200px 200px;
