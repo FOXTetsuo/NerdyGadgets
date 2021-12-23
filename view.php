@@ -196,7 +196,7 @@ if (isset($_GET["id"])) {
 <div class="recommendations">
 <?php
 $recommendations = getRecommendationValue($stockItemID, $databaseConnection);
-$recommenditems = recommendations($recommendations[0]["ColorID"], $databaseConnection);
+$recommenditems = recommendations($recommendations[0]["ColorID"],$recommendations[0]["StockGroupID"], $databaseConnection);
 shuffle($recommenditems);
 foreach ($recommendations as $productID => $color) {
     $stockitem = getStockItem($productID, $databaseConnection);

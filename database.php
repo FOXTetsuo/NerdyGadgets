@@ -21,16 +21,33 @@ function connectToDatabase()
     return $Connection;
 }
 
-function recommendations($Color, $databaseConnection)
+function getRecommendationValue($id, $databaseConnection)
+{
+    $Query = "
+                SELECT ColorID, StockGroupID
+                FROM stockitems JOIN stockitemstockgroups s on stockitems.StockItemID = s.StockItemID
+                WHERE stockitems.StockItemID = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $id);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    return $Result;
+}
+
+function recommendations($Color, $stockgroupiD, $databaseConnection)
 {
     $Query = "
                 SELECT items.StockItemID, images.ImagePath
                 FROM stockitems AS items
                 JOIN stockitemimages AS images ON items.StockItemID = images.StockItemID
-                WHERE (ColorID = ?)
+                JOIN stockitemstockgroups s on items.StockItemID = s.StockItemID
+                WHERE (ColorID = ?) OR (s.StockGroupID = ?)
     ";
     $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $Color);
+    mysqli_stmt_bind_param($Statement, "ii", $Color, $stockgroupiD);
     mysqli_stmt_execute($Statement);
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
@@ -134,22 +151,7 @@ function getStockItemImage($id, $databaseConnection)
 
 }
 
-// Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen werkt.
-function getRecommendationValue($id, $databaseConnection)
-{
-    $Query = "
-                SELECT ColorID
-                FROM stockitems
-                WHERE StockItemID = ?";
-
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "s", $id);
-    mysqli_stmt_execute($Statement);
-    $Result = mysqli_stmt_get_result($Statement);
-    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
-
-    return $Result;
-}
+// Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen wwerkt.
 function getPersonIDNew($id, $databaseConnection)
 {
     $Query = "
