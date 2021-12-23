@@ -21,7 +21,7 @@ if (isset($_POST["submitLogin"]))
         $_SESSION['name']="";
         $_SESSION['wachtwoord']="";
         ?>
-        <div class="alert" >
+        <div class="alertbadrelative horizontalCenteredRelative">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             Vul een juiste combinatie van gebruikersnaam en wachtwoord in.
         </div> <?php

@@ -23,8 +23,8 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
 <br>
 
 <!-- tabel met opties van bank -->
-<label for="betaal" class="tabel button20">Met welke bank wilt u betalen?</label>
-<select name="betaal" id="betaal" class="smallbutton" required >
+<label for="betaal" class="tabel button20 horizontalCenteredRelative">Met welke bank wilt u betalen?</label>
+<select name="betaal" id="betaal" class="smallbutton horizontalCenteredRelative" required >
     <option value="ING">ING</option>
     <option value="SNS">SNS</option>
     <option value="ABN AMRO">ABN AMRO</option>
@@ -32,8 +32,8 @@ Het totaalbedrag is: <?php if (isset ($_SESSION["totprijs"]))
     <option value="Rabobank">Rabobank</option>
 </select>
 
-<form method=post action="cart.php" class="tabel">
-    Vul hier uw verzendgegevens in. Als U ingelogd bent, worden uw accountgegevens gebruikt voor het factuuradres. Als u niet ingelogd bent zijn het verzendadres en factuuradres identiek. <br>
+<form method=post action="cart.php" class="tabel horizontalCenteredRelative">
+    <h2>Vul hier uw verzendgegevens in. </h2> <br>
     <label for="email">Emailadres:</label>
     <input type="text" class="form-control" id="email" name="email" required value="<?php if ($_SESSION['loggedin']===True){print(getPersonIDNew($_SESSION['username'], $databaseConnection))[0]["Emailadres"];} ?>"> <br>
     <label for="voornaam">Voornaam:</label>

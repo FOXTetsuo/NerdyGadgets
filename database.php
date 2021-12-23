@@ -21,6 +21,22 @@ function connectToDatabase()
     return $Connection;
 }
 
+function recommendations($Color, $databaseConnection)
+{
+    $Query = "
+                SELECT StockItemID
+                FROM stockitems
+                WHERE (ColorID = ?)
+                LIMIT 4
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $Color);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
+}
+
 function getHeaderStockGroups($databaseConnection)
 {
     $Query = "
@@ -103,6 +119,21 @@ function getStockItemImage($id, $databaseConnection)
 }
 
 // Deze functie haalt een persoon zijn gegevens op, die je kan gebruiken om te zien of het inloggen werkt.
+function getRecommendationValue($id, $databaseConnection)
+{
+    $Query = "
+                SELECT ColorID
+                FROM stockitems
+                WHERE StockItemID = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $id);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    return $Result;
+}
 function getPersonIDNew($id, $databaseConnection)
 {
     $Query = "
@@ -182,7 +213,7 @@ function orderItems($USERID, $deliverymethodID, $Lasteditedby, $databaseConnecti
     $IsOrderFinalized = False;
     $LasteditedWhen = date('Y-m-d H:i:s');
     $Query = "
-                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, Straatnaam, Plaats, Postcode, Huisnummer, Email, Voornaam, Achternaam) 
+                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, VzAdresStraatnaam, VzAdresPlaats, VzAdresPostcode, VzAdresHuisnummer, VzAdresEmail, VzAdresVoornaam, VzAdresAchternaam) 
                 VALUES (?, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "sssssssssssss", $USERID, $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen, $street, $city, $zip, $housenumber, $email, $voornaam, $achternaam);
@@ -210,7 +241,7 @@ function orderItemsNoAccount($deliverymethodID, $Lasteditedby, $databaseConnecti
     $IsOrderFinalized = False;
     $LasteditedWhen = date('Y-m-d H:i:s');
     $Query = "
-                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, Straatnaam, Plaats, Postcode, Huisnummer, Email, Voornaam, Achternaam) 
+                INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, VzAdresStraatnaam, VzAdresPlaats, VzAdresPostcode, VzAdresHuisnummer, VzAdresEmail, VzAdresVoornaam, VzAdresAchternaam) 
                 VALUES (NULL, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "ssssssssssss", $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen, $street, $city, $zip, $housenumber, $email, $voornaam, $achternaam);
