@@ -24,6 +24,20 @@ html {
     --english-walnut: #3c2b24;
     --tussock: #c48c3c;
 }
+#indextop {
+    position: relative;
+    width: 100%;
+    padding-top: 5%;
+    padding-bottom: 500px;
+    top: 0;
+    height: 350px;
+}
+
+#indexbottom {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
 
 .tabel {
     width: 40%;
@@ -494,7 +508,7 @@ ul#ul-class-navigation li {
 
 #ImageFrameHome {
     width: 100%;
-    height: 100%;
+    height: 300px;
     background-color: #1e2230;
     float: right;
     position: relative;
@@ -514,6 +528,16 @@ ul#ul-class-navigation li {
 .headerright {
     position: relative;
     width: 47.5%;
+    float: right;
+}
+.indexheaderleft {
+    position: relative;
+    width: 60%;
+    float: left;
+}
+.indexheaderright {
+    position: relative;
+    width: 40%;
     float: right;
 }
 .QuantityText {
@@ -597,10 +621,10 @@ ul#ul-class-navigation li {
 
 .grid-container-large {
     display: grid;
+    width: 25%;
     justify-content: space-evenly;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 300px 300px 300px 300px;
-    grid-column-gap: 10px;
+    grid-template-columns: 250px;
+    grid-column-gap: 0;
     grid-row-gap: 10px;
     padding: 10px;
     float: left;
@@ -612,7 +636,7 @@ ul#ul-class-navigation li {
     font-size: 30px;
     text-align: center;
     width: 200px;
-    length: 300px;
+    length: 350px;
 }
 
 .grid-item-large {
@@ -620,8 +644,8 @@ ul#ul-class-navigation li {
     padding: 10px;
     font-size: 30px;
     text-align: center;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 400px;
 }
 
 .addtocart {
@@ -710,8 +734,10 @@ ul#ul-class-price li {
     font-size: 50px;
     text-transform: uppercase;
     font-weight: bold;
-    width: 60%;
-    margin-left: 10%;
+    width: 100%;
+    height: 100%;
+    float: right;
+    right: 0;
 }
 
 .homepageimage
@@ -730,12 +756,10 @@ ul#ul-class-price li {
 }
 
 .HomePageStockItemPicture {
-    background-size: 100% 100%;
     width: 400px;
     height: 400px;
-    background-repeat: no-repeat;
-    margin-left: 65%;
-    margin-top: -30%;
+    margin-bottom: 0;
+    float: left;
 }
 
 #Wrap {
@@ -905,7 +929,7 @@ ul#ul-class-price li {
     font-weight: bold;
 }
 
-#CenteredContent {
+.CenteredContent {
     margin: 0 auto;
     width: 70%;
     padding-top: 10px;

@@ -16,7 +16,7 @@ if (isset($_GET["id"])) {
 }
 ?>
 <!--Artikelnummer en artikelbeschrijving-->
-<div id="CenteredContent">
+<div class="CenteredContent">
 <!--1 artikel toevoegen aan winkelwagen-->
             <?php
             if (isset($_POST["submit"]))    // zelfafhandelend formulier
