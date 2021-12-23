@@ -484,6 +484,16 @@ ul#ul-class-navigation li {
     position: relative;
     marin-top: 0px;
 }
+
+#ImageFrameHome {
+    width: 100%;
+    height: 100%;
+    background-color: #1e2230;
+    float: right;
+    position: relative;
+    marin-top: 0px;
+}
+
 .title {
     position: relative;
     width: 47.5%;
@@ -569,6 +579,18 @@ ul#ul-class-navigation li {
     padding: 10px;
     float: left;
 }
+
+.grid-container-large {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 300px 300px 300px 300px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding: 10px;
+    float: left;
+}
+
 .grid-item {
     background-color: #1e2230;
     padding: 10px;
@@ -576,6 +598,15 @@ ul#ul-class-navigation li {
     text-align: center;
     width: 200px;
     length: 300px;
+}
+
+.grid-item-large {
+    background-color: #1e2230;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
 }
 
 .addtocart {
@@ -670,12 +701,8 @@ ul#ul-class-price li {
 
 .homepageimage
 {
-    background-size: 100% 100%;
     width: 400px;
     height: 400px;
-    background-repeat: no-repeat;
-    margin-left: 65%;
-    margin-top: 100%;
 }
 
 .HomePagePrice {
