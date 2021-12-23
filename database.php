@@ -43,7 +43,8 @@ function topseller($databaseConnection)
         SELECT StockItemID, SUM(amount) AS Aantalverkocht
         FROM webshoporderlines
         GROUP BY StockItemID
-        ORDER BY Aantalverkocht DESC;
+        ORDER BY Aantalverkocht DESC
+        LIMIT 5;
     ";
     $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);

@@ -2,11 +2,14 @@
 <?php
 include __DIR__ . "/header2.php";
 $topsolditems=topseller($databaseConnection);
-foreach ($topsolditems as $item)
+shuffle($topsolditems);
+foreach ($topsolditems as $item => $itemnumber)
 {
-    $FrontPageImage = getStockItemImage((topseller($databaseConnection)[0]["StockItemID"]), $databaseConnection);
+    $FrontPageImage = getStockItemImage($topsolditems[$item]["StockItemID"], $databaseConnection);
 }
 ?>
+
+
 <div class="IndexStyle">
     <div class="col-11">
         <div class="TextPrice">
@@ -19,7 +22,7 @@ foreach ($topsolditems as $item)
                 </ul>
         </div>
         </a>
-        <div class="HomePageStockItemPicture"></div>
+        <div > <img class="HomePageStockItemPicture" src="Public/StockItemIMG/<?php print $FrontPageImage[0]['ImagePath'] ?>"></div>
     </div>
 </div>
 <?php
