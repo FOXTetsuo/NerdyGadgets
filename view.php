@@ -58,6 +58,8 @@ if (isset($_GET["id"])) {
             }
 }
             ?>
+    <?php if (!empty($StockItem))
+    {?>
 <!--artikelnummer en titel-->
     <div class="title">
         <h1 class="StockItemID">Artikelnummer: <?php print $StockItem["StockItemID"]; ?></h1>
@@ -135,7 +137,9 @@ if (isset($_GET["id"])) {
                 </div>
                 <?php
             }
+        }
             ?>
+                
     </h2>
 </div>
 <div class="headerright">
