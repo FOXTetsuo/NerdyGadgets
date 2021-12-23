@@ -15,7 +15,7 @@ $FrontpageItem = getStockItem($topsolditems[0]["StockItemID"],$databaseConnectio
                     <?php print($FrontpageItem["StockItemName"]); ?>
                 </div>
                 <ul id="ul-class-price">
-                    <li class="HomePagePrice">€30.95</li>
+                    <li class="HomePagePrice"><?php print(number_format(round($FrontpageItem["SellPrice"], 2), 2)) ?></li>
                 </ul>
         </div>
         </a>
