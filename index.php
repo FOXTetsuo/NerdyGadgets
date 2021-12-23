@@ -26,7 +26,7 @@ $FrontpageItem = getStockItem($topsolditems[0]["StockItemID"],$databaseConnectio
         </a>
     </div>
 </div>
-    <div style="color: #FFA500" class="titlerecommendations"><h3><b>Populair op dit moment:</b></h3></div>
+    <div class="titlerecommendations"><h3><b>Populair op dit moment:</b></h3></div>
 <?php foreach ($topsolditems as $item => $product){
     $FrontPageImage = getStockItemImage($product["StockItemID"], $databaseConnection);
     $FrontpageItem = getStockItem($product["StockItemID"],$databaseConnection);
