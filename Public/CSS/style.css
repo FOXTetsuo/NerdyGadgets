@@ -473,6 +473,7 @@ ul#ul-class-navigation li {
     height: 400px;
     background-color: #d6d6d6;
     margin-bottom: 10px;
+    float: right;
 }
 
 #ArticleHeader {
