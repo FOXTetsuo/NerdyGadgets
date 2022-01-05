@@ -17,7 +17,7 @@
 
             <div class="col">
                 <label for="voornaam">Voornaam:</label>
-                <input class="form-control" type="text" id="voornaam" name="voornaam" required><br>
+                <input class="form-control" type="text" id="voornaam" name="voornaam" required maxlength="15"><br>
             </div>
             <div class="col">
                 <label for="Achternaam">Achternaam:</label>
