@@ -53,7 +53,7 @@ if (empty($cart)) {
         if ($_SESSION["loggedin"] === true) {
             orderItems(getPersonIDNew($_SESSION['username'], $databaseConnection)[0]["USERID"], 1, "SYSTEM", $databaseConnection, 1, $_POST["Voornaam"], $_POST["Achternaam"], $_POST["Straat"], $_POST["Plaats"], $_POST["Postcode"], $_POST["Huisnummer"], $_POST["email"]);
         } else {
-            orderItemsNoAccount(1, "SYSTEM", $databaseConnection, 1, $_POST["Voornaam"], $_POST["Achternaam"], $_POST["Straat"], $_POST["Plaats"], $_POST["Postcode"], $_POST["Huisnummer"], $_POST["email"]);
+            orderItemsNoAccount(1, "SYSTEM", $databaseConnection, 1, ucfirst($_POST["Voornaam"]), $_POST["Achternaam"], $_POST["Straat"], ucfirst($_POST["Plaats"]), $_POST["Postcode"], $_POST["Huisnummer"], $_POST["email"]);
         }
         ?>
         <div class="alertpositive">
@@ -90,9 +90,7 @@ if (empty($cart)) {
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($cart
-
-        as $productID => $aantal) {
+        <?php foreach ($cart as $productID => $aantal) {
         $stockitem = getStockItem($productID, $databaseConnection);
         $image = getStockItemImage($productID, $databaseConnection);
         if ($aantal > explode(" ", $stockitem['QuantityOnHand'])[1]) {

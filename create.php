@@ -50,7 +50,7 @@
         </div>
     </form>
 <?php if (isset($_POST["submit"])) {
-        // kijkt of het emailadres niet al bestaat in de database
+        // kijkt of het emailadres correct is.
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) { ?>
             <div class="alertcreation">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -58,12 +58,14 @@
             </div>
             <?php
         }
+//    Regex zodata de postcode altijd klopt. Als deze dat niet doet, krijg je de onderstaande melding.
         if (!preg_match("([0-9][0-9][0-9][0-9][a-zA-Z][a-zA-Z])", $_POST["postcode"])) { ?>
             <div class="alertcreation">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 Postcode is incorrect, vul een juiste postcode in.
             </div> <?php
         }
+//        Kijkt of het emailadres niet al bestaat.
         if (!empty (((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"]))) // zorgt dat de code hieronder geen foutmeldingen geeft:
         {
             if ((checkexistence(($_POST["email"]), $databaseConnection))[0]["Emailadres"] === $_POST["email"]) { ?>
@@ -74,9 +76,10 @@
                 <?php
             }
         }
+//      Regex zodata de postcode altijd klopt.
         elseif (preg_match("([0-9][0-9][0-9][0-9][a-zA-Z][a-zA-Z])", $_POST["postcode"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)))
             {
-                createAccount($_POST["email"], $_POST["pass"], $_POST["voornaam"], $_POST["achternaam"], $_POST["straat"], $_POST["huisnummer"], $_POST["postcode"], $_POST["plaats"], $_POST["land"], $databaseConnection);
+                createAccount($_POST["email"], $_POST["pass"], ucfirst($_POST["voornaam"]), $_POST["achternaam"], ucfirst($_POST["straat"]), $_POST["huisnummer"], $_POST["postcode"], ucfirst($_POST["plaats"]), ucfirst($_POST["land"]), $databaseConnection);
                 ?>
                 <div class="alertpositive">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
