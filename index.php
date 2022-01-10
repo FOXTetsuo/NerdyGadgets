@@ -3,6 +3,8 @@
 include __DIR__ . "/header2.php";
 $topsolditems=topseller($databaseConnection);
 shuffle($topsolditems);
+// grootste item (bovenaan) wordt geset als artikel 5 in de array, zodat deze nooit twee keer voorkomt
+
 $FrontPageImage = getStockItemImage($topsolditems[5]["StockItemID"], $databaseConnection);
 $FrontpageItem = getStockItem($topsolditems[5]["StockItemID"],$databaseConnection);
 ?>
@@ -27,6 +29,7 @@ $FrontpageItem = getStockItem($topsolditems[5]["StockItemID"],$databaseConnectio
     </div>
 </div>
     <div class="titlerecommendations"><h3><b>Populair op dit moment:</b></h3></div>
+<!--Foreach loop voor de resterende items-->
 <?php $i = 0; foreach ($topsolditems as $item => $product){
     $FrontPageImage = getStockItemImage($product["StockItemID"], $databaseConnection);
     $FrontpageItem = getStockItem($product["StockItemID"],$databaseConnection);
