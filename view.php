@@ -67,18 +67,7 @@ if (isset($_GET["id"])) {
             <?php print $StockItem['StockItemName']; ?>
     </div>
 <!--video-->
-
         </h3>
-        <?php
-        if (!empty($StockItem))
-        {
-        if (isset($StockItem['Video']))
-        {
-            ?>
-            <div id="VideoFrame">
-                <?php print $StockItem['Video']; ?>
-            </div>
-        <?php } ?>
         <div id="ArticleHeader">
             <div class="headerleft">
 <!--afbeelding-->
@@ -137,7 +126,7 @@ if (isset($_GET["id"])) {
                 </div>
                 <?php
             }
-        }
+
             ?>
 
     </h2>
@@ -270,6 +259,18 @@ foreach ($recommendations as $productID => $color) {
         }
         ?>
     </div>
+<!--video-->
+    <?php
+    if (!empty($StockItem))
+    {
+    if (isset($StockItem['Video']))
+    {
+        ?>
+        <div id="VideoFrame">
+            <?php print $StockItem['Video']; ?>
+        </div>
+    <?php }
+    } ?>
 </div>
 <!--onbekend product-->
 <?php
