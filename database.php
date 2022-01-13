@@ -274,7 +274,7 @@ function orderItemsNoAccount($deliverymethodID, $Lasteditedby, $databaseConnecti
     $orderdate = date('Y-m-d H:i:s');
     $IsOrderFinalized = False;
     $LasteditedWhen = date('Y-m-d H:i:s');
-    $Query = "S
+    $Query = "
                 INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, VzAdresStraatnaam, VzAdresPlaats, VzAdresPostcode, VzAdresHuisnummer, VzAdresEmail, VzAdresVoornaam, VzAdresAchternaam) 
                 VALUES (NULL, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
