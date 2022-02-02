@@ -64,10 +64,10 @@
         $number    = preg_match('@[0-9]@', $_POST["pass"]);
         $specialChars = preg_match('@[^\w]@', $_POST["pass"]);
         $passsafe = 1;
-        if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($_POST["pass"]) < 8) { ?>
+        if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($_POST["pass"]) < 12) { ?>
             <div class="alertcreation">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                Dit wachtwoord is onveilig. Vul a.u.b. een wachtwoord in met minimaal 8 karakters, 1 hoofdletter, 1 kleine letter, 1 nummer en een speciaal teken.
+                Dit wachtwoord is onveilig. Vul a.u.b. een wachtwoord in met minimaal 12 karakters, 1 hoofdletter, 1 kleine letter, 1 nummer en een speciaal teken.
             </div> <?php $passsafe = 0;
         }
 //    Regex zodata de postcode altijd klopt. Als deze dat niet doet, krijg je de onderstaande melding.
