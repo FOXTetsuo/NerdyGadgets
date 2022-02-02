@@ -63,13 +63,13 @@
         $lowercase = preg_match('@[a-z]@', $_POST["pass"]);
         $number    = preg_match('@[0-9]@', $_POST["pass"]);
         $specialChars = preg_match('@[^\w]@', $_POST["pass"]);
+        $passsafe = 1;
         if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($_POST["pass"]) < 8) { ?>
             <div class="alertcreation">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 Dit wachtwoord is onveilig. Vul a.u.b. een wachtwoord in met minimaal 8 karakters, 1 hoofdletter, 1 kleine letter, 1 nummer en een speciaal teken.
-            </div>
-            <?php
-    }
+            </div> <?php $passsafe = 0;
+        }
 //    Regex zodata de postcode altijd klopt. Als deze dat niet doet, krijg je de onderstaande melding.
         if (!preg_match("([0-9][0-9][0-9][0-9][a-zA-Z][a-zA-Z])", $_POST["postcode"])) { ?>
             <div class="alertcreation">
@@ -89,7 +89,7 @@
             }
         }
 //      Regex zodata de postcode altijd klopt.
-        elseif (preg_match("([0-9][0-9][0-9][0-9][a-zA-Z][a-zA-Z])", $_POST["postcode"]) && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)))
+        elseif (preg_match("([0-9][0-9][0-9][0-9][a-zA-Z][a-zA-Z])", $_POST["postcode"]) && $passsafe === 1 && (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)))
             {
                 createAccount($_POST["email"], $_POST["pass"], ucfirst($_POST["voornaam"]), $_POST["achternaam"], ucfirst($_POST["straat"]), $_POST["huisnummer"], $_POST["postcode"], ucfirst($_POST["plaats"]), ucfirst($_POST["land"]), $databaseConnection);
                 ?>
