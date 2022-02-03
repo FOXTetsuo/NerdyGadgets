@@ -84,7 +84,7 @@ if ($_SESSION["loggedin"] === True) {
 }
 ?>
 <!--Toont login scherm als gebruiker niet al ingelogd is-->
-<?php if ($_SESSION['loggedin'] === False || !array_key_exists("loggedin", $_SESSION)) { ?>
+<?php if (($_SESSION['loggedin'] === False || !array_key_exists("loggedin", $_SESSION)) && ($_SESSION['loginattempts'] < 20 || !array_key_exists("loginattempts", $_SESSION))) {?>
     <form method="post" action="index_login.php" class="centered">
         <label for="uname">Gebruikersnaam</label><br>
         <input class="form-control" type="text" id="uname" name="uname"><br>
@@ -99,3 +99,10 @@ if ($_SESSION["loggedin"] === True) {
     </form>
 <?php } ?>
 </body>
+<?php if ($_SESSION['loginattempts'] >= 20)
+{ ?>
+    <div class="alertbadrelative horizontalCenteredRelative">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                 Teveel inlogpogingen. Neem contact op met de websitebeheerder om uw wachtwoord te resetten.
+            </div> <?php
+}
