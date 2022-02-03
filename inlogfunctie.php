@@ -30,14 +30,5 @@ if (isset($_POST["submitLogin"]))
             Vul een juiste combinatie van gebruikersnaam en wachtwoord in.
         </div> <?php
     }
-    if (!empty($_SESSION['loginattempts'])) {
-        if ($_SESSION['loginattempts'] > 20) {
-            ?>
-            <div class="alertbadrelative horizontalCenteredRelative">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                Teveel inlogpogingen. U wordt over een paar seconden doorgeleid om de veiligheid van de website te
-                bewaren.
-            </div> <?php
-        }
-    }
+    
 }
