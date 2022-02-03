@@ -5,7 +5,7 @@ function getVoorraadTekst($actueleVoorraad)
         return "✔ Ruime voorraad beschikbaar<br>✔ Voor 23:59 uur besteld, morgen in huis";
     } elseif ($actueleVoorraad > 10) {
         return "✔ Voorraad: $actueleVoorraad<br>✔ Voor 23:59 uur besteld, morgen in huis";
-    } elseif ($actueleVoorraad <11) {
+    } elseif ($actueleVoorraad <11 && $actueleVoorraad > 0) {
         return "❗ Nog maar ". $actueleVoorraad. " op voorraad!"."<br>". "✔ Voor 23:59 uur besteld, morgen in huis";
 } else {
         return "Product is helaas niet op voorraad";

@@ -10,6 +10,7 @@ include "cartfuncties.php";
     <title>Winkelwagen</title>
 </head>
 <body>
+<div class="CenteredContent">
 <!-- Toont bericht als iemand ingelogd is. -->
 <h6 id="CenteredContent">
 </h6> <?php
@@ -47,12 +48,12 @@ if (empty($cart)) {
     </div>
     </body>
 <?php } else {
-// Dit blok code kan ook op een andere pagina geplaatst worden indien gewenst. Is nodig voor betaling, haalt items uit karretje en toont bericht
+// Nodig voor betaling, haalt items uit karretje en toont bericht
     if (isset($_POST["betalen"])) {
         if ($_SESSION["loggedin"] === true) {
             orderItems(getPersonIDNew($_SESSION['username'], $databaseConnection)[0]["USERID"], 1, "SYSTEM", $databaseConnection, 1, $_POST["Voornaam"], $_POST["Achternaam"], $_POST["Straat"], $_POST["Plaats"], $_POST["Postcode"], $_POST["Huisnummer"], $_POST["email"]);
         } else {
-            orderItemsNoAccount(1, "SYSTEM", $databaseConnection, 1, $_POST["Voornaam"], $_POST["Achternaam"], $_POST["Straat"], $_POST["Plaats"], $_POST["Postcode"], $_POST["Huisnummer"], $_POST["email"]);
+            orderItemsNoAccount(1, "SYSTEM", $databaseConnection, 1, ucfirst($_POST["Voornaam"]), $_POST["Achternaam"], $_POST["Straat"], ucfirst($_POST["Plaats"]), $_POST["Postcode"], $_POST["Huisnummer"], $_POST["email"]);
         }
         ?>
         <div class="alertpositive">
@@ -70,9 +71,6 @@ if (empty($cart)) {
         echo '<script>window.location.href = "betaald.php";</script>';
         exit();
     }
-
-
-// kopieren tot hier :)
     ?>
 
     <h1 id="CenteredContent">Inhoud Winkelwagen</h1>
@@ -89,9 +87,7 @@ if (empty($cart)) {
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($cart
-
-        as $productID => $aantal) {
+        <?php foreach ($cart as $productID => $aantal) {
         $stockitem = getStockItem($productID, $databaseConnection);
         $image = getStockItemImage($productID, $databaseConnection);
         if ($aantal > explode(" ", $stockitem['QuantityOnHand'])[1]) {
@@ -155,5 +151,6 @@ if (empty($cart)) {
     }
 }
 ?>
+</div>
 </body>
 </html>

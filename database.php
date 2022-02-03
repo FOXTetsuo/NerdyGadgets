@@ -54,6 +54,38 @@ function recommendations($Color, $stockgroupiD, $databaseConnection)
     return $Result;
 }
 
+//function getReviews($id, $databaseconnection)
+//{
+//    $Query = "
+//                SELECT StockItemID
+//                fROM Reviews
+//                WHERE StockItemID = ?
+//    ";
+//    $Statement = mysqli_prepare($databaseConnection, $Query);
+//    mysqli_stmt_bind_param($Statement, "i");
+//    mysqli_stmt_execute($Statement);
+//    $Result = mysqli_stmt_get_result($Statement);
+//    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+//    return $Result;
+//}
+
+function Reviews($stockItemID, $databaseConnection)
+{
+    $Query = "
+                SELECT titel, naam, aantalsterren, beoordeling, datum
+                FROM Reviews 
+                WHERE StockItemID = ?
+                ORDER BY datum DESC 
+                LIMIT 3;
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $stockItemID);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
+}
+
 function topseller($databaseConnection)
 {
     $Query = "
@@ -61,7 +93,7 @@ function topseller($databaseConnection)
         FROM webshoporderlines
         GROUP BY StockItemID
         ORDER BY Aantalverkocht DESC
-        LIMIT 4;
+        LIMIT 8;
     ";
     $Statement = mysqli_prepare($databaseConnection, $Query);
         mysqli_stmt_execute($Statement);
@@ -126,6 +158,7 @@ function getStockItem($id, $databaseConnection)
            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
             StockItemName,
+            IsChillerStock,
             CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
             SearchDetails, 
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
@@ -275,7 +308,7 @@ function orderItemsNoAccount($deliverymethodID, $Lasteditedby, $databaseConnecti
     $LasteditedWhen = date('Y-m-d H:i:s');
     $Query = "
                 INSERT INTO webshoporders (USERID, DeliveryMethodID, OrderDate, IsOrderFinalized, LastEditedBy, LastEditedWhen, VzAdresStraatnaam, VzAdresPlaats, VzAdresPostcode, VzAdresHuisnummer, VzAdresEmail, VzAdresVoornaam, VzAdresAchternaam) 
-                VALUES (NULL, ?, ?, ?, ?, ?, ? , ? , ? , ?, ?,?,?)";
+                VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "ssssssssssss", $deliverymethodID, $orderdate, $IsOrderFinalized, $Lasteditedby, $LasteditedWhen, $street, $city, $zip, $housenumber, $email, $voornaam, $achternaam);
     mysqli_stmt_execute($Statement);
