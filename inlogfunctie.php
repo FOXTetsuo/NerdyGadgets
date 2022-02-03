@@ -31,16 +31,13 @@ if (isset($_POST["submitLogin"]))
         </div> <?php
     }
     if (!empty($_SESSION['loginattempts'])) {
-        if ($_SESSION['loginattempts'] > 3) {
+        if ($_SESSION['loginattempts'] > 20) {
             ?>
             <div class="alertbadrelative horizontalCenteredRelative">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 Teveel inlogpogingen. U wordt over een paar seconden doorgeleid om de veiligheid van de website te
                 bewaren.
             </div> <?php
-            if ($_SESSION['loginattempts'] > 4) {
-                sleep(10);
-            }
         }
     }
 }
