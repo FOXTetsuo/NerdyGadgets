@@ -272,7 +272,8 @@ foreach ($recommendations as $productID => $color) {
                 <div class="grid-item-review">
 
                     <?php
-                    print $arraynum['titel']
+                    print $arraynum['titel'] . "<br>";
+                    print $arraynum['beoordeling'] . "<br>";
                     ?>
                     <div class="imageframeSter"
                     style="background-image: url('Public/StockItemIMG/<?php print $arraynum['aantalsterren'].".png";?>');
@@ -280,6 +281,10 @@ foreach ($recommendations as $productID => $color) {
                         background-repeat: no-repeat;
                         background-position: center;">
                     </div>
+                    <?php
+                    print $arraynum['naam'] . "<br>";
+                    print $arraynum['datum'];
+                    ?>
                 </div>
 
                     <?php
