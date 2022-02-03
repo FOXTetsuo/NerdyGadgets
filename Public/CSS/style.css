@@ -670,6 +670,10 @@ ul#ul-class-navigation li {
     text-align: left;
     width: 100%;
 }
+.imageframeSter {
+    height: 29.5px;
+    width: 125px;
+}
 
 .grid-item {
     background-color: #1e2230;
