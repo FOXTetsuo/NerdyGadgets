@@ -262,29 +262,31 @@ foreach ($recommendations as $productID => $color) {
 
 
         <!--review-->
-    <div class="headerleft">
+
         <div class="Review">
             <?php
             $Review = Reviews($stockItemID, $databaseConnection);
-
             ?>
             <div class="grid-container-review">
                 <?php $i = 0; foreach ($Review as $item => $arraynum){ ?>
-                <div class="grid-item">
-                <div>
+                <div class="grid-item-review">
+
                     <?php
                     print $arraynum['titel']
                     ?>
                     <div class="imageframeSter"
-                    style="background-image: url('Public/StockItemIMG/<?php print $arraynum['aantalsterren'].".jpg";?>');
+                    style="background-image: url('Public/StockItemIMG/<?php print $arraynum['aantalsterren'].".png";?>');
                         background-size: 100%;
                         background-repeat: no-repeat;
                         background-position: center;">
                     </div>
+                </div>
+
                     <?php
                 }
                 ?>
-
+            </div>
+        </div>
 <!--video-->
     <?php
     if (!empty($StockItem))
