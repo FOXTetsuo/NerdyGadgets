@@ -651,6 +651,26 @@ ul#ul-class-navigation li {
     float: left;
 }
 
+.grid-container-review {
+    display: grid;
+    width: 100%;
+    justify-content: space-evenly;
+    grid-template-columns: 400px;
+    grid-column-gap: 0;
+    grid-row-gap: 10px;
+    padding: 10px;
+    float: right;
+}
+
+.grid-item-review{
+    background-color: #1e2230;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    length: 350px;
+}
+
 .grid-item {
     background-color: #1e2230;
     padding: 10px;
