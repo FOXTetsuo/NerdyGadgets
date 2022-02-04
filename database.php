@@ -267,10 +267,10 @@ function createReview($naam, $aantalsterren, $titel, $beoordeling, $userid, $dat
 {
     $Query = "
                 INSERT INTO Reviews (naam, aantalsterren, titel, beoordeling, USERID, datum, StockItemID)
-                VALUES (?, ?, ?, ?, ?, ?)";
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 $Statement = mysqli_prepare($databaseConnection, $Query);
-mysqli_stmt_bind_param($Statement, "sissii", $naam, $aantalsterren, $titel, $beoordeling, $userid, $datum, $StockItemID);
+mysqli_stmt_bind_param($Statement, "sissisi", $naam, $aantalsterren, $titel, $beoordeling, $userid, $datum, $StockItemID);
 mysqli_stmt_execute($Statement);
 return true;
 }
