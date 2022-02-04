@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-3">
                 <label for="huisnummer">Huisnummer:</label>
-                <input class="form-control center-block" style="    text-align:center" maxlength="10"
+                <input class="form-control center-block" style="text-align:center" maxlength="10"
                        type="text"
                        id="huisnummer" name="huisnummer" required><br>
             </div>
