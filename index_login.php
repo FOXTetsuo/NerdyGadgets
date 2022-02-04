@@ -99,3 +99,10 @@ if ($_SESSION["loggedin"] === True) {
     </form>
 <?php } ?>
 </body>
+<?php if ($_SESSION['loginattempts'] >= 20)
+{ ?>
+    <div class="alertbadrelative horizontalCenteredRelative">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Teveel inlogpogingen. Neem contact op met de websitebeheerder om uw wachtwoord te resetten.
+    </div> <?php
+}
