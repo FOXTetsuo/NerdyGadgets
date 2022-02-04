@@ -322,8 +322,6 @@ foreach ($recommendations as $productID => $color) {
                     createReview($_POST["naam"], $_POST["aantalsterren"], $_POST["titel"], $_POST["beoordeling"], $_POST["userid"], $_POST["datum"], $stockItemID, $databaseConnection);
                 }
                     ?>
-
-                }
             </div>
             <div class="grid-container-review">
                 <?php $i = 0; foreach ($Review as $item => $arraynum){ ?>
