@@ -72,9 +72,10 @@ function recommendations($Color, $stockgroupiD, $databaseConnection)
 function Reviews($stockItemID, $databaseConnection)
 {
     $Query = "
-                SELECT titel, naam, aantalsterren, beoordeling, datum
+                SELECT DISTINCT titel, naam, aantalsterren, beoordeling, datum, USERID
                 FROM Reviews 
                 WHERE StockItemID = ?
+                GROUP BY USERID
                 ORDER BY datum DESC 
                 LIMIT 3;
     ";
