@@ -263,14 +263,14 @@ function createAccount($email, $pass, $voornaam, $achternaam, $straat, $huisnumm
     return true;
 }
 
-function createReview($naam, $aantalsterren, $titel, $review, $databaseConnection)
+function createReview($naam, $aantalsterren, $titel, $beoordeling, $userid, $datum, $StockItemID, $databaseConnection)
 {
     $Query = "
-                INSERT INTO Reviews (naam, aantalsterren, titel, beoordeling)
-                VALUES (?, ?, ?, ?)";
+                INSERT INTO Reviews (naam, aantalsterren, titel, beoordeling, USERID, datum, StockItemID)
+                VALUES (?, ?, ?, ?, ?, ?)";
 
 $Statement = mysqli_prepare($databaseConnection, $Query);
-mysqli_stmt_bind_param($Statement, "siss", $naam, $aantalsterren, $titel, $beoordeling);
+mysqli_stmt_bind_param($Statement, "sissii", $naam, $aantalsterren, $titel, $beoordeling, $userid, $datum, $StockItemID);
 mysqli_stmt_execute($Statement);
 return true;
 }

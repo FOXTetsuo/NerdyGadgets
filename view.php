@@ -282,31 +282,47 @@ foreach ($recommendations as $productID => $color) {
             $Review = Reviews($stockItemID, $databaseConnection);
             ?>
                 </b>
-                <form method=post action="create.php" class="tabel centered" style="top: 55%">
+                <div style="font-size: 15px;">
+                <form method=post>
                     <div class="row">
                         <div class="col">
-                            <label for="email">naam:</label>
+                            <label for="naam">naam:</label>
                             <input class="form-control" type="text" id="naam" name="naam" required><br>
                         </div>
-                        <div class="col">
-                            <label for="pass">aantal sterren:</label>
-                            <input class="form-control" type="text" id="aantalsterren" name="aantalsterren" required><br>
-                        </div>
-                        <div class="col">
-                            <label for="pass">titel:</label>
-                            <input class="form-control" type="text" id="titel" name="titel" required><br>
-                        </div>
-                        <div class="col">
-                            <label for="pass">review:</label>
-                            <input class="form-control" type="text" id="beoordeling" name="beoordeling" required><br>
-                        </div>
                     </div>
-                    <input type="submit" name="submit" class="btn btn-primary" value="Review plaatsen">
-                </form>
-                <?php if (isset($_POST["submit"])) {
-                    createReview($_POST["naam"], $_POST["aantalsterren"], $_POST["titel"], $_POST["beoordeling"]);
+                        <div class="row">
+                        <div class="col">
+                            <label for="aantalsterren">aantal sterren:</label>
+                            <input class="form-control" type="text" id="aantalsterren" name="aantalsterren" required><br>
+                        </div></div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="titel">titel:</label>
+                            <input class="form-control" type="text" id="titel" name="titel" required><br>
+                        </div></div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="review">review:</label>
+                            <input class="form-control" type="text" id="beoordeling" name="beoordeling" required><br>
+                        </div></div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="USERID">userid:</label>
+                            <input class="form-control" type="text" id="userid" name="userid" required><br>
+                        </div></div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="datum">datum:</label>
+                            <input class="form-control" type="text" id="datum" name="datum" required><br>
+                        </div></div>
+                    </div>
+                    <input type="submit" name="submit2" class="btn btn-primary" value="Review plaatsen">
+                </form></div>
+                <?php   if (isset($_POST["submit2"])){
+                    createReview($_POST["naam"], $_POST["aantalsterren"], $_POST["titel"], $_POST["beoordeling"], $_POST["userid"], $_POST["datum"], $stockItemID, $databaseConnection);
                 }
                     ?>
+
                 }
             </div>
             <div class="grid-container-review">
