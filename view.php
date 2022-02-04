@@ -264,13 +264,54 @@ foreach ($recommendations as $productID => $color) {
         <!--review-->
 
         <div class="Review">
+            <div class="titlereview"><h3 style="text-align: left">Reviews</h3></div>
+            <div class="gemiddeldesterren">
+                <b><p style="font-size: 20px;">Gemiddelde aantal sterren</p>
             <?php
+            $gemiddeldeSterren = getAveragestar($stockItemID, $databaseConnection);
+            $i = 0; foreach ($gemiddeldeSterren as $item => $ster) {
+                $gemiddeldeSter = $ster['AVG(aantalsterren)'];
+                if ($gemiddeldeSter >= 1) {
+                    print number_format($gemiddeldeSter, 1);
+                    print("⭐");
+                } else {
+                    print("Er zijn nog geen reviews geschreven");
+                }
+            }
+
             $Review = Reviews($stockItemID, $databaseConnection);
             ?>
+                </b>
+                <form method=post action="create.php" class="tabel centered" style="top: 55%">
+                    <div class="row">
+                        <div class="col">
+                            <label for="email">naam:</label>
+                            <input class="form-control" type="text" id="naam" name="naam" required><br>
+                        </div>
+                        <div class="col">
+                            <label for="pass">aantal sterren:</label>
+                            <input class="form-control" type="text" id="aantalsterren" name="aantalsterren" required><br>
+                        </div>
+                        <div class="col">
+                            <label for="pass">titel:</label>
+                            <input class="form-control" type="text" id="titel" name="titel" required><br>
+                        </div>
+                        <div class="col">
+                            <label for="pass">review:</label>
+                            <input class="form-control" type="text" id="beoordeling" name="beoordeling" required><br>
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" class="btn btn-primary" value="Review plaatsen">
+                </form>
+                <?php if (isset($_POST["submit"])) {
+                    createReview($_POST["naam"], $_POST["aantalsterren"], $_POST["titel"], $_POST["beoordeling"]);
+                }
+                    ?>
+                }
+            </div>
             <div class="grid-container-review">
                 <?php $i = 0; foreach ($Review as $item => $arraynum){ ?>
                 <div class="grid-item-review">
-
                     <b style="font-size: 25px;"><?php
                     print $arraynum['titel'];
                     ?></b>
@@ -290,7 +331,6 @@ foreach ($recommendations as $productID => $color) {
                     print $arraynum['datum'];
                     ?></p>
                 </div>
-
                     <?php
                 }
                 ?>

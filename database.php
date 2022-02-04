@@ -86,6 +86,21 @@ function Reviews($stockItemID, $databaseConnection)
     return $Result;
 }
 
+function getAverageStar($stockItemID, $databaseConnection)
+{
+    $Query = "
+            SELECT AVG(aantalsterren)
+            FROM Reviews
+            WHERE StockItemID = ?
+    ";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $stockItemID);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
+}
+
 function topseller($databaseConnection)
 {
     $Query = "
@@ -246,6 +261,18 @@ function createAccount($email, $pass, $voornaam, $achternaam, $straat, $huisnumm
         return false;
     }
     return true;
+}
+
+function createReview($naam, $aantalsterren, $titel, $review, $databaseConnection)
+{
+    $Query = "
+                INSERT INTO Reviews (naam, aantalsterren, titel, beoordeling)
+                VALUES (?, ?, ?, ?)";
+
+$Statement = mysqli_prepare($databaseConnection, $Query);
+mysqli_stmt_bind_param($Statement, "siss", $naam, $aantalsterren, $titel, $beoordeling);
+mysqli_stmt_execute($Statement);
+return true;
 }
 
 function checkexistence($email, $databaseConnection)
