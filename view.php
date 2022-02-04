@@ -259,10 +259,8 @@ foreach ($recommendations as $productID => $color) {
         }
         ?>
     </div>
-
-
+    
         <!--review-tim-->
-
         <div class="Review">
             <div class="titlereview"><h3 style="text-align: left">Reviews</h3></div>
             <div class="gemiddeldesterren">
