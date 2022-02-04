@@ -261,13 +261,14 @@ foreach ($recommendations as $productID => $color) {
     </div>
 
 
-        <!--review-->
+        <!--review-tim-->
 
         <div class="Review">
             <div class="titlereview"><h3 style="text-align: left">Reviews</h3></div>
             <div class="gemiddeldesterren">
                 <b><p style="font-size: 20px;">Gemiddelde aantal sterren</p>
             <?php
+            //rowan
             $gemiddeldeSterren = getAveragestar($stockItemID, $databaseConnection);
             $i = 0; foreach ($gemiddeldeSterren as $item => $ster) {
                 $gemiddeldeSter = $ster['AVG(aantalsterren)'];
@@ -280,6 +281,7 @@ foreach ($recommendations as $productID => $color) {
             }
 
             $Review = Reviews($stockItemID, $databaseConnection);
+            //tyson
             ?>
                 </b>
                 <div style="font-size: 15px;">
@@ -322,7 +324,7 @@ foreach ($recommendations as $productID => $color) {
                     createReview($_POST["naam"], $_POST["aantalsterren"], $_POST["titel"], $_POST["beoordeling"], $_POST["userid"], $_POST["datum"], $stockItemID, $databaseConnection);
                 }
                     ?>
-            </div>
+            </div> <!--tim-->
             <div class="grid-container-review">
                 <?php $i = 0; foreach ($Review as $item => $arraynum){ ?>
                 <div class="grid-item-review">
