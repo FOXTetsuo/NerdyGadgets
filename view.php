@@ -198,18 +198,18 @@ foreach ($recommendations as $productID => $color) {
     <div class="titlerecommendations"><h3 style="text-align: left">Bekijk deze ook eens:</h3></div>
     <div class="grid-container">
 
-        <?php $i = 0; foreach ($recommenditems as $item => $arraynum){ ?>
+        <?php $i = 0; foreach ($recommenditems as $item => $review){ ?>
         <div class="grid-item">
-            <a class="ListItem" href='view.php?id=<?php print $arraynum['StockItemID']; ?>'>
+            <a class="ListItem" href='view.php?id=<?php print $review['StockItemID']; ?>'>
             <div id="ImageFrameSmall"
-                 style="background-image: url('Public/StockItemIMG/<?php print $arraynum['ImagePath']; ?>');
+                 style="background-image: url('Public/StockItemIMG/<?php print $review['ImagePath']; ?>');
                          background-size: 100%;
                          background-repeat: no-repeat;
                          background-position: center;">
             </div>
 
             <div style="font-size: 20px;">
-            <?php print getStockItem(($arraynum["StockItemID"]),$databaseConnection)['StockItemName']; ?>
+            <?php print getStockItem(($review["StockItemID"]),$databaseConnection)['StockItemName']; ?>
                 </div>
             </a>
         </div>
@@ -259,7 +259,7 @@ foreach ($recommendations as $productID => $color) {
         }
         ?>
     </div>
-    
+
         <!--review-tim-->
         <div class="Review">
             <div class="titlereview"><h3 style="text-align: left">Reviews</h3></div>
@@ -268,7 +268,7 @@ foreach ($recommendations as $productID => $color) {
             <?php
             //rowan
             $gemiddeldeSterren = getAveragestar($stockItemID, $databaseConnection);
-            $i = 0; foreach ($gemiddeldeSterren as $item => $ster) {
+            foreach ($gemiddeldeSterren as $item => $ster) {
                 $gemiddeldeSter = $ster['AVG(aantalsterren)'];
                 if ($gemiddeldeSter >= 1) {
                     print number_format($gemiddeldeSter, 1);
@@ -324,25 +324,26 @@ foreach ($recommendations as $productID => $color) {
                     ?>
             </div> <!--tim-->
             <div class="grid-container-review">
-                <?php $i = 0; foreach ($Review as $item => $arraynum){ ?>
+                <?php foreach ($Review as $item => $review){ ?>
                 <div class="grid-item-review">
                     <b style="font-size: 25px;"><?php
-                    print $arraynum['titel'];
-                    ?></b>
+                    print $review['titel'];
+                    ?>
+                    </b>
                     <div class="imageframeSter"
-                    style="background-image: url('Public/StockItemIMG/<?php print $arraynum['aantalsterren'].".png";?>');
+                    style="background-image: url('Public/StockItemIMG/<?php print $review['aantalsterren'].".png";?>');
                         background-size: 100%;
                         background-repeat: no-repeat;
                         background-position: center;">
                     </div>
                     <p style="font-size: 18px;">
                     <?php
-                    print $arraynum['beoordeling'] . "<br>";
+                    print $review['beoordeling'] . "<br>";
                     ?></p>
                     <p style="font-size: 12px;">
                     <?php
-                    print $arraynum['naam'] . " | ";
-                    print $arraynum['datum'];
+                    print $review['naam'] . " | ";
+                    print $review['datum'];
                     ?></p>
                 </div>
                     <?php
