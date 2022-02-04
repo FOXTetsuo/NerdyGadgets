@@ -70,6 +70,7 @@ function recommendations($Color, $stockgroupiD, $databaseConnection)
 //}
 
 function Reviews($stockItemID, $databaseConnection)
+    //tim
 {
     $Query = "
                 SELECT titel, naam, aantalsterren, beoordeling, datum
@@ -87,6 +88,7 @@ function Reviews($stockItemID, $databaseConnection)
 }
 
 function getAverageStar($stockItemID, $databaseConnection)
+    //rowan
 {
     $Query = "
             SELECT AVG(aantalsterren)
